@@ -3,133 +3,387 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Découvrez l'essence du luxe avec Odeur de Dubai. Une collection exclusive de parfums raffinés.">
-    <title>Odeur de Dubai | Parfums de Luxe</title>
-    <!-- Google Fonts -->
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Odeur de Dubaï — L'essence authentique de Dubaï. Découvrez une collection exclusive de haute parfumerie alliant l'or, l'oud et l'excellence.">
+    <meta name="keywords" content="parfum, luxe, Dubaï, oud, haute parfumerie, fragrance, collection exclusive">
+    <meta name="author" content="Odeur de Dubaï">
+    <meta name="theme-color" content="#1a0e04">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Odeur de Dubaï | Haute Parfumerie">
+    <meta property="og:description" content="L'or, l'oud et l'excellence réunis dans des créations d'exception.">
+    <meta property="og:type" content="website">
+
+    <title>Odeur de Dubaï | Haute Parfumerie de Luxe</title>
+
+    <!-- Google Fonts: Cormorant Garamond (Serif élégant) + Montserrat (Sans-serif épuré) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'serif-luxury': ['"Cormorant Garamond"', 'Georgia', 'serif'],
+                        'sans-luxury': ['"Montserrat"', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: {
+                            50:  '#fdf9f0',
+                            100: '#f8ecd4',
+                            200: '#f0d6a4',
+                            300: '#e5bc6e',
+                            400: '#d4a44a',
+                            500: '#c5a055',
+                            600: '#b08a3e',
+                            700: '#946e30',
+                            800: '#7a5a2c',
+                            900: '#654a27',
+                        },
+                        desert: {
+                            dark:    '#1a0e04',
+                            deep:    '#2c1a08',
+                            warm:    '#3d2810',
+                            sand:    '#c2a57b',
+                            light:   '#e8d5b7',
+                            sunrise: '#e67e22',
+                        },
+                    },
+                    letterSpacing: {
+                        'ultra-wide': '0.25em',
+                        'luxe':       '0.15em',
+                    },
+                    animation: {
+                        'fade-in-up':       'fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'fade-in-up-delay': 'fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards',
+                        'fade-in-up-delay2':'fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards',
+                        'fade-in-up-delay3':'fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards',
+                        'shimmer':          'shimmer 3s ease-in-out infinite',
+                        'pulse-glow':       'pulseGlow 4s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%':   { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        shimmer: {
+                            '0%, 100%': { opacity: '0.7' },
+                            '50%':     { opacity: '1' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 20px rgba(197, 160, 85, 0.0)' },
+                            '50%':     { boxShadow: '0 0 35px rgba(197, 160, 85, 0.15)' },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+
+    <!-- Custom Styles (au-delà de Tailwind) -->
     <style>
-        :root {
-            --bg-color: #0b0c10;
-            --text-color: #c5c6c7;
-            --accent-color: #c5a880; /* Elegant gold tone */
-            --accent-hover: #e5c8a0;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --border-color: rgba(255, 255, 255, 0.08);
+        /* ── Smooth scroll & base ──────────────────────────── */
+        html {
+            scroll-behavior: smooth;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        /* ── Initial hidden state for animated elements ───── */
+        .anim-hidden {
+            opacity: 0;
         }
 
-        body {
-            font-family: 'Outfit', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* Ambient glow background */
-        body::before {
-            content: '';
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(197, 168, 128, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .container {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            padding: 3rem;
-            border-radius: 24px;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            max-width: 90%;
-            width: 450px;
-            animation: fadeIn 1.2s ease-out;
-        }
-
-        h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #ffffff;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            background: linear-gradient(135deg, #ffffff 30%, var(--accent-color) 100%);
+        /* ── Gold text gradient for the main heading ──────── */
+        .text-gold-gradient {
+            background: linear-gradient(
+                135deg,
+                #f8ecd4 0%,
+                #d4a44a 30%,
+                #e5bc6e 50%,
+                #d4a44a 70%,
+                #f8ecd4 100%
+            );
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        p {
-            font-size: 1rem;
-            font-weight: 300;
-            color: var(--text-color);
-            margin-bottom: 2rem;
-            letter-spacing: 1px;
+        /* ── Subtle decorative gold line ──────────────────── */
+        .gold-line {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                #d4a44a,
+                transparent
+            );
         }
 
-        .cta-button {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--bg-color);
-            background-color: var(--accent-color);
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(197, 168, 128, 0.3);
+        /* ── CTA Button — Elegant fill-on-hover effect ───── */
+        .cta-luxury {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(212, 164, 74, 0.6);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .cta-button:hover {
-            background-color: var(--accent-hover);
+        .cta-luxury::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(212, 164, 74, 0.08),
+                rgba(212, 164, 74, 0.15),
+                rgba(212, 164, 74, 0.08),
+                transparent
+            );
+            transition: left 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .cta-luxury:hover::before {
+            left: 100%;
+        }
+
+        .cta-luxury:hover {
+            border-color: rgba(212, 164, 74, 0.9);
+            background-color: rgba(212, 164, 74, 0.1);
+            box-shadow:
+                0 0 30px rgba(212, 164, 74, 0.12),
+                inset 0 0 30px rgba(212, 164, 74, 0.05);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(197, 168, 128, 0.5);
+            letter-spacing: 0.3em;
         }
 
-        @keyframes fadeIn {
-            from {
+        /* ── Cursor personnalisé au survol du CTA ─────────── */
+        .cta-luxury:hover {
+            cursor: pointer;
+        }
+
+        /* ── Overlay gradient chaud sur l'image de fond ───── */
+        .hero-overlay {
+            background: linear-gradient(
+                180deg,
+                rgba(26, 14, 4, 0.75) 0%,
+                rgba(26, 14, 4, 0.40) 35%,
+                rgba(26, 14, 4, 0.20) 55%,
+                rgba(26, 14, 4, 0.50) 80%,
+                rgba(26, 14, 4, 0.85) 100%
+            );
+        }
+
+        /* ── Fine gold separator ─────────────────────────── */
+        .separator-gold {
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(
+                90deg,
+                transparent 0%,
+                #d4a44a 50%,
+                transparent 100%
+            );
+        }
+
+        /* ── Floating particles (decorative) ──────────────── */
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(212, 164, 74, 0.4);
+            border-radius: 50%;
+            animation: floatParticle linear infinite;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(0) translateX(0);
                 opacity: 0;
-                transform: translateY(20px);
             }
-            to {
+            10% {
                 opacity: 1;
-                transform: translateY(0);
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(20px);
+                opacity: 0;
             }
         }
     </style>
 </head>
-<body>
 
-    <div class="container">
-        <h1 id="brand-title">Odeur de Dubai</h1>
-        <p id="brand-tagline">L'élégance capturée dans un flacon.</p>
-        <a href="#" id="explore-btn" class="cta-button">Découvrir</a>
-    </div>
+<body class="bg-desert-dark font-sans-luxury antialiased">
+
+    <!-- ═══════════════════════════════════════════════════════
+         HERO SECTION — Full-screen immersive
+         ═══════════════════════════════════════════════════════ -->
+    <section
+        id="hero"
+        class="relative w-full h-screen min-h-[600px] flex items-center justify-start overflow-hidden"
+        aria-label="Section héro principale"
+    >
+
+        <!-- ── Background Image ───────────────────────────── -->
+        <img
+            id="hero-bg-image"
+            src="assets/images/hero-bg.png"
+            alt="Flacon de parfum premium posé sur le sable doré du désert de Dubaï au coucher du soleil, avec une caravane de chameaux à l'horizon"
+            class="absolute inset-0 w-full h-full object-cover object-center"
+            loading="eager"
+            fetchpriority="high"
+        >
+
+        <!-- ── Warm Overlay Gradient ──────────────────────── -->
+        <div
+            class="hero-overlay absolute inset-0 z-10"
+            aria-hidden="true"
+        ></div>
+
+        <!-- ── Floating Gold Particles (decorative) ───────── -->
+        <div id="particles-container" class="absolute inset-0 z-10 pointer-events-none" aria-hidden="true"></div>
+
+        <!-- ── Hero Content ───────────────────────────────── -->
+        <div class="relative z-20 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-20">
+            <div class="max-w-2xl">
+
+                <!-- Surtitre / Marque -->
+                <p
+                    id="hero-surtitre"
+                    class="anim-hidden animate-fade-in-up
+                           font-sans-luxury text-[11px] sm:text-xs
+                           tracking-ultra-wide uppercase
+                           text-gold-300/80
+                           mb-6 sm:mb-8"
+                >
+                    Haute Parfumerie
+                </p>
+
+                <!-- Séparateur doré décoratif -->
+                <div
+                    class="anim-hidden animate-fade-in-up-delay
+                           separator-gold mb-8 sm:mb-10"
+                    aria-hidden="true"
+                ></div>
+
+                <!-- Titre Principal H1 -->
+                <h1
+                    id="hero-title"
+                    class="anim-hidden animate-fade-in-up-delay
+                           font-serif-luxury font-light italic
+                           text-4xl sm:text-5xl md:text-6xl lg:text-7xl
+                           leading-[1.1] sm:leading-[1.08]
+                           text-gold-gradient
+                           mb-6 sm:mb-8"
+                >
+                    L'essence authentique<br class="hidden sm:block"> de Dubaï
+                </h1>
+
+                <!-- Description / Sous-titre -->
+                <p
+                    id="hero-description"
+                    class="anim-hidden animate-fade-in-up-delay2
+                           font-sans-luxury font-light
+                           text-sm sm:text-base md:text-lg
+                           leading-relaxed
+                           tracking-luxe
+                           text-desert-light/80
+                           max-w-lg
+                           mb-10 sm:mb-12"
+                >
+                    L'or, l'oud et l'excellence réunis dans des créations d'exception.
+                    Plus qu'un parfum&nbsp;: une empreinte, un voyage, un art.
+                </p>
+
+                <!-- CTA Button -->
+                <div class="anim-hidden animate-fade-in-up-delay3">
+                    <a
+                        id="hero-cta"
+                        href="#collection"
+                        class="cta-luxury
+                               inline-block
+                               px-8 py-3.5 sm:px-10 sm:py-4
+                               font-sans-luxury font-medium
+                               text-xs sm:text-sm
+                               tracking-ultra-wide uppercase
+                               text-gold-300
+                               rounded-none
+                               transition-all duration-500"
+                        role="button"
+                        aria-label="Découvrir la collection de parfums Odeur de Dubaï"
+                    >
+                        Découvrir la collection
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ── Scroll Indicator (bottom center) ───────────── -->
+        <div
+            id="scroll-indicator"
+            class="anim-hidden animate-fade-in-up-delay3
+                   absolute bottom-8 left-1/2 -translate-x-1/2 z-20
+                   flex flex-col items-center gap-2
+                   opacity-60 hover:opacity-100 transition-opacity duration-500"
+            aria-hidden="true"
+        >
+            <span class="font-sans-luxury text-[10px] tracking-ultra-wide uppercase text-desert-light/60">
+                Scroll
+            </span>
+            <div class="w-px h-8 bg-gradient-to-b from-gold-400/60 to-transparent animate-shimmer"></div>
+        </div>
+
+    </section>
+    <!-- ═══ END HERO SECTION ═══════════════════════════════ -->
+
+
+    <!-- ── JavaScript: Floating particles generator ───────── -->
+    <script>
+        /**
+         * Generates subtle floating gold particles
+         * for a premium, living atmosphere.
+         */
+        (function initParticles() {
+            const container = document.getElementById('particles-container');
+            if (!container) return;
+
+            const PARTICLE_COUNT = 15;
+
+            for (let i = 0; i < PARTICLE_COUNT; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+
+                // Randomize position, size, and animation
+                const size = Math.random() * 2 + 1;
+                const left = Math.random() * 100;
+                const delay = Math.random() * 8;
+                const duration = Math.random() * 10 + 12;
+                const opacity = Math.random() * 0.3 + 0.1;
+
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${left}%`;
+                particle.style.bottom = '-5%';
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.opacity = opacity;
+
+                container.appendChild(particle);
+            }
+        })();
+    </script>
 
 </body>
 </html>
