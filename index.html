@@ -67,6 +67,8 @@
                         'fade-in-up-delay3':'fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards',
                         'shimmer':          'shimmer 3s ease-in-out infinite',
                         'pulse-glow':       'pulseGlow 4s ease-in-out infinite',
+                        'header-fade':      'headerFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'wiggle':           'wiggle 0.5s ease-in-out',
                     },
                     keyframes: {
                         fadeInUp: {
@@ -80,6 +82,17 @@
                         pulseGlow: {
                             '0%, 100%': { boxShadow: '0 0 20px rgba(197, 160, 85, 0.0)' },
                             '50%':     { boxShadow: '0 0 35px rgba(197, 160, 85, 0.15)' },
+                        },
+                        headerFade: {
+                            '0%':   { opacity: '0', transform: 'translateY(-10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        wiggle: {
+                            '0%, 100%': { transform: 'rotate(0deg)' },
+                            '20%':     { transform: 'rotate(-6deg)' },
+                            '40%':     { transform: 'rotate(5deg)' },
+                            '60%':     { transform: 'rotate(-3deg)' },
+                            '80%':     { transform: 'rotate(2deg)' },
                         },
                     },
                 },
@@ -221,17 +234,237 @@
                 opacity: 0;
             }
         }
+
+        /* ── Logo text gold gradient ──────────────────────── */
+        .logo-gold-gradient {
+            background: linear-gradient(
+                180deg,
+                #f8ecd4 0%,
+                #d4a44a 40%,
+                #c5a055 70%,
+                #e5bc6e 100%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ── Header entrance animation (initial state) ────── */
+        .header-init {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        /* ── Phone icon wiggle on hover ───────────────────── */
+        .phone-hover:hover .phone-icon {
+            animation: wiggle 0.5s ease-in-out;
+        }
+
+        /* ── Burger lines smooth morph-ready ──────────────── */
+        .burger-line {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
     </style>
 </head>
 
 <body class="bg-desert-dark font-sans-luxury antialiased">
 
     <!-- ═══════════════════════════════════════════════════════
+         HEADER — Navigation supérieure premium
+         ═══════════════════════════════════════════════════════ -->
+    <header
+        id="main-header"
+        class="header-init animate-header-fade
+               sticky top-0 z-50
+               w-full h-20 sm:h-24
+               bg-black/95 backdrop-blur-sm
+               border-b border-gold-400/10"
+        role="banner"
+    >
+        <nav
+            class="flex items-center justify-between
+                   h-full w-full max-w-7xl mx-auto
+                   px-5 sm:px-8 lg:px-12"
+            aria-label="Navigation principale"
+        >
+
+            <!-- ── BLOC GAUCHE : Bouton Menu Burger ───────── -->
+            <div class="flex items-center">
+                <button
+                    id="menu-burger"
+                    type="button"
+                    class="group
+                           flex items-center justify-center
+                           w-11 h-11 sm:w-12 sm:h-12
+                           rounded-lg
+                           border border-gold-400/40
+                           bg-transparent
+                           transition-all duration-300 ease-in-out
+                           hover:border-gold-400/80
+                           hover:bg-white/5
+                           hover:shadow-[0_0_15px_rgba(212,164,74,0.08)]
+                           focus:outline-none focus:ring-1 focus:ring-gold-400/50"
+                    aria-label="Ouvrir le menu de navigation"
+                    aria-expanded="false"
+                >
+                    <!-- Icône Burger — 3 lignes dorées -->
+                    <div class="flex flex-col items-center justify-center gap-[5px] w-5 sm:w-[22px]">
+                        <span class="burger-line block w-full h-px bg-gold-400 group-hover:bg-gold-300"></span>
+                        <span class="burger-line block w-3/4 h-px bg-gold-400 group-hover:bg-gold-300 group-hover:w-full"></span>
+                        <span class="burger-line block w-full h-px bg-gold-400 group-hover:bg-gold-300"></span>
+                    </div>
+                </button>
+            </div>
+
+
+            <!-- ── BLOC CENTRAL : Logo ODEUR DE DUBAÏ ─────── -->
+            <a
+                id="logo-link"
+                href="/"
+                class="absolute left-1/2 -translate-x-1/2
+                       flex flex-col items-center gap-1 sm:gap-1.5
+                       group
+                       transition-opacity duration-300
+                       hover:opacity-90"
+                aria-label="Odeur de Dubaï — Accueil"
+            >
+                <!-- SVG Logo : Dôme oriental / Goutte de parfum stylisée avec initiales -->
+                <svg
+                    class="w-8 h-8 sm:w-10 sm:h-10
+                           transition-transform duration-500
+                           group-hover:scale-105"
+                    viewBox="0 0 64 64"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                >
+                    <!-- Dôme oriental stylisé -->
+                    <path
+                        d="M32 4C32 4 14 22 14 38C14 48 22 56 32 56C42 56 50 48 50 38C50 22 32 4 32 4Z"
+                        stroke="url(#logoGoldGradient)"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        fill="none"
+                    />
+                    <!-- Dôme intérieur (couche de profondeur) -->
+                    <path
+                        d="M32 12C32 12 20 26 20 38C20 44.6 25.4 50 32 50C38.6 50 44 44.6 44 38C44 26 32 12 32 12Z"
+                        stroke="url(#logoGoldGradient)"
+                        stroke-width="0.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        fill="none"
+                        opacity="0.4"
+                    />
+                    <!-- Initiale "O" entrelacée -->
+                    <text
+                        x="32" y="42"
+                        text-anchor="middle"
+                        font-family="Cormorant Garamond, Georgia, serif"
+                        font-size="16"
+                        font-weight="300"
+                        font-style="italic"
+                        fill="url(#logoGoldGradient)"
+                    >O</text>
+                    <!-- Filet décoratif sous le dôme -->
+                    <line
+                        x1="22" y1="56" x2="42" y2="56"
+                        stroke="url(#logoGoldGradient)"
+                        stroke-width="0.8"
+                        opacity="0.5"
+                    />
+                    <!-- Gradient doré réutilisable -->
+                    <defs>
+                        <linearGradient id="logoGoldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#f8ecd4" />
+                            <stop offset="40%" stop-color="#d4a44a" />
+                            <stop offset="100%" stop-color="#c5a055" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+
+                <!-- Texte du logo -->
+                <span
+                    class="logo-gold-gradient
+                           font-serif-luxury
+                           text-[11px] sm:text-xs md:text-sm
+                           font-semibold
+                           tracking-[0.3em] sm:tracking-[0.35em]
+                           uppercase
+                           leading-none
+                           select-none"
+                >
+                    Odeur de Dubaï
+                </span>
+            </a>
+
+
+            <!-- ── BLOC DROIT : Icône Contact (Téléphone) ─── -->
+            <div class="flex items-center">
+                <a
+                    id="contact-phone"
+                    href="tel:+33000000000"
+                    class="phone-hover
+                           group
+                           flex items-center justify-center
+                           w-11 h-11 sm:w-12 sm:h-12
+                           rounded-lg
+                           transition-all duration-300 ease-in-out
+                           hover:bg-white/5
+                           focus:outline-none focus:ring-1 focus:ring-gold-400/50"
+                    aria-label="Nous contacter par téléphone"
+                >
+                    <!-- SVG Téléphone avec ondes sonores -->
+                    <svg
+                        class="phone-icon w-5 h-5 sm:w-[22px] sm:h-[22px]
+                               transition-transform duration-300
+                               group-hover:scale-105"
+                        viewBox="0 0 28 28"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                    >
+                        <!-- Combiné téléphonique incliné -->
+                        <path
+                            d="M17.5 16.5L15.8 18.2C15.8 18.2 13.2 16.8 10.7 14.3C8.2 11.8 6.8 9.2 6.8 9.2L8.5 7.5C9.1 6.9 9.2 5.9 8.7 5.2L6.5 2.3C5.9 1.5 4.8 1.3 4 1.9L2.4 3.2C1.5 3.9 1 5 1.1 6.1C1.4 9.5 3.1 14 7.1 18C11.1 22 15.5 23.6 18.9 23.9C20 24 21.1 23.5 21.8 22.6L23.1 21C23.7 20.2 23.5 19.1 22.7 18.5L19.8 16.3C19.1 15.8 18.1 15.9 17.5 16.5Z"
+                            stroke="#d4a44a"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            fill="none"
+                        />
+                        <!-- Onde sonore 1 (petite) -->
+                        <path
+                            d="M18 2C19.5 3.5 20.5 5.5 20.5 8"
+                            stroke="#d4a44a"
+                            stroke-width="1.2"
+                            stroke-linecap="round"
+                            opacity="0.7"
+                        />
+                        <!-- Onde sonore 2 (grande) -->
+                        <path
+                            d="M22 0.5C24 2.5 25.5 5.5 25.5 9"
+                            stroke="#d4a44a"
+                            stroke-width="1.2"
+                            stroke-linecap="round"
+                            opacity="0.4"
+                        />
+                    </svg>
+                </a>
+            </div>
+
+        </nav>
+    </header>
+    <!-- ═══ END HEADER ═════════════════════════════════════ -->
+
+
+    <!-- ═══════════════════════════════════════════════════════
          HERO SECTION — Full-screen immersive
          ═══════════════════════════════════════════════════════ -->
     <section
         id="hero"
-        class="relative w-full h-screen min-h-[600px] flex items-center justify-start overflow-hidden"
+        class="relative w-full h-[calc(100vh-5rem)] sm:h-[calc(100vh-6rem)] min-h-[500px] flex items-center justify-start overflow-hidden"
         aria-label="Section héro principale"
     >
 
