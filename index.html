@@ -895,7 +895,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 items-center">
                 
                 <!-- Colonne 1 : Importer de Dubaï (Globe) -->
-                <div id="reassurance-dubai" class="flex flex-col items-center text-center group cursor-pointer">
+                <div class="flex flex-col items-center text-center group">
                     <div class="w-20 h-20 flex items-center justify-center mb-5 relative transition-transform duration-500 group-hover:scale-105">
                         <svg class="w-full h-full fill-none" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
                             <!-- Cercle fixe extérieur du globe -->
@@ -923,7 +923,7 @@
                 </div>
 
                 <!-- Colonne 2 : Livraison rapide (Camion) -->
-                <div class="flex flex-col items-center text-center group">
+                <div id="reassurance-shipping" class="flex flex-col items-center text-center group cursor-pointer">
                     <div class="w-20 h-20 flex items-center justify-center mb-5 relative transition-transform duration-500 group-hover:scale-105">
                         <svg class="w-full h-full fill-none" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
                             <!-- Châssis/Cabine oscillante -->
@@ -1536,7 +1536,7 @@
             const menuItems = [menuTabContact, menuTabCollections, menuTabHistoire];
 
             // --- ABOUT OVERLAY ELEMENTS ---
-            const reassuranceDubaiBtn = document.getElementById('reassurance-dubai');
+            const reassuranceShippingBtn = document.getElementById('reassurance-shipping');
             const aboutOverlay = document.getElementById('about-overlay');
             const aboutCard = document.getElementById('about-card');
             const aboutCloseBtn = document.getElementById('about-close');
@@ -1657,8 +1657,8 @@
             }
 
             // About Presentation triggers
-            if (reassuranceDubaiBtn && aboutOverlay && aboutCard && aboutCloseBtn) {
-                reassuranceDubaiBtn.addEventListener('click', openAbout);
+            if (reassuranceShippingBtn && aboutOverlay && aboutCard && aboutCloseBtn) {
+                reassuranceShippingBtn.addEventListener('click', openAbout);
                 aboutCloseBtn.addEventListener('click', closeAbout);
                 aboutOverlay.addEventListener('click', (e) => {
                     if (e.target === aboutOverlay) closeAbout();
