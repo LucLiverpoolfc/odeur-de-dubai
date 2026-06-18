@@ -269,6 +269,172 @@
         .burger-line {
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
+
+        /* ── Premium Motion Logo reveal effects ────────────── */
+        
+        /* Chained breathing animation with a 2.8s delay (post-reveal) */
+        .logo-breathe-delayed {
+            will-change: transform;
+            animation: logoBreathe 6s ease-in-out 2.8s infinite alternate;
+        }
+
+        @keyframes logoBreathe {
+            0% {
+                transform: translate(-50%, 0) scale(1);
+            }
+            100% {
+                transform: translate(-50%, 0) scale(1.03);
+            }
+        }
+
+        /* SVG Line drawing animation */
+        .emblem-stroke-path {
+            stroke-dasharray: var(--path-length);
+            stroke-dashoffset: var(--path-length);
+            opacity: 0;
+            will-change: stroke-dashoffset, opacity;
+            animation: drawEmblemPath 1.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation-delay: 0.2s;
+        }
+
+        @keyframes drawEmblemPath {
+            0% {
+                stroke-dashoffset: var(--path-length);
+                opacity: 0;
+            }
+            15% {
+                opacity: var(--target-opacity, 1);
+            }
+            100% {
+                stroke-dashoffset: 0;
+                opacity: var(--target-opacity, 1);
+            }
+        }
+
+        /* Flower petals and inner elements fade-in */
+        .emblem-fill-element {
+            opacity: 0;
+            will-change: opacity;
+            animation: fadeInFill 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 1.0s; /* Starts when paths are ~50% drawn */
+        }
+
+        @keyframes fadeInFill {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: var(--target-opacity, 1);
+            }
+        }
+
+        /* Subtle gold fill inside the droplet */
+        .emblem-drop-fill {
+            will-change: fill-opacity;
+            animation: fillDroplet 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 1.0s;
+        }
+
+        @keyframes fillDroplet {
+            0% {
+                fill-opacity: 0;
+            }
+            100% {
+                fill-opacity: 0.25;
+            }
+        }
+
+        /* GPU-accelerated gold glow halo */
+        .emblem-glow {
+            will-change: filter;
+            animation: emblemGlowIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 1.0s;
+        }
+
+        @keyframes emblemGlowIn {
+            0% {
+                filter: drop-shadow(0 0 0 rgba(212, 164, 74, 0));
+            }
+            100% {
+                filter: drop-shadow(0 0 8px rgba(212, 164, 74, 0.35));
+            }
+        }
+
+        /* Cinematic Text reveal (with responsive media queries) */
+        .animate-reveal-text {
+            opacity: 0;
+            will-change: opacity, letter-spacing, transform;
+            animation: revealTextMobile 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.6s;
+        }
+
+        @media (min-width: 640px) {
+            .animate-reveal-text {
+                animation: revealTextDesktop 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+                animation-delay: 0.6s;
+            }
+        }
+
+        @keyframes revealTextMobile {
+            0% {
+                opacity: 0;
+                letter-spacing: 0.05em;
+                transform: scale(0.96);
+            }
+            100% {
+                opacity: 1;
+                letter-spacing: 0.18em;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes revealTextDesktop {
+            0% {
+                opacity: 0;
+                letter-spacing: 0.05em;
+                transform: scale(0.96);
+            }
+            100% {
+                opacity: 1;
+                letter-spacing: 0.22em;
+                transform: scale(1);
+            }
+        }
+
+        /* Accessibility: skip animations for users with motion sensitivities */
+        @media (prefers-reduced-motion: reduce) {
+            .emblem-stroke-path {
+                stroke-dashoffset: 0 !important;
+                opacity: var(--target-opacity, 1) !important;
+                animation: none !important;
+            }
+            .emblem-fill-element {
+                opacity: var(--target-opacity, 1) !important;
+                animation: none !important;
+            }
+            .emblem-drop-fill {
+                fill-opacity: 0.25 !important;
+                animation: none !important;
+            }
+            .emblem-glow {
+                filter: drop-shadow(0 0 8px rgba(212, 164, 74, 0.35)) !important;
+                animation: none !important;
+            }
+            .animate-reveal-text {
+                opacity: 1 !important;
+                transform: scale(1) !important;
+                animation: none !important;
+                letter-spacing: 0.18em !important;
+            }
+            @media (min-width: 640px) {
+                .animate-reveal-text {
+                    letter-spacing: 0.22em !important;
+                }
+            }
+            .logo-breathe-delayed {
+                animation: none !important;
+            }
+        }
     </style>
 </head>
 
@@ -339,7 +505,7 @@
                 class="absolute left-1/2 -translate-x-1/2
                        flex flex-col items-center gap-1.5 sm:gap-2
                        group
-                       animate-logo-breathe
+                       logo-breathe-delayed
                        will-change-transform
                        hover:opacity-90"
                 aria-label="Odeur de Dubaï — Accueil"
@@ -348,7 +514,8 @@
                 <svg
                     class="w-12 h-12 sm:w-[62px] sm:h-[62px]
                            transition-transform duration-500
-                           group-hover:scale-[1.05]"
+                           group-hover:scale-[1.05]
+                           emblem-glow"
                     viewBox="0 0 120 80"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -369,6 +536,8 @@
 
                     <!-- === ARCHE CENTRALE (ogive / dôme principal) === -->
                     <path
+                        class="emblem-stroke-path"
+                        style="--path-length: 190px;"
                         d="M60 4 C60 4, 42 20, 42 42 C42 54, 50 62, 60 62 C70 62, 78 54, 78 42 C78 20, 60 4, 60 4Z"
                         stroke="url(#emblemGold)"
                         stroke-width="1.4"
@@ -378,6 +547,8 @@
 
                     <!-- === ARCHE GAUCHE (entrelacée — forme O) === -->
                     <path
+                        class="emblem-stroke-path"
+                        style="--path-length: 170px;"
                         d="M38 18 C38 18, 20 32, 20 48 C20 58, 28 66, 38 66 C48 66, 54 60, 54 52 C54 44, 48 36, 42 30"
                         stroke="url(#emblemGold)"
                         stroke-width="1.4"
@@ -387,16 +558,20 @@
                     />
                     <!-- Boucle basse gauche fermant le "O" -->
                     <path
+                        class="emblem-stroke-path"
+                        style="--path-length: 30px; --target-opacity: 0.7;"
                         d="M38 66 C30 66, 22 60, 22 50"
                         stroke="url(#emblemGold)"
                         stroke-width="1.2"
                         stroke-linecap="round"
                         fill="none"
-                        opacity="0.7"
+                        opacity="0"
                     />
 
                     <!-- === ARCHE DROITE (entrelacée — forme D) === -->
                     <path
+                        class="emblem-stroke-path"
+                        style="--path-length: 170px;"
                         d="M82 18 C82 18, 100 32, 100 48 C100 58, 92 66, 82 66 C72 66, 66 60, 66 52 C66 44, 72 36, 78 30"
                         stroke="url(#emblemGold)"
                         stroke-width="1.4"
@@ -406,77 +581,100 @@
                     />
                     <!-- Boucle basse droite fermant le "D" -->
                     <path
+                        class="emblem-stroke-path"
+                        style="--path-length: 30px; --target-opacity: 0.7;"
                         d="M82 66 C90 66, 98 60, 98 50"
                         stroke="url(#emblemGold)"
                         stroke-width="1.2"
                         stroke-linecap="round"
                         fill="none"
-                        opacity="0.7"
+                        opacity="0"
                     />
 
                     <!-- === GOUTTE CENTRALE intérieure === -->
                     <path
+                        class="emblem-stroke-path emblem-drop-fill"
+                        style="--path-length: 100px; --target-opacity: 0.5;"
                         d="M60 16 C60 16, 50 30, 50 42 C50 48, 54 52, 60 52 C66 52, 70 48, 70 42 C70 30, 60 16, 60 16Z"
                         stroke="url(#emblemGoldLight)"
                         stroke-width="0.8"
-                        fill="none"
-                        opacity="0.5"
+                        fill="url(#emblemGoldLight)"
+                        fill-opacity="0"
+                        opacity="0"
                     />
 
                     <!-- === FLEUR CISELÉE à 5 pétales (bas-centre) === -->
                     <!-- Pétale haut -->
                     <path
+                        class="emblem-fill-element"
+                        style="--target-opacity: 0.9;"
                         d="M60 44 C58 40, 62 40, 60 44"
                         fill="url(#emblemGold)"
-                        opacity="0.9"
+                        opacity="0"
                     />
                     <!-- Pétale droite-haut -->
                     <path
+                        class="emblem-fill-element"
+                        style="--target-opacity: 0.9;"
                         d="M60 44 C64 42, 65 46, 60 44"
                         fill="url(#emblemGold)"
-                        opacity="0.9"
+                        opacity="0"
                     />
                     <!-- Pétale droite-bas -->
                     <path
+                        class="emblem-fill-element"
+                        style="--target-opacity: 0.9;"
                         d="M60 44 C64 46, 62 49, 60 44"
                         fill="url(#emblemGold)"
-                        opacity="0.9"
+                        opacity="0"
                     />
                     <!-- Pétale gauche-bas -->
                     <path
+                        class="emblem-fill-element"
+                        style="--target-opacity: 0.9;"
                         d="M60 44 C56 46, 58 49, 60 44"
                         fill="url(#emblemGold)"
-                        opacity="0.9"
+                        opacity="0"
                     />
                     <!-- Pétale gauche-haut -->
                     <path
+                        class="emblem-fill-element"
+                        style="--target-opacity: 0.9;"
                         d="M60 44 C56 42, 55 46, 60 44"
                         fill="url(#emblemGold)"
-                        opacity="0.9"
+                        opacity="0"
                     />
                     <!-- Centre de la fleur -->
-                    <circle cx="60" cy="44" r="1.2" fill="url(#emblemGoldLight)" />
+                    <circle
+                        class="emblem-fill-element"
+                        style="--target-opacity: 1;"
+                        cx="60" cy="44" r="1.2"
+                        fill="url(#emblemGoldLight)"
+                        opacity="0"
+                    />
 
                     <!-- === FILETS DÉCORATIFS (base de l'emblème) === -->
                     <line
+                        class="emblem-stroke-path"
+                        style="--path-length: 60px; --target-opacity: 0.3;"
                         x1="30" y1="68" x2="90" y2="68"
                         stroke="url(#emblemGold)"
                         stroke-width="0.6"
-                        opacity="0.3"
+                        opacity="0"
                     />
                 </svg>
 
-                <!-- Texte du logo — Serif majuscules, espacement prononcé -->
+                <!-- Texte du logo — Serif majuscules, espacement prononcé, révélation cinématique -->
                 <span
                     class="logo-gold-gradient
                            font-serif-luxury
                            text-[11px] sm:text-xs md:text-sm
                            font-semibold
-                           tracking-[0.18em] sm:tracking-[0.22em]
                            uppercase
                            leading-none
                            select-none
-                           whitespace-nowrap"
+                           whitespace-nowrap
+                           animate-reveal-text"
                 >
                     Odeur de Dubaï
                 </span>
