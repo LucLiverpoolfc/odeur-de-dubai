@@ -434,6 +434,53 @@
             .logo-breathe-delayed {
                 animation: none !important;
             }
+            .animate-globe-spin,
+            .animate-truck-body,
+            .animate-wheel-rear,
+            .animate-wheel-front,
+            .animate-shield-check {
+                animation: none !important;
+            }
+        }
+
+        /* ── Animations du Bloc de Réassurance ── */
+        @keyframes globeSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .animate-globe-spin {
+            transform-origin: 36px 36px;
+            animation: globeSpin 25s linear infinite;
+        }
+
+        @keyframes truckBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-1.2px); }
+        }
+        .animate-truck-body {
+            animation: truckBounce 1.8s ease-in-out infinite;
+        }
+
+        @keyframes wheelRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .animate-wheel-rear {
+            transform-origin: 20px 56px;
+            animation: wheelRotate 2.5s linear infinite;
+        }
+        .animate-wheel-front {
+            transform-origin: 52px 56px;
+            animation: wheelRotate 2.5s linear infinite;
+        }
+
+        @keyframes checkBreathe {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.08); opacity: 0.8; }
+        }
+        .animate-shield-check {
+            transform-origin: 36px 36px;
+            animation: checkBreathe 4s ease-in-out infinite;
         }
     </style>
 </head>
@@ -700,9 +747,9 @@
                     aria-label="Nous contacter"
                 >
                     <svg
-                        class="phone-icon w-7 h-7 sm:w-[30px] sm:h-[30px]
-                               transition-transform duration-300
-                               group-hover:scale-105"
+                        class="phone-icon w-[28px] h-[28px] sm:w-[34px] sm:h-[34px]
+                               transition-all duration-300 ease-in-out
+                               group-hover:scale-110"
                         viewBox="0 0 32 32"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -834,6 +881,110 @@
 
     </section>
     <!-- ═══ END HERO SECTION ═══════════════════════════════ -->
+
+    <!-- ═══════════════════════════════════════════════════════
+         REASSURANCE SECTION — Bloc de réassurance ultra-premium
+         Palette : bg-black | icônes or #C5A880 | textes #faf5eb
+         ═══════════════════════════════════════════════════════ -->
+    <section 
+        id="reassurance" 
+        class="relative w-full bg-black border-t border-b border-white/10 z-10"
+        aria-label="Engagements de la marque"
+    >
+        <div class="max-w-7xl mx-auto px-6 py-12 md:py-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 items-center">
+                
+                <!-- Colonne 1 : Importer de Dubaï (Globe) -->
+                <div class="flex flex-col items-center text-center group">
+                    <div class="w-20 h-20 flex items-center justify-center mb-5 relative transition-transform duration-500 group-hover:scale-105">
+                        <svg class="w-full h-full fill-none" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Cercle fixe extérieur du globe -->
+                            <circle cx="36" cy="36" r="32" stroke="#C5A880" stroke-width="1.3" />
+                            <!-- Groupe en rotation lente -->
+                            <g class="animate-globe-spin">
+                                <!-- Axes & Ellipses coordonnés -->
+                                <ellipse cx="36" cy="36" rx="16" ry="32" stroke="#C5A880" stroke-width="1.0" opacity="0.4" />
+                                <line x1="36" y1="4" x2="36" y2="68" stroke="#C5A880" stroke-width="1.0" opacity="0.4" />
+                                <line x1="4" y1="36" x2="68" y2="36" stroke="#C5A880" stroke-width="1.0" opacity="0.4" />
+                                <path d="M 8.5 20 A 32 32 0 0 1 63.5 20" stroke="#C5A880" stroke-width="1.0" opacity="0.4" />
+                                <path d="M 8.5 52 A 32 32 0 0 0 63.5 52" stroke="#C5A880" stroke-width="1.0" opacity="0.4" />
+                                <!-- Tracés continentaux organiques stylisés -->
+                                <path d="M 20 16 C 18 20, 15 22, 16 30 C 17 38, 22 42, 20 48 C 18 54, 25 58, 24 62" stroke="#C5A880" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M 44 14 C 48 16, 52 12, 56 16 C 54 22, 46 24, 44 28 C 42 32, 48 38, 46 44 C 44 50, 48 54, 42 60" stroke="#C5A880" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                            </g>
+                        </svg>
+                    </div>
+                    <h3 class="font-serif-luxury font-light text-xl md:text-2xl text-[#faf5eb] tracking-[0.08em] mb-1.5">
+                        Importer de Dubaï
+                    </h3>
+                    <p class="font-sans-luxury text-xs text-[#faf5eb]/50 uppercase tracking-[0.12em]">
+                        Sélection authentique & direct Émirats
+                    </p>
+                </div>
+
+                <!-- Colonne 2 : Livraison rapide (Camion) -->
+                <div class="flex flex-col items-center text-center group">
+                    <div class="w-20 h-20 flex items-center justify-center mb-5 relative transition-transform duration-500 group-hover:scale-105">
+                        <svg class="w-full h-full fill-none" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Châssis/Cabine oscillante -->
+                            <g class="animate-truck-body">
+                                <rect x="8" y="20" width="38" height="30" rx="2" stroke="#C5A880" stroke-width="1.3" />
+                                <path d="M 46 28 L 56 28 C 60 28, 64 32, 64 38 L 64 50 L 46 50 Z" stroke="#C5A880" stroke-width="1.3" stroke-linejoin="round" />
+                                <path d="M 49 32 L 55 32 C 57.5 32, 59 34, 59 37 L 59 42 L 49 42 Z" stroke="#C5A880" stroke-width="1.0" opacity="0.6" stroke-linejoin="round" />
+                                <!-- Lignes de vitesse aérodynamiques arrière (subtiles) -->
+                                <line x1="2" y1="26" x2="5" y2="26" stroke="#C5A880" stroke-width="1.0" opacity="0.5" />
+                                <line x1="1" y1="34" x2="5" y2="34" stroke="#C5A880" stroke-width="1.0" opacity="0.3" />
+                            </g>
+                            <!-- Roues en rotation (posées sur le sol de l'icône) -->
+                            <g class="animate-wheel-rear">
+                                <circle cx="20" cy="56" r="6" stroke="#C5A880" stroke-width="1.3" />
+                                <circle cx="20" cy="56" r="2" stroke="#C5A880" stroke-width="1.0" />
+                                <line x1="20" y1="50" x2="20" y2="62" stroke="#C5A880" stroke-width="0.8" opacity="0.5" />
+                                <line x1="14" y1="56" x2="26" y2="56" stroke="#C5A880" stroke-width="0.8" opacity="0.5" />
+                            </g>
+                            <g class="animate-wheel-front">
+                                <circle cx="52" cy="56" r="6" stroke="#C5A880" stroke-width="1.3" />
+                                <circle cx="52" cy="56" r="2" stroke="#C5A880" stroke-width="1.0" />
+                                <line x1="52" y1="50" x2="52" y2="62" stroke="#C5A880" stroke-width="0.8" opacity="0.5" />
+                                <line x1="46" y1="56" x2="58" y2="56" stroke="#C5A880" stroke-width="0.8" opacity="0.5" />
+                            </g>
+                            <!-- Ligne de sol ultra-fine -->
+                            <line x1="4" y1="62" x2="68" y2="62" stroke="#C5A880" stroke-width="1.0" opacity="0.2" />
+                        </svg>
+                    </div>
+                    <h3 class="font-serif-luxury font-light text-xl md:text-2xl text-[#faf5eb] tracking-[0.08em] mb-1.5">
+                        Livraison rapide
+                    </h3>
+                    <p class="font-sans-luxury text-xs text-[#faf5eb]/50 uppercase tracking-[0.12em]">
+                        Expédition 24/48h & suivi premium
+                    </p>
+                </div>
+
+                <!-- Colonne 3 : Qualité authentique (Bouclier) -->
+                <div class="flex flex-col items-center text-center group">
+                    <div class="w-20 h-20 flex items-center justify-center mb-5 relative transition-transform duration-500 group-hover:scale-105">
+                        <svg class="w-full h-full fill-none" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Bouclier héraldique fixe -->
+                            <path d="M 36 10 C 48 10, 58 13, 58 18 C 58 36, 48 50, 36 62 C 24 50, 14 36, 14 18 C 14 13, 24 10, 36 10 Z" stroke="#C5A880" stroke-width="1.3" stroke-linejoin="round" />
+                            <!-- Détail intérieur de bordure double (royal) -->
+                            <path d="M 36 14 C 45 14, 54 16.5, 54 20.5 C 54 34.5, 45 47, 36 57.5 C 27 47, 18 34.5, 18 20.5 C 18 16.5, 27 14, 36 14 Z" stroke="#C5A880" stroke-width="0.8" opacity="0.4" stroke-linejoin="round" />
+                            <!-- Coche respirante centrée -->
+                            <g class="animate-shield-check">
+                                <path d="M 27 36 L 33 42 L 45 30" stroke="#C5A880" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </g>
+                        </svg>
+                    </div>
+                    <h3 class="font-serif-luxury font-light text-xl md:text-2xl text-[#faf5eb] tracking-[0.08em] mb-1.5">
+                        Qualité authentique
+                    </h3>
+                    <p class="font-sans-luxury text-xs text-[#faf5eb]/50 uppercase tracking-[0.12em]">
+                        Certifié d'origine & matières nobles
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
     <!-- ═══════════════════════════════════════════════════════
          OVERLAY MENU - Panneau ultra-premium avec angles arrondis
