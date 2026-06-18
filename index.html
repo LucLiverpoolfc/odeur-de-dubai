@@ -270,15 +270,16 @@
 <body class="bg-desert-dark font-sans-luxury antialiased">
 
     <!-- ═══════════════════════════════════════════════════════
-         HEADER — Navigation supérieure premium
+         HEADER — Navigation supérieure ultra-premium
+         Fidèle pixel-perfect à la référence "16.59.59.png"
+         Structure tri-partite symétrique : Burger | Logo | Téléphone
          ═══════════════════════════════════════════════════════ -->
     <header
         id="main-header"
         class="header-init animate-header-fade
                sticky top-0 z-50
                w-full h-20 sm:h-24
-               bg-black/95 backdrop-blur-sm
-               border-b border-gold-400/10"
+               bg-black"
         role="banner"
     >
         <nav
@@ -288,119 +289,199 @@
             aria-label="Navigation principale"
         >
 
-            <!-- ── BLOC GAUCHE : Bouton Menu Burger ───────── -->
+            <!-- ── BLOC GAUCHE : Bouton Menu Burger ─────────────
+                 Conteneur carré, angles généreusement arrondis,
+                 fine bordure or champagne 1px,
+                 3 lignes identiques parfaitement centrées.
+                 ─────────────────────────────────────────────── -->
             <div class="flex items-center">
                 <button
                     id="menu-burger"
                     type="button"
                     class="group
                            flex items-center justify-center
-                           w-11 h-11 sm:w-12 sm:h-12
-                           rounded-lg
-                           border border-gold-400/40
+                           w-11 h-11 sm:w-[50px] sm:h-[50px]
+                           rounded-2xl
+                           border border-[#C5A880]/50
                            bg-transparent
                            transition-all duration-300 ease-in-out
-                           hover:border-gold-400/80
-                           hover:bg-white/5
-                           hover:shadow-[0_0_15px_rgba(212,164,74,0.08)]
-                           focus:outline-none focus:ring-1 focus:ring-gold-400/50"
+                           hover:border-[#C5A880]/90
+                           hover:bg-white/[0.03]
+                           hover:shadow-[0_0_20px_rgba(197,168,128,0.06)]
+                           focus:outline-none focus:ring-1 focus:ring-[#C5A880]/40"
                     aria-label="Ouvrir le menu de navigation"
                     aria-expanded="false"
                 >
-                    <!-- Icône Burger — 3 lignes dorées -->
-                    <div class="flex flex-col items-center justify-center gap-[5px] w-5 sm:w-[22px]">
-                        <span class="burger-line block w-full h-px bg-gold-400 group-hover:bg-gold-300"></span>
-                        <span class="burger-line block w-3/4 h-px bg-gold-400 group-hover:bg-gold-300 group-hover:w-full"></span>
-                        <span class="burger-line block w-full h-px bg-gold-400 group-hover:bg-gold-300"></span>
+                    <!-- 3 lignes horizontales — épaisseur identique, largeur identique -->
+                    <div class="flex flex-col items-center justify-center gap-[5px] sm:gap-[6px] w-[18px] sm:w-[20px]">
+                        <span class="burger-line block w-full h-[1px] bg-[#C5A880] group-hover:bg-[#d4bf9a]"></span>
+                        <span class="burger-line block w-full h-[1px] bg-[#C5A880] group-hover:bg-[#d4bf9a]"></span>
+                        <span class="burger-line block w-full h-[1px] bg-[#C5A880] group-hover:bg-[#d4bf9a]"></span>
                     </div>
                 </button>
             </div>
 
 
-            <!-- ── BLOC CENTRAL : Logo ODEUR DE DUBAÏ ─────── -->
+            <!-- ── BLOC CENTRAL : Emblème Royal + Logo ──────────
+                 Emblème SVG complexe : triple arche ogive orientale
+                 entrelacée avec initiales O & D, goutte centrale,
+                 fleur ciselée à 5 pétales.
+                 Texte "ODEUR DE DUBAÏ" en Serif majuscules espacées.
+                 ─────────────────────────────────────────────── -->
             <a
                 id="logo-link"
                 href="/"
                 class="absolute left-1/2 -translate-x-1/2
-                       flex flex-col items-center gap-1 sm:gap-1.5
+                       flex flex-col items-center gap-1.5 sm:gap-2
                        group
                        transition-opacity duration-300
                        hover:opacity-90"
                 aria-label="Odeur de Dubaï — Accueil"
             >
-                <!-- SVG Logo : Dôme oriental / Goutte de parfum stylisée avec initiales -->
+                <!-- Emblème SVG — Motif oriental symétrique complexe -->
                 <svg
-                    class="w-8 h-8 sm:w-10 sm:h-10
+                    class="w-10 h-10 sm:w-[52px] sm:h-[52px]
                            transition-transform duration-500
-                           group-hover:scale-105"
-                    viewBox="0 0 64 64"
+                           group-hover:scale-[1.03]"
+                    viewBox="0 0 120 80"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                     aria-hidden="true"
                 >
-                    <!-- Dôme oriental stylisé -->
-                    <path
-                        d="M32 4C32 4 14 22 14 38C14 48 22 56 32 56C42 56 50 48 50 38C50 22 32 4 32 4Z"
-                        stroke="url(#logoGoldGradient)"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        fill="none"
-                    />
-                    <!-- Dôme intérieur (couche de profondeur) -->
-                    <path
-                        d="M32 12C32 12 20 26 20 38C20 44.6 25.4 50 32 50C38.6 50 44 44.6 44 38C44 26 32 12 32 12Z"
-                        stroke="url(#logoGoldGradient)"
-                        stroke-width="0.8"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        fill="none"
-                        opacity="0.4"
-                    />
-                    <!-- Initiale "O" entrelacée -->
-                    <text
-                        x="32" y="42"
-                        text-anchor="middle"
-                        font-family="Cormorant Garamond, Georgia, serif"
-                        font-size="16"
-                        font-weight="300"
-                        font-style="italic"
-                        fill="url(#logoGoldGradient)"
-                    >O</text>
-                    <!-- Filet décoratif sous le dôme -->
-                    <line
-                        x1="22" y1="56" x2="42" y2="56"
-                        stroke="url(#logoGoldGradient)"
-                        stroke-width="0.8"
-                        opacity="0.5"
-                    />
-                    <!-- Gradient doré réutilisable -->
                     <defs>
-                        <linearGradient id="logoGoldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stop-color="#f8ecd4" />
-                            <stop offset="40%" stop-color="#d4a44a" />
+                        <!-- Gradient doré vertical — référence chromatique exacte -->
+                        <linearGradient id="emblemGold" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#d4a44a" />
+                            <stop offset="50%" stop-color="#c5a055" />
+                            <stop offset="100%" stop-color="#a88a3a" />
+                        </linearGradient>
+                        <linearGradient id="emblemGoldLight" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#e5c77a" />
                             <stop offset="100%" stop-color="#c5a055" />
                         </linearGradient>
                     </defs>
+
+                    <!-- === ARCHE CENTRALE (ogive / dôme principal) === -->
+                    <path
+                        d="M60 4 C60 4, 42 20, 42 42 C42 54, 50 62, 60 62 C70 62, 78 54, 78 42 C78 20, 60 4, 60 4Z"
+                        stroke="url(#emblemGold)"
+                        stroke-width="1.4"
+                        stroke-linejoin="round"
+                        fill="none"
+                    />
+
+                    <!-- === ARCHE GAUCHE (entrelacée — forme O) === -->
+                    <path
+                        d="M38 18 C38 18, 20 32, 20 48 C20 58, 28 66, 38 66 C48 66, 54 60, 54 52 C54 44, 48 36, 42 30"
+                        stroke="url(#emblemGold)"
+                        stroke-width="1.4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        fill="none"
+                    />
+                    <!-- Boucle basse gauche fermant le "O" -->
+                    <path
+                        d="M38 66 C30 66, 22 60, 22 50"
+                        stroke="url(#emblemGold)"
+                        stroke-width="1.2"
+                        stroke-linecap="round"
+                        fill="none"
+                        opacity="0.7"
+                    />
+
+                    <!-- === ARCHE DROITE (entrelacée — forme D) === -->
+                    <path
+                        d="M82 18 C82 18, 100 32, 100 48 C100 58, 92 66, 82 66 C72 66, 66 60, 66 52 C66 44, 72 36, 78 30"
+                        stroke="url(#emblemGold)"
+                        stroke-width="1.4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        fill="none"
+                    />
+                    <!-- Boucle basse droite fermant le "D" -->
+                    <path
+                        d="M82 66 C90 66, 98 60, 98 50"
+                        stroke="url(#emblemGold)"
+                        stroke-width="1.2"
+                        stroke-linecap="round"
+                        fill="none"
+                        opacity="0.7"
+                    />
+
+                    <!-- === GOUTTE CENTRALE intérieure === -->
+                    <path
+                        d="M60 16 C60 16, 50 30, 50 42 C50 48, 54 52, 60 52 C66 52, 70 48, 70 42 C70 30, 60 16, 60 16Z"
+                        stroke="url(#emblemGoldLight)"
+                        stroke-width="0.8"
+                        fill="none"
+                        opacity="0.5"
+                    />
+
+                    <!-- === FLEUR CISELÉE à 5 pétales (bas-centre) === -->
+                    <!-- Pétale haut -->
+                    <path
+                        d="M60 44 C58 40, 62 40, 60 44"
+                        fill="url(#emblemGold)"
+                        opacity="0.9"
+                    />
+                    <!-- Pétale droite-haut -->
+                    <path
+                        d="M60 44 C64 42, 65 46, 60 44"
+                        fill="url(#emblemGold)"
+                        opacity="0.9"
+                    />
+                    <!-- Pétale droite-bas -->
+                    <path
+                        d="M60 44 C64 46, 62 49, 60 44"
+                        fill="url(#emblemGold)"
+                        opacity="0.9"
+                    />
+                    <!-- Pétale gauche-bas -->
+                    <path
+                        d="M60 44 C56 46, 58 49, 60 44"
+                        fill="url(#emblemGold)"
+                        opacity="0.9"
+                    />
+                    <!-- Pétale gauche-haut -->
+                    <path
+                        d="M60 44 C56 42, 55 46, 60 44"
+                        fill="url(#emblemGold)"
+                        opacity="0.9"
+                    />
+                    <!-- Centre de la fleur -->
+                    <circle cx="60" cy="44" r="1.2" fill="url(#emblemGoldLight)" />
+
+                    <!-- === FILETS DÉCORATIFS (base de l'emblème) === -->
+                    <line
+                        x1="30" y1="68" x2="90" y2="68"
+                        stroke="url(#emblemGold)"
+                        stroke-width="0.6"
+                        opacity="0.3"
+                    />
                 </svg>
 
-                <!-- Texte du logo -->
+                <!-- Texte du logo — Serif majuscules, espacement prononcé -->
                 <span
                     class="logo-gold-gradient
                            font-serif-luxury
-                           text-[11px] sm:text-xs md:text-sm
+                           text-[10px] sm:text-[11px] md:text-xs
                            font-semibold
-                           tracking-[0.3em] sm:tracking-[0.35em]
+                           tracking-[0.18em] sm:tracking-[0.22em]
                            uppercase
                            leading-none
-                           select-none"
+                           select-none
+                           whitespace-nowrap"
                 >
                     Odeur de Dubaï
                 </span>
             </a>
 
 
-            <!-- ── BLOC DROIT : Icône Contact (Téléphone) ─── -->
+            <!-- ── BLOC DROIT : Icône Contact Téléphonique ──────
+                 Combiné filaire incliné vers la droite.
+                 Deux arcs concentriques d'ondes sonores en haut-droite.
+                 Même couleur champagne #C5A880, traits fins 1.2-1.5px.
+                 ─────────────────────────────────────────────── -->
             <div class="flex items-center">
                 <a
                     id="contact-phone"
@@ -408,47 +489,48 @@
                     class="phone-hover
                            group
                            flex items-center justify-center
-                           w-11 h-11 sm:w-12 sm:h-12
-                           rounded-lg
+                           w-11 h-11 sm:w-[50px] sm:h-[50px]
+                           rounded-2xl
                            transition-all duration-300 ease-in-out
-                           hover:bg-white/5
-                           focus:outline-none focus:ring-1 focus:ring-gold-400/50"
+                           hover:bg-white/[0.03]
+                           focus:outline-none focus:ring-1 focus:ring-[#C5A880]/40"
                     aria-label="Nous contacter par téléphone"
                 >
-                    <!-- SVG Téléphone avec ondes sonores -->
                     <svg
-                        class="phone-icon w-5 h-5 sm:w-[22px] sm:h-[22px]
+                        class="phone-icon w-6 h-6 sm:w-7 sm:h-7
                                transition-transform duration-300
                                group-hover:scale-105"
-                        viewBox="0 0 28 28"
+                        viewBox="0 0 32 32"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                         aria-hidden="true"
                     >
-                        <!-- Combiné téléphonique incliné -->
+                        <!-- Combiné téléphonique incliné à droite -->
                         <path
-                            d="M17.5 16.5L15.8 18.2C15.8 18.2 13.2 16.8 10.7 14.3C8.2 11.8 6.8 9.2 6.8 9.2L8.5 7.5C9.1 6.9 9.2 5.9 8.7 5.2L6.5 2.3C5.9 1.5 4.8 1.3 4 1.9L2.4 3.2C1.5 3.9 1 5 1.1 6.1C1.4 9.5 3.1 14 7.1 18C11.1 22 15.5 23.6 18.9 23.9C20 24 21.1 23.5 21.8 22.6L23.1 21C23.7 20.2 23.5 19.1 22.7 18.5L19.8 16.3C19.1 15.8 18.1 15.9 17.5 16.5Z"
-                            stroke="#d4a44a"
-                            stroke-width="1.5"
+                            d="M19.5 18.5L17.5 20.5C17.5 20.5 14.5 18.8 11.8 16.2C9.2 13.5 7.5 10.5 7.5 10.5L9.5 8.5C10.2 7.8 10.3 6.7 9.7 5.9L7.3 2.8C6.6 1.9 5.4 1.7 4.5 2.3L2.7 3.7C1.7 4.5 1.2 5.7 1.3 6.9C1.6 10.7 3.5 15.5 7.8 19.8C12.1 24.1 17 26 20.7 26.3C21.9 26.4 23.1 25.9 23.9 24.9L25.3 23.2C25.9 22.3 25.7 21.1 24.8 20.5L21.8 18.2C21 17.6 19.9 17.8 19.5 18.5Z"
+                            stroke="#C5A880"
+                            stroke-width="1.4"
                             stroke-linecap="round"
                             stroke-linejoin="round"
                             fill="none"
                         />
-                        <!-- Onde sonore 1 (petite) -->
+                        <!-- Onde sonore 1 (arc intérieur — petite) -->
                         <path
-                            d="M18 2C19.5 3.5 20.5 5.5 20.5 8"
-                            stroke="#d4a44a"
-                            stroke-width="1.2"
+                            d="M20.5 3C22.2 4.7 23.3 7 23.3 9.8"
+                            stroke="#C5A880"
+                            stroke-width="1.3"
                             stroke-linecap="round"
-                            opacity="0.7"
+                            fill="none"
+                            opacity="0.8"
                         />
-                        <!-- Onde sonore 2 (grande) -->
+                        <!-- Onde sonore 2 (arc extérieur — grande) -->
                         <path
-                            d="M22 0.5C24 2.5 25.5 5.5 25.5 9"
-                            stroke="#d4a44a"
-                            stroke-width="1.2"
+                            d="M24.5 1C26.8 3.3 28.5 6.5 28.5 10.5"
+                            stroke="#C5A880"
+                            stroke-width="1.3"
                             stroke-linecap="round"
-                            opacity="0.4"
+                            fill="none"
+                            opacity="0.5"
                         />
                     </svg>
                 </a>
