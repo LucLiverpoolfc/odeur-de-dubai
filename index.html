@@ -460,163 +460,96 @@
 
 
     <!-- ═══════════════════════════════════════════════════════
-         HERO SECTION — Full-screen immersive
+         HERO SECTION — Composition éditoriale fidèle à la référence
+         Texte : quadrant supérieur gauche uniquement
+         Produit : premier plan bas-droite (dans l'image)
          ═══════════════════════════════════════════════════════ -->
     <section
         id="hero"
-        class="relative w-full h-[calc(100vh-5rem)] sm:h-[calc(100vh-6rem)] min-h-[500px] flex items-center justify-start overflow-hidden"
+        class="relative w-full h-[calc(100vh-5rem)] sm:h-[calc(100vh-6rem)] min-h-[500px] overflow-hidden"
         aria-label="Section héro principale"
     >
 
-        <!-- ── Background Image ───────────────────────────── -->
+        <!-- ── Background Image ───────────────────────────────
+             object-[75%_center] sur mobile pour garder le flacon
+             et le coucher de soleil visibles.
+             object-center sur desktop pour la composition complète.
+             ────────────────────────────────────────────────── -->
         <img
             id="hero-bg-image"
             src="assets/images/hero-bg.png"
-            alt="Flacon de parfum premium posé sur le sable doré du désert de Dubaï au coucher du soleil, avec une caravane de chameaux à l'horizon"
-            class="absolute inset-0 w-full h-full object-cover object-center"
+            alt="Flacon Éclat du Désert posé sur un plateau doré dans le désert de Dubaï au coucher du soleil, avec un brûleur d'encens traditionnel, des dattes et une caravane de chameaux à l'horizon"
+            class="absolute inset-0 w-full h-full
+                   object-cover
+                   object-[75%_center] sm:object-center"
             loading="eager"
             fetchpriority="high"
         >
 
-        <!-- ── Warm Overlay Gradient ──────────────────────── -->
+        <!-- ── Overlay subtil ─────────────────────────────────
+             Dégradé très léger : ombre douce en haut-gauche pour
+             la lisibilité du texte, quasi-transparent ailleurs
+             pour préserver les couleurs chaudes du coucher de soleil.
+             ────────────────────────────────────────────────── -->
         <div
-            class="hero-overlay absolute inset-0 z-10"
+            class="absolute inset-0 z-10
+                   bg-gradient-to-br
+                   from-black/40 via-black/10 to-transparent"
             aria-hidden="true"
         ></div>
 
-        <!-- ── Floating Gold Particles (decorative) ───────── -->
-        <div id="particles-container" class="absolute inset-0 z-10 pointer-events-none" aria-hidden="true"></div>
+        <!-- ── Texte éditorial — Quadrant supérieur gauche ──── -->
+        <div class="relative z-20 w-full h-full
+                    flex flex-col justify-start
+                    px-6 sm:px-10 md:px-14 lg:px-20
+                    pt-10 sm:pt-14 md:pt-16 lg:pt-20">
 
-        <!-- ── Hero Content ───────────────────────────────── -->
-        <div class="relative z-20 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-20">
-            <div class="max-w-2xl">
+            <div class="max-w-xl lg:max-w-2xl">
 
-                <!-- Surtitre / Marque -->
-                <p
-                    id="hero-surtitre"
-                    class="anim-hidden animate-fade-in-up
-                           font-sans-luxury text-[11px] sm:text-xs
-                           tracking-ultra-wide uppercase
-                           text-gold-300/80
-                           mb-6 sm:mb-8"
-                >
-                    Haute Parfumerie
-                </p>
-
-                <!-- Séparateur doré décoratif -->
-                <div
-                    class="anim-hidden animate-fade-in-up-delay
-                           separator-gold mb-8 sm:mb-10"
-                    aria-hidden="true"
-                ></div>
-
-                <!-- Titre Principal H1 -->
+                <!-- Titre Principal H1
+                     Police Serif Cormorant Garamond, italic, fine
+                     Couleur blanc crème lumineux (#faf5eb)
+                     Taille fluide : 2.5rem mobile → 4.5rem+ desktop -->
                 <h1
                     id="hero-title"
-                    class="anim-hidden animate-fade-in-up-delay
-                           font-serif-luxury font-light italic
-                           text-4xl sm:text-5xl md:text-6xl lg:text-7xl
-                           leading-[1.1] sm:leading-[1.08]
-                           text-gold-gradient
-                           mb-6 sm:mb-8"
+                    class="anim-hidden animate-fade-in-up
+                           font-serif-luxury
+                           font-light italic
+                           text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[4.25rem]
+                           leading-[1.08] sm:leading-[1.06]
+                           tracking-tight
+                           text-[#faf5eb]
+                           mb-5 sm:mb-6 md:mb-7"
                 >
-                    L'essence authentique<br class="hidden sm:block"> de Dubaï
+                    L'essence authentique de&nbsp;Dubaï
                 </h1>
 
-                <!-- Description / Sous-titre -->
+                <!-- Description / Paragraphe
+                     Même famille Serif (Cormorant Garamond), poids 400
+                     Couleur blanc crème légèrement atténuée (#faf5eb/e6 ~90% opacité)
+                     Taille inférieure au titre, hauteur de ligne aérée -->
                 <p
                     id="hero-description"
-                    class="anim-hidden animate-fade-in-up-delay2
-                           font-sans-luxury font-light
-                           text-sm sm:text-base md:text-lg
-                           leading-relaxed
-                           tracking-luxe
-                           text-desert-light/80
-                           max-w-lg
-                           mb-10 sm:mb-12"
+                    class="anim-hidden animate-fade-in-up-delay
+                           font-serif-luxury
+                           font-normal
+                           text-lg sm:text-xl md:text-[1.375rem] lg:text-2xl
+                           leading-relaxed sm:leading-[1.65]
+                           text-[#faf5eb]/90
+                           max-w-md lg:max-w-lg"
                 >
-                    L'or, l'oud et l'excellence réunis dans des créations d'exception.
-                    Plus qu'un parfum&nbsp;: une empreinte, un voyage, un art.
+                    L'or, l'oud et l'excellence réunis dans des
+                    créations d'exception. Plus qu'un parfum&nbsp;:
+                    une empreinte, un voyage, un&nbsp;art.
                 </p>
 
-                <!-- CTA Button -->
-                <div class="anim-hidden animate-fade-in-up-delay3">
-                    <a
-                        id="hero-cta"
-                        href="#collection"
-                        class="cta-luxury
-                               inline-block
-                               px-8 py-3.5 sm:px-10 sm:py-4
-                               font-sans-luxury font-medium
-                               text-xs sm:text-sm
-                               tracking-ultra-wide uppercase
-                               text-gold-300
-                               rounded-none
-                               transition-all duration-500"
-                        role="button"
-                        aria-label="Découvrir la collection de parfums Odeur de Dubaï"
-                    >
-                        Découvrir la collection
-                    </a>
-                </div>
-
             </div>
-        </div>
 
-        <!-- ── Scroll Indicator (bottom center) ───────────── -->
-        <div
-            id="scroll-indicator"
-            class="anim-hidden animate-fade-in-up-delay3
-                   absolute bottom-8 left-1/2 -translate-x-1/2 z-20
-                   flex flex-col items-center gap-2
-                   opacity-60 hover:opacity-100 transition-opacity duration-500"
-            aria-hidden="true"
-        >
-            <span class="font-sans-luxury text-[10px] tracking-ultra-wide uppercase text-desert-light/60">
-                Scroll
-            </span>
-            <div class="w-px h-8 bg-gradient-to-b from-gold-400/60 to-transparent animate-shimmer"></div>
         </div>
 
     </section>
     <!-- ═══ END HERO SECTION ═══════════════════════════════ -->
 
-
-    <!-- ── JavaScript: Floating particles generator ───────── -->
-    <script>
-        /**
-         * Generates subtle floating gold particles
-         * for a premium, living atmosphere.
-         */
-        (function initParticles() {
-            const container = document.getElementById('particles-container');
-            if (!container) return;
-
-            const PARTICLE_COUNT = 15;
-
-            for (let i = 0; i < PARTICLE_COUNT; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-
-                // Randomize position, size, and animation
-                const size = Math.random() * 2 + 1;
-                const left = Math.random() * 100;
-                const delay = Math.random() * 8;
-                const duration = Math.random() * 10 + 12;
-                const opacity = Math.random() * 0.3 + 0.1;
-
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.left = `${left}%`;
-                particle.style.bottom = '-5%';
-                particle.style.animationDelay = `${delay}s`;
-                particle.style.animationDuration = `${duration}s`;
-                particle.style.opacity = opacity;
-
-                container.appendChild(particle);
-            }
-        })();
-    </script>
-
 </body>
 </html>
+
