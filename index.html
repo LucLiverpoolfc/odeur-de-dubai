@@ -895,7 +895,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 items-center">
                 
                 <!-- Colonne 1 : Importer de Dubaï (Globe) -->
-                <div class="flex flex-col items-center text-center group">
+                <div id="reassurance-dubai" class="flex flex-col items-center text-center group cursor-pointer">
                     <div class="w-20 h-20 flex items-center justify-center mb-5 relative transition-transform duration-500 group-hover:scale-105">
                         <svg class="w-full h-full fill-none" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
                             <!-- Cercle fixe extérieur du globe -->
@@ -1515,6 +1515,94 @@
         </div>
     </div>
 
+    <!-- ═══════════════════════════════════════════════════════
+         OVERLAY AUTHENTICITY - Présentation "Qualité authentique"
+         ═══════════════════════════════════════════════════════ -->
+    <div
+        id="authenticity-overlay"
+        class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8 bg-black/60 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-500 ease-out"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Présentation Qualité authentique"
+    >
+        <!-- Card Container: Off-white royal (#F5EDD8) / rounded-[48px] / shadow-2xl -->
+        <div
+            id="authenticity-card"
+            class="bg-[#F5EDD8] w-full max-w-[480px] rounded-[48px] shadow-2xl p-8 sm:p-12 relative flex flex-col items-center justify-between border border-white/30 transform scale-95 translate-y-8 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+        >
+            <!-- Close Button (Fine Gold X in the top-right corner) -->
+            <button
+                id="authenticity-close"
+                type="button"
+                class="absolute top-8 right-8 group flex items-center justify-center w-10 h-10 rounded-full border border-[#C5A880]/30 hover:border-[#C5A880]/90 transition-colors duration-300 focus:outline-none"
+                aria-label="Fermer la présentation"
+            >
+                <svg class="w-5 h-5 stroke-[#C5A880] fill-none group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+
+            <!-- Top Section: Logo -->
+            <div class="flex flex-col items-center gap-4 mb-8 mt-2 w-72 md:w-80 max-w-[300px] md:max-w-[400px] mx-auto text-center select-none">
+                <!-- Emblème SVG (Proportions strictes 3:2 respectées) -->
+                <svg
+                    class="w-28 h-[75px] md:w-36 md:h-[96px] transition-transform duration-500 hover:scale-105"
+                    viewBox="0 0 120 80"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                >
+                    <defs>
+                        <linearGradient id="emblemGoldAuthenticity" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#d4a44a" />
+                            <stop offset="50%" stop-color="#c5a055" />
+                            <stop offset="100%" stop-color="#a88a3a" />
+                        </linearGradient>
+                        <linearGradient id="emblemGoldLightAuthenticity" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#e5c77a" />
+                            <stop offset="100%" stop-color="#c5a055" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M60 4 C60 4, 42 20, 42 42 C42 54, 50 62, 60 62 C70 62, 78 54, 78 42 C78 20, 60 4, 60 4Z" stroke="url(#emblemGoldAuthenticity)" stroke-width="1.4" stroke-linejoin="round" fill="none" />
+                    <path d="M38 18 C38 18, 20 32, 20 48 C20 58, 28 66, 38 66 C48 66, 54 60, 54 52 C54 44, 48 36, 42 30" stroke="url(#emblemGoldAuthenticity)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                    <path d="M38 66 C30 66, 22 60, 22 50" stroke="url(#emblemGoldAuthenticity)" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.7" />
+                    <path d="M82 18 C82 18, 100 32, 100 48 C100 58, 92 66, 82 66 C72 66, 66 60, 66 52 C66 44, 72 36, 78 30" stroke="url(#emblemGoldAuthenticity)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                    <path d="M82 66 C90 66, 98 60, 98 50" stroke="url(#emblemGoldAuthenticity)" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.7" />
+                    <path d="M60 16 C60 16, 50 30, 50 42 C50 48, 54 52, 60 52 C66 52, 70 48, 70 42 C70 30, 60 16, 60 16Z" stroke="url(#emblemGoldLightAuthenticity)" stroke-width="0.8" fill="none" opacity="0.5" />
+                    <circle cx="60" cy="44" r="1.2" fill="url(#emblemGoldLightAuthenticity)" />
+                    <line x1="30" y1="68" x2="90" y2="68" stroke="url(#emblemGoldAuthenticity)" stroke-width="0.6" opacity="0.3" />
+                </svg>
+                <span class="logo-gold-gradient font-serif-luxury text-sm sm:text-base md:text-lg font-semibold tracking-[0.24em] uppercase leading-none select-none mt-1">
+                    Odeur de Dubaï
+                </span>
+            </div>
+
+            <!-- Content Area -->
+            <div class="w-full flex flex-col items-center">
+                <h2 class="font-serif-luxury font-light text-2xl sm:text-[1.75rem] text-[#3C352E] tracking-[0.05em] leading-snug text-center mb-6 mt-2">
+                    Odeur de Dubai : L’authenticité puisée à la source.
+                </h2>
+                <p class="font-sans-luxury text-sm font-light text-[#9E6B4A] leading-relaxed text-center mb-4">
+                    Odeur de Dubai garantit l'authenticité de ses essences.
+                </p>
+                <p class="font-sans-luxury text-sm font-light text-[#9E6B4A] leading-relaxed text-center mb-8">
+                    Nos fragrances d'exception sont puisées à la source et importées directement de Dubaï.
+                </p>
+            </div>
+
+            <!-- CTA Button Explorer Aligned Right -->
+            <div class="w-full flex justify-end mt-4">
+                <button
+                    type="button"
+                    class="border border-[#C5A880] rounded-xl py-2 px-6 font-sans-luxury text-xs font-medium uppercase tracking-widest text-[#C5A880] cursor-pointer hover:bg-[#C5A880]/10 hover:-translate-y-0.5 transition-all duration-300 focus:outline-none"
+                >
+                    Explorer
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Native JavaScript for menu & contact interactions -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -1540,6 +1628,12 @@
             const aboutOverlay = document.getElementById('about-overlay');
             const aboutCard = document.getElementById('about-card');
             const aboutCloseBtn = document.getElementById('about-close');
+
+            // --- AUTHENTICITY OVERLAY ELEMENTS ---
+            const reassuranceDubaiBtn = document.getElementById('reassurance-dubai');
+            const authenticityOverlay = document.getElementById('authenticity-overlay');
+            const authenticityCard = document.getElementById('authenticity-card');
+            const authenticityCloseBtn = document.getElementById('authenticity-close');
 
             // --- CONTACT OVERLAY FUNCTIONS ---
             const openContact = () => {
@@ -1636,6 +1730,31 @@
                 }, 500);
             };
 
+            // --- AUTHENTICITY OVERLAY FUNCTIONS ---
+            const openAuthenticity = () => {
+                authenticityOverlay.classList.remove('pointer-events-none', 'opacity-0');
+                authenticityOverlay.classList.add('opacity-100');
+                
+                authenticityCard.classList.remove('scale-95', 'translate-y-8', 'opacity-0');
+                authenticityCard.classList.add('scale-100', 'translate-y-0', 'opacity-100');
+                
+                document.body.classList.add('overflow-hidden');
+            };
+
+            const closeAuthenticity = () => {
+                authenticityCard.classList.remove('scale-100', 'translate-y-0', 'opacity-100');
+                authenticityCard.classList.add('scale-95', 'translate-y-8', 'opacity-0');
+                
+                authenticityOverlay.classList.remove('opacity-100');
+                authenticityOverlay.classList.add('opacity-0');
+                
+                document.body.classList.remove('overflow-hidden');
+
+                setTimeout(() => {
+                    authenticityOverlay.classList.add('pointer-events-none');
+                }, 500);
+            };
+
             // --- EVENT LISTENERS ---
 
             // Contact triggers
@@ -1662,6 +1781,15 @@
                 aboutCloseBtn.addEventListener('click', closeAbout);
                 aboutOverlay.addEventListener('click', (e) => {
                     if (e.target === aboutOverlay) closeAbout();
+                });
+            }
+
+            // Authenticity Presentation triggers
+            if (reassuranceDubaiBtn && authenticityOverlay && authenticityCard && authenticityCloseBtn) {
+                reassuranceDubaiBtn.addEventListener('click', openAuthenticity);
+                authenticityCloseBtn.addEventListener('click', closeAuthenticity);
+                authenticityOverlay.addEventListener('click', (e) => {
+                    if (e.target === authenticityOverlay) closeAuthenticity();
                 });
             }
 
@@ -1695,6 +1823,9 @@
                     }
                     if (aboutOverlay && !aboutOverlay.classList.contains('pointer-events-none')) {
                         closeAbout();
+                    }
+                    if (authenticityOverlay && !authenticityOverlay.classList.contains('pointer-events-none')) {
+                        closeAuthenticity();
                     }
                 }
             });
