@@ -2073,6 +2073,8 @@
     <!-- Native JavaScript for menu & contact interactions -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            console.log('Odeur de Dubai: DOMContentLoaded fired.');
+            console.log('Odeur de Dubai: EmblaCarousel global type is:', typeof EmblaCarousel);
             // --- CONTACT OVERLAY ELEMENTS ---
             const contactBtn = document.getElementById('contact-phone');
             const contactOverlay = document.getElementById('contact-overlay');
@@ -2141,7 +2143,11 @@
 
             // --- NOTES OVERLAY FUNCTIONS ---
             const openNotes = (imgSrc) => {
-                if (!notesOverlay || !notesCard || !notesImg) return;
+                console.log('Odeur de Dubai: openNotes called with imgSrc:', imgSrc);
+                if (!notesOverlay || !notesCard || !notesImg) {
+                    console.error('Odeur de Dubai: openNotes error, elements missing:', { notesOverlay, notesCard, notesImg });
+                    return;
+                }
                 notesImg.src = imgSrc;
                 notesOverlay.classList.remove('pointer-events-none', 'opacity-0');
                 notesOverlay.classList.add('opacity-100');
@@ -2153,6 +2159,7 @@
             };
 
             const closeNotes = () => {
+                console.log('Odeur de Dubai: closeNotes called.');
                 if (!notesOverlay || !notesCard) return;
                 notesCard.classList.remove('translate-y-0', 'scale-100', 'opacity-100');
                 notesCard.classList.add('translate-y-8', 'scale-95', 'opacity-0');
@@ -2391,7 +2398,9 @@
 
             // ═══ NOS SIGNATURES — Embla Carousel Init ═══
             const emblaNode = document.getElementById('embla-signatures');
+            console.log('Odeur de Dubai: emblaNode found:', !!emblaNode);
             if (emblaNode && typeof EmblaCarousel !== 'undefined') {
+                console.log('Odeur de Dubai: Initializing EmblaCarousel...');
                 const emblaApi = EmblaCarousel(emblaNode, {
                     loop: false,
                     align: 'start',
@@ -2414,9 +2423,12 @@
 
                 // Call to action button click listener with drag prevention
                 const sigCtaButtons = emblaNode.querySelectorAll('.sig-card-cta');
+                console.log('Odeur de Dubai: Found sigCtaButtons count:', sigCtaButtons.length);
                 sigCtaButtons.forEach(btn => {
                     btn.addEventListener('click', (e) => {
+                        console.log('Odeur de Dubai: Button clicked:', btn.textContent, 'Notes path:', btn.getAttribute('data-notes'));
                         if (!emblaApi.clickAllowed()) {
+                            console.log('Odeur de Dubai: Click prevented because clickAllowed() is false');
                             e.preventDefault();
                             e.stopPropagation();
                             return;
@@ -2427,12 +2439,15 @@
                         if (notesSrc) {
                             openNotes(notesSrc);
                         } else {
+                            console.log('Odeur de Dubai: No notes path found on button, calling openContact()');
                             if (typeof openContact === 'function') {
                                 openContact();
                             }
                         }
                     });
                 });
+            } else {
+                console.warn('Odeur de Dubai: Carousel init skipped because emblaNode is null or EmblaCarousel is undefined.', { emblaNode, hasEmblaCarousel: typeof EmblaCarousel !== 'undefined' });
             }
 
             // ═══ NOS SIGNATURES — Scroll Reveal Observer ═══
