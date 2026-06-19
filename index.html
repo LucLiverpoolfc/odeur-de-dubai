@@ -1135,9 +1135,9 @@
 
                     <!-- Slide 1 : Confidential Private Gold -->
                     <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
-                        <div class="sig-card" style="aspect-ratio: 3/4;">
+                        <div class="sig-card cursor-pointer" style="aspect-ratio: 3/4;" data-notes="confidential">
                             <img src="assets/images/parfums/06-confidential-private-gold.jpg" alt="Confidential Private Gold — Lattafa" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
-                            <button class="sig-card-cta" data-notes="confidential">Les Secrets</button>
+                            <button class="sig-card-cta">Les Secrets</button>
                         </div>
                     </div>
 
@@ -1145,7 +1145,7 @@
                     <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
                         <div class="sig-card" style="aspect-ratio: 3/4;">
                             <img src="assets/images/parfums/08-vanilla-powdery.jpg" alt="Vanilla Powdery — Loui Martin" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
-                            <button class="sig-card-cta" data-notes="vanilla-powdery">Les Secrets</button>
+                            <button class="sig-card-cta">Les Secrets</button>
                         </div>
                     </div>
 
@@ -1153,7 +1153,7 @@
                     <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
                         <div class="sig-card" style="aspect-ratio: 3/4;">
                             <img src="assets/images/parfums/05-vanilla-latte.jpg" alt="Vanilla Latte — Gulf Orchid" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
-                            <button class="sig-card-cta" data-notes="vanilla-latte">Les Secrets</button>
+                            <button class="sig-card-cta">Les Secrets</button>
                         </div>
                     </div>
 
@@ -1161,7 +1161,7 @@
                     <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
                         <div class="sig-card" style="aspect-ratio: 3/4;">
                             <img src="assets/images/parfums/04-esta-fuera.jpg" alt="Esta Fuera — VOLARÉ" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
-                            <button class="sig-card-cta" data-notes="esta-fuera">Les Secrets</button>
+                            <button class="sig-card-cta">Les Secrets</button>
                         </div>
                     </div>
 
@@ -1177,7 +1177,7 @@
                     <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
                         <div class="sig-card" style="aspect-ratio: 3/4;">
                             <img src="assets/images/parfums/09-ombre-naomi.jpg" alt="Ombre Naomi — Loui Martin" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
-                            <button class="sig-card-cta" data-notes="ombre-naomi">Les Secrets</button>
+                            <button class="sig-card-cta">Les Secrets</button>
                         </div>
                     </div>
 
@@ -2035,7 +2035,7 @@
          ═══════════════════════════════════════════════════════ -->
     <div
         id="notes-overlay"
-        class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-500 ease-out"
+        class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-500 ease-out"
         role="dialog"
         aria-modal="true"
         aria-label="Notes olfactives du parfum"
@@ -2043,8 +2043,7 @@
         <!-- Card Container: Light premium ivory/cream / rounded-3xl / shadow-2xl / border-[#d4a44a]/30 -->
         <div
             id="notes-card"
-            class="w-full max-w-[440px] rounded-[36px] shadow-2xl p-8 md:p-10 relative border border-[#d4a44a]/30 transform scale-95 translate-y-8 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden"
-            style="background: radial-gradient(circle at center, #ffffff 0%, #FAF7F0 70%, #F5F0E1 100%);"
+            class="bg-[#F4F0E6] w-full max-w-[440px] rounded-[36px] shadow-2xl p-8 md:p-10 relative border border-[#d4a44a]/30 transform scale-95 translate-y-8 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden"
         >
             <!-- Corner Gold Frame Ornaments -->
             <div class="absolute top-4 left-4 w-10 h-10 border-t-2 border-l-2 border-[#d4a44a]/30 pointer-events-none rounded-tl-2xl"></div>
@@ -2169,30 +2168,6 @@
                     head: ["Fruit de la passion", "Pêche", "Poire", "Framboise", "Bourgeon de cassis", "Sable"],
                     heart: ["Muguet"],
                     base: ["Musc", "Bois de santal", "Vanille", "Patchouli", "Héliotrope"]
-                },
-                "esta-fuera": {
-                    title: "Esta Fuera",
-                    head: ["Orange de Sicile", "Citron de Sicile", "Bergamote de Calabria"],
-                    heart: ["Fruits"],
-                    base: ["Musc blanc", "Vanille de Madagascar", "Ambre"]
-                },
-                "vanilla-latte": {
-                    title: "Vanilla Latte",
-                    head: ["Caramel"],
-                    heart: ["Coumarine", "Miel"],
-                    base: ["Vanille", "Musc blanc"]
-                },
-                "ombre-naomi": {
-                    title: "Loui Martin",
-                    head: ["Framboise", "Géranium", "Safran"],
-                    heart: ["Rose", "Encens", "Bouleau"],
-                    base: ["Oud", "Amberwood", "Benjoin"]
-                },
-                "vanilla-powdery": {
-                    title: "Vanilla Powdery",
-                    head: ["Coconut Powder", "Héliotrope"],
-                    heart: ["Vanille de Madagascar"],
-                    base: ["Absolu de vanille", "Musc blanc", "Musc", "Palo Santo", "Lactones", "Noix de coco"]
                 }
             };
 
@@ -2579,27 +2554,34 @@
                     if (container) container.classList.remove('is-dragging');
                 });
 
-                // Call to action button click listener with drag prevention
-                const sigCtaButtons = emblaNode.querySelectorAll('.sig-card-cta');
-                console.log('Odeur de Dubai: Found sigCtaButtons count:', sigCtaButtons.length);
-                sigCtaButtons.forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        console.log('Odeur de Dubai: Button clicked:', btn.textContent, 'Notes path:', btn.getAttribute('data-notes'));
+                // Click listener on signatures cards with drag prevention
+                const sigCards = emblaNode.querySelectorAll('.sig-card');
+                console.log('Odeur de Dubai: Found sigCards count:', sigCards.length);
+                sigCards.forEach(card => {
+                    card.addEventListener('click', (e) => {
+                        // Drag prevention
                         if (!emblaApi.clickAllowed()) {
                             console.log('Odeur de Dubai: Click prevented because clickAllowed() is false');
                             e.preventDefault();
                             e.stopPropagation();
                             return;
                         }
-                        e.preventDefault();
-                        
-                        const notesSrc = btn.getAttribute('data-notes');
-                        if (notesSrc) {
+
+                        const notesSrc = card.getAttribute('data-notes');
+                        if (notesSrc === 'confidential') {
+                            // Confidential: open details overlay on click anywhere on the card
+                            e.preventDefault();
+                            e.stopPropagation();
                             openNotes(notesSrc);
                         } else {
-                            console.log('Odeur de Dubai: No notes path found on button, calling openContact()');
-                            if (typeof openContact === 'function') {
-                                openContact();
+                            // Other cards: only trigger contact overlay if the CTA button was clicked specifically
+                            if (e.target.classList.contains('sig-card-cta')) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                console.log('Odeur de Dubai: CTA clicked on standard card, calling openContact()');
+                                if (typeof openContact === 'function') {
+                                    openContact();
+                                }
                             }
                         }
                     });
