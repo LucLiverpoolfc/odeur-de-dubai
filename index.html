@@ -1137,7 +1137,7 @@
                     <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
                         <div class="sig-card" style="aspect-ratio: 3/4;">
                             <img src="assets/images/parfums/06-confidential-private-gold.jpg" alt="Confidential Private Gold — Lattafa" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
-                            <button class="sig-card-cta" data-notes="assets/images/notes/confidential-notes.jpg">Les Secrets</button>
+                            <button class="sig-card-cta" data-notes="confidential">Les Secrets</button>
                         </div>
                     </div>
 
@@ -1145,7 +1145,7 @@
                     <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
                         <div class="sig-card" style="aspect-ratio: 3/4;">
                             <img src="assets/images/parfums/08-vanilla-powdery.jpg" alt="Vanilla Powdery — Loui Martin" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
-                            <button class="sig-card-cta" data-notes="assets/images/notes/vanilla-powdery-notes.jpg">Les Secrets</button>
+                            <button class="sig-card-cta" data-notes="vanilla-powdery">Les Secrets</button>
                         </div>
                     </div>
 
@@ -1153,7 +1153,7 @@
                     <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
                         <div class="sig-card" style="aspect-ratio: 3/4;">
                             <img src="assets/images/parfums/05-vanilla-latte.jpg" alt="Vanilla Latte — Gulf Orchid" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
-                            <button class="sig-card-cta">Les Secrets</button>
+                            <button class="sig-card-cta" data-notes="vanilla-latte">Les Secrets</button>
                         </div>
                     </div>
 
@@ -1161,7 +1161,7 @@
                     <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
                         <div class="sig-card" style="aspect-ratio: 3/4;">
                             <img src="assets/images/parfums/04-esta-fuera.jpg" alt="Esta Fuera — VOLARÉ" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
-                            <button class="sig-card-cta" data-notes="assets/images/notes/esta-fuera-notes.jpg">Les Secrets</button>
+                            <button class="sig-card-cta" data-notes="esta-fuera">Les Secrets</button>
                         </div>
                     </div>
 
@@ -1177,7 +1177,7 @@
                     <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
                         <div class="sig-card" style="aspect-ratio: 3/4;">
                             <img src="assets/images/parfums/09-ombre-naomi.jpg" alt="Ombre Naomi — Loui Martin" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
-                            <button class="sig-card-cta" data-notes="assets/images/notes/ombre-naomi-notes.jpg">Les Secrets</button>
+                            <button class="sig-card-cta" data-notes="ombre-naomi">Les Secrets</button>
                         </div>
                     </div>
 
@@ -2035,37 +2035,89 @@
          ═══════════════════════════════════════════════════════ -->
     <div
         id="notes-overlay"
-        class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-500 ease-out"
+        class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-500 ease-out"
         role="dialog"
         aria-modal="true"
         aria-label="Notes olfactives du parfum"
     >
-        <!-- Card Container: rounded-3xl / shadow-2xl / overflow-hidden -->
+        <!-- Card Container: Light premium ivory/cream / rounded-3xl / shadow-2xl / border-[#d4a44a]/30 -->
         <div
             id="notes-card"
-            class="bg-black/95 w-full max-w-[420px] rounded-3xl shadow-2xl relative flex flex-col items-center justify-center border border-[#d4a44a]/20 transform scale-95 translate-y-8 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+            class="w-full max-w-[440px] rounded-[36px] shadow-2xl p-8 md:p-10 relative border border-[#d4a44a]/30 transform scale-95 translate-y-8 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden"
+            style="background: radial-gradient(circle at center, #ffffff 0%, #FAF7F0 70%, #F5F0E1 100%);"
         >
+            <!-- Corner Gold Frame Ornaments -->
+            <div class="absolute top-4 left-4 w-10 h-10 border-t-2 border-l-2 border-[#d4a44a]/30 pointer-events-none rounded-tl-2xl"></div>
+            <div class="absolute top-4 right-4 w-10 h-10 border-t-2 border-r-2 border-[#d4a44a]/30 pointer-events-none rounded-tr-2xl"></div>
+            <div class="absolute bottom-4 left-4 w-10 h-10 border-b-2 border-l-2 border-[#d4a44a]/30 pointer-events-none rounded-bl-2xl"></div>
+            <div class="absolute bottom-4 right-4 w-10 h-10 border-b-2 border-r-2 border-[#d4a44a]/30 pointer-events-none rounded-br-2xl"></div>
+
             <!-- Close Button (Fine Gold X in the top-right corner) -->
             <button
                 id="notes-close"
                 type="button"
-                class="absolute top-4 right-4 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-black/60 border border-[#d4a44a]/30 hover:border-[#d4a44a]/90 hover:bg-black/80 transition-all duration-300 focus:outline-none"
+                class="absolute top-6 right-6 z-20 flex items-center justify-center w-8 h-8 rounded-full border border-[#d4a44a]/30 hover:border-[#d4a44a]/90 bg-[#FDFBF7]/60 hover:bg-[#FDFBF7]/90 transition-all duration-300 focus:outline-none"
                 aria-label="Fermer la présentation"
             >
-                <svg class="w-5 h-5 stroke-[#F5EDD8] fill-none group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="w-4 h-4 stroke-[#c5a055] fill-none" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="18" y1="6" x2="6" y2="18"></line>
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
             </button>
 
-            <!-- Image content container -->
-            <div class="w-full h-full rounded-3xl overflow-hidden flex items-center justify-center">
-                <img
-                    id="notes-img"
-                    src=""
-                    alt="Notes olfactives détaillées"
-                    class="w-full h-auto max-h-[85vh] object-contain rounded-3xl select-none pointer-events-none"
-                >
+            <!-- Title: Imperial Serif Gold -->
+            <h3
+                id="notes-title"
+                class="logo-gold-gradient font-serif-luxury text-center text-3xl md:text-[2.25rem] font-semibold tracking-[0.18em] uppercase mb-8 opacity-0 translate-y-4 transition-all duration-500 ease-out"
+            >
+                Notes Olfactives
+            </h3>
+
+            <!-- Notes list (Tête, Cœur, Fond) -->
+            <div class="flex flex-col gap-7 w-full">
+                
+                <!-- Notes de Tête -->
+                <div id="notes-sect-head" class="opacity-0 translate-y-4 transition-all duration-500 ease-out flex flex-col items-center">
+                    <!-- Ornate Divider -->
+                    <div class="flex items-center justify-center w-full mb-3 select-none">
+                        <div class="h-[1px] bg-gradient-to-r from-transparent via-[#d4a44a]/40 to-transparent flex-1"></div>
+                        <span class="font-serif-luxury text-[#B08A3E] text-xs font-semibold uppercase tracking-[0.2em] px-4">Notes de tête</span>
+                        <div class="h-[1px] bg-gradient-to-r from-transparent via-[#d4a44a]/40 to-transparent flex-1"></div>
+                    </div>
+                    <!-- Ingredients list -->
+                    <div id="notes-ingredients-head" class="flex flex-wrap justify-center items-center gap-y-1.5 max-w-[90%] text-center">
+                        <!-- Filled dynamically -->
+                    </div>
+                </div>
+
+                <!-- Notes de Cœur -->
+                <div id="notes-sect-heart" class="opacity-0 translate-y-4 transition-all duration-500 ease-out flex flex-col items-center">
+                    <!-- Ornate Divider -->
+                    <div class="flex items-center justify-center w-full mb-3 select-none">
+                        <div class="h-[1px] bg-gradient-to-r from-transparent via-[#d4a44a]/40 to-transparent flex-1"></div>
+                        <span class="font-serif-luxury text-[#B08A3E] text-xs font-semibold uppercase tracking-[0.2em] px-4">Notes de cœur</span>
+                        <div class="h-[1px] bg-gradient-to-r from-transparent via-[#d4a44a]/40 to-transparent flex-1"></div>
+                    </div>
+                    <!-- Ingredients list -->
+                    <div id="notes-ingredients-heart" class="flex flex-wrap justify-center items-center gap-y-1.5 max-w-[90%] text-center">
+                        <!-- Filled dynamically -->
+                    </div>
+                </div>
+
+                <!-- Notes de Fond -->
+                <div id="notes-sect-base" class="opacity-0 translate-y-4 transition-all duration-500 ease-out flex flex-col items-center">
+                    <!-- Ornate Divider -->
+                    <div class="flex items-center justify-center w-full mb-3 select-none">
+                        <div class="h-[1px] bg-gradient-to-r from-transparent via-[#d4a44a]/40 to-transparent flex-1"></div>
+                        <span class="font-serif-luxury text-[#B08A3E] text-xs font-semibold uppercase tracking-[0.2em] px-4">Notes de fond</span>
+                        <div class="h-[1px] bg-gradient-to-r from-transparent via-[#d4a44a]/40 to-transparent flex-1"></div>
+                    </div>
+                    <!-- Ingredients list -->
+                    <div id="notes-ingredients-base" class="flex flex-wrap justify-center items-center gap-y-1.5 max-w-[90%] text-center">
+                        <!-- Filled dynamically -->
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -2110,11 +2162,51 @@
             const qualityCard = document.getElementById('quality-card');
             const qualityCloseBtn = document.getElementById('quality-close');
 
+            // --- NOTES OLFACTIVES DATA ---
+            const perfumeNotesData = {
+                "confidential": {
+                    title: "Confidential",
+                    head: ["Fruit de la passion", "Pêche", "Poire", "Framboise", "Bourgeon de cassis", "Sable"],
+                    heart: ["Muguet"],
+                    base: ["Musc", "Bois de santal", "Vanille", "Patchouli", "Héliotrope"]
+                },
+                "esta-fuera": {
+                    title: "Esta Fuera",
+                    head: ["Orange de Sicile", "Citron de Sicile", "Bergamote de Calabria"],
+                    heart: ["Fruits"],
+                    base: ["Musc blanc", "Vanille de Madagascar", "Ambre"]
+                },
+                "vanilla-latte": {
+                    title: "Vanilla Latte",
+                    head: ["Caramel"],
+                    heart: ["Coumarine", "Miel"],
+                    base: ["Vanille", "Musc blanc"]
+                },
+                "ombre-naomi": {
+                    title: "Loui Martin",
+                    head: ["Framboise", "Géranium", "Safran"],
+                    heart: ["Rose", "Encens", "Bouleau"],
+                    base: ["Oud", "Amberwood", "Benjoin"]
+                },
+                "vanilla-powdery": {
+                    title: "Vanilla Powdery",
+                    head: ["Coconut Powder", "Héliotrope"],
+                    heart: ["Vanille de Madagascar"],
+                    base: ["Absolu de vanille", "Musc blanc", "Musc", "Palo Santo", "Lactones", "Noix de coco"]
+                }
+            };
+
             // --- NOTES OVERLAY ELEMENTS ---
             const notesOverlay = document.getElementById('notes-overlay');
             const notesCard = document.getElementById('notes-card');
             const notesCloseBtn = document.getElementById('notes-close');
-            const notesImg = document.getElementById('notes-img');
+            const notesTitle = document.getElementById('notes-title');
+            const notesSectHead = document.getElementById('notes-sect-head');
+            const notesSectHeart = document.getElementById('notes-sect-heart');
+            const notesSectBase = document.getElementById('notes-sect-base');
+            const notesIngHead = document.getElementById('notes-ingredients-head');
+            const notesIngHeart = document.getElementById('notes-ingredients-heart');
+            const notesIngBase = document.getElementById('notes-ingredients-base');
 
             // --- CONTACT OVERLAY FUNCTIONS ---
             const openContact = () => {
@@ -2142,13 +2234,41 @@
             };
 
             // --- NOTES OVERLAY FUNCTIONS ---
-            const openNotes = (imgSrc) => {
-                console.log('Odeur de Dubai: openNotes called with imgSrc:', imgSrc);
-                if (!notesOverlay || !notesCard || !notesImg) {
-                    console.error('Odeur de Dubai: openNotes error, elements missing:', { notesOverlay, notesCard, notesImg });
+            const openNotes = (perfumeKey) => {
+                console.log('Odeur de Dubai: openNotes called with key:', perfumeKey);
+                
+                const data = perfumeNotesData[perfumeKey];
+                if (!data) {
+                    console.error('Odeur de Dubai: openNotes error, no data found for key:', perfumeKey);
                     return;
                 }
-                notesImg.src = imgSrc;
+                
+                if (!notesOverlay || !notesCard || !notesTitle || !notesIngHead || !notesIngHeart || !notesIngBase) {
+                    console.error('Odeur de Dubai: openNotes error, elements missing.');
+                    return;
+                }
+                
+                // Inject Title
+                notesTitle.textContent = data.title;
+                
+                // Helper to format ingredients list
+                const mapIngs = (arr) => arr.map(ing => `<span class="font-sans-luxury text-[0.85rem] font-light text-[#3C352E] tracking-wider uppercase">${ing}</span>`).join('<span class="text-[#d4a44a]/50 select-none mx-2 font-light">•</span>');
+                
+                // Inject Ingredients
+                notesIngHead.innerHTML = mapIngs(data.head);
+                notesIngHeart.innerHTML = mapIngs(data.heart);
+                notesIngBase.innerHTML = mapIngs(data.base);
+                
+                // Reset/Prepare staggered sections (hidden at start)
+                const sections = [notesTitle, notesSectHead, notesSectHeart, notesSectBase];
+                sections.forEach(el => {
+                    if (el) {
+                        el.classList.add('opacity-0', 'translate-y-4');
+                        el.classList.remove('opacity-100', 'translate-y-0');
+                    }
+                });
+                
+                // Open Overlay wrapper and card container
                 notesOverlay.classList.remove('pointer-events-none', 'opacity-0');
                 notesOverlay.classList.add('opacity-100');
                 
@@ -2156,11 +2276,41 @@
                 notesCard.classList.add('translate-y-0', 'scale-100', 'opacity-100');
                 
                 document.body.classList.add('overflow-hidden');
+                
+                // Trigger staggered animations (Titre, Tête, Cœur, Fond)
+                setTimeout(() => {
+                    if (notesTitle) {
+                        notesTitle.classList.remove('opacity-0', 'translate-y-4');
+                        notesTitle.classList.add('opacity-100', 'translate-y-0');
+                    }
+                }, 50);
+                
+                setTimeout(() => {
+                    if (notesSectHead) {
+                        notesSectHead.classList.remove('opacity-0', 'translate-y-4');
+                        notesSectHead.classList.add('opacity-100', 'translate-y-0');
+                    }
+                }, 150);
+                
+                setTimeout(() => {
+                    if (notesSectHeart) {
+                        notesSectHeart.classList.remove('opacity-0', 'translate-y-4');
+                        notesSectHeart.classList.add('opacity-100', 'translate-y-0');
+                    }
+                }, 225);
+                
+                setTimeout(() => {
+                    if (notesSectBase) {
+                        notesSectBase.classList.remove('opacity-0', 'translate-y-4');
+                        notesSectBase.classList.add('opacity-100', 'translate-y-0');
+                    }
+                }, 300);
             };
 
             const closeNotes = () => {
                 console.log('Odeur de Dubai: closeNotes called.');
                 if (!notesOverlay || !notesCard) return;
+                
                 notesCard.classList.remove('translate-y-0', 'scale-100', 'opacity-100');
                 notesCard.classList.add('translate-y-8', 'scale-95', 'opacity-0');
                 
@@ -2169,9 +2319,17 @@
                 
                 document.body.classList.remove('overflow-hidden');
 
+                // Instantly reset staggered sections to hidden state
+                const sections = [notesTitle, notesSectHead, notesSectHeart, notesSectBase];
+                sections.forEach(el => {
+                    if (el) {
+                        el.classList.add('opacity-0', 'translate-y-4');
+                        el.classList.remove('opacity-100', 'translate-y-0');
+                    }
+                });
+
                 setTimeout(() => {
                     notesOverlay.classList.add('pointer-events-none');
-                    if (notesImg) notesImg.src = '';
                 }, 500);
             };
 
