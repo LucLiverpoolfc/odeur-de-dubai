@@ -23,6 +23,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS CDN -->
+    <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Tailwind Custom Config -->
@@ -481,6 +482,135 @@
         .animate-shield-check {
             transform-origin: 36px 36px;
             animation: checkBreathe 4s ease-in-out infinite;
+        }
+
+        /* ── NOS SIGNATURES — Carousel Styles ──────────────── */
+        .embla-signatures__container {
+            display: flex;
+            gap: 1rem;
+            user-select: none;
+            -webkit-user-select: none;
+            cursor: grab;
+        }
+        .embla-signatures__container.is-dragging {
+            cursor: grabbing;
+        }
+        .embla-signatures__slide {
+            flex: 0 0 auto;
+            min-width: 0;
+            position: relative;
+        }
+
+        .sig-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+                        0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                        box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.5s ease;
+        }
+        .sig-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            border-color: rgba(212, 164, 74, 0.2);
+            box-shadow:
+                inset 0 0 0 1px rgba(212, 164, 74, 0.06),
+                0 24px 48px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(212, 164, 74, 0.06);
+        }
+        .sig-card img {
+            -webkit-user-drag: none;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        /* Explorer CTA capsule button */
+        .cta-explorer-sig {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .cta-explorer-sig::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(212, 164, 74, 0.15), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.7s ease;
+        }
+        .cta-explorer-sig:hover::before {
+            transform: translateX(100%);
+        }
+        .cta-explorer-sig:hover {
+            border-color: #F5EDD8;
+            background-color: rgba(245, 237, 216, 0.08);
+            box-shadow: 0 0 25px rgba(245, 237, 216, 0.15),
+                        inset 0 0 15px rgba(245, 237, 216, 0.05);
+        }
+
+        /* Fade-in reveal animation */
+        .sig-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .sig-reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .sig-reveal-delay-1 { transition-delay: 0.1s; }
+        .sig-reveal-delay-2 { transition-delay: 0.25s; }
+        .sig-reveal-delay-3 { transition-delay: 0.4s; }
+
+        /* Right-edge soft fade mask */
+        .embla-signatures::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 80px;
+            background: linear-gradient(to left, #000000, transparent);
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        /* CTA overlay button inside signatures cards */
+        .sig-card-cta {
+            position: absolute;
+            bottom: 1.25rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(212, 164, 74, 0.3);
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            color: #F5EDD8;
+            font-family: "Montserrat", system-ui, sans-serif;
+            font-size: 0.65rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            white-space: nowrap;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: auto;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+            opacity: 0.85;
+            cursor: pointer;
+        }
+
+        .sig-card:hover .sig-card-cta {
+            opacity: 1;
+            border-color: rgba(212, 164, 74, 0.95);
+            background: rgba(212, 164, 74, 0.18);
+            box-shadow: 0 0 15px rgba(212, 164, 74, 0.25), 0 4px 15px rgba(0, 0, 0, 0.5);
+            transform: translate(-50%, -2px);
         }
     </style>
 </head>
@@ -985,6 +1115,212 @@
             </div>
         </div>
     </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         NOS SIGNATURES — Carrousel Embla de parfums d'exception
+         ═══════════════════════════════════════════════════════ -->
+    <section id="nos-signatures" class="relative w-full bg-black py-16 md:py-24 overflow-hidden">
+
+        <!-- ── TOP : Titre centré ── -->
+        <div class="sig-reveal text-center mb-12 md:mb-16 px-6">
+            <h2 class="font-serif-luxury text-5xl md:text-6xl lg:text-7xl font-light tracking-wide text-[#F5EDD8]">
+                Nos <em class="italic">Signatures</em>
+            </h2>
+        </div>
+
+        <!-- ── MIDDLE : Embla Carousel ── -->
+        <div class="sig-reveal sig-reveal-delay-2">
+            <div class="embla-signatures" id="embla-signatures">
+                <div class="embla-signatures__container px-6 md:px-12">
+
+                    <!-- Slide 1 : Confidential Private Gold -->
+                    <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
+                        <div class="sig-card" style="aspect-ratio: 3/4;">
+                            <img src="assets/images/parfums/06-confidential-private-gold.jpg" alt="Confidential Private Gold — Lattafa" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cta">Les Secrets</button>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 : Vanilla Powdery -->
+                    <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
+                        <div class="sig-card" style="aspect-ratio: 3/4;">
+                            <img src="assets/images/parfums/08-vanilla-powdery.jpg" alt="Vanilla Powdery — Loui Martin" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cta">Les Secrets</button>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 : Vanilla Latte -->
+                    <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
+                        <div class="sig-card" style="aspect-ratio: 3/4;">
+                            <img src="assets/images/parfums/05-vanilla-latte.jpg" alt="Vanilla Latte — Gulf Orchid" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cta">Les Secrets</button>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4 : Esta Fuera -->
+                    <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
+                        <div class="sig-card" style="aspect-ratio: 3/4;">
+                            <img src="assets/images/parfums/04-esta-fuera.jpg" alt="Esta Fuera — VOLARÉ" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cta">Les Secrets</button>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5 : Barakkat Satin Oud -->
+                    <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
+                        <div class="sig-card" style="aspect-ratio: 3/4;">
+                            <img src="assets/images/parfums/07-barakkat-satin-oud.jpg" alt="Barakkat Satin Oud — Eau de Parfum" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cta">Les Secrets</button>
+                        </div>
+                    </div>
+
+                    <!-- Slide 6 : Ombre Naomi -->
+                    <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
+                        <div class="sig-card" style="aspect-ratio: 3/4;">
+                            <img src="assets/images/parfums/09-ombre-naomi.jpg" alt="Ombre Naomi — Loui Martin" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cta">Les Secrets</button>
+                        </div>
+                    </div>
+
+                    <!-- Slide 7 : Léonie -->
+                    <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
+                        <div class="sig-card" style="aspect-ratio: 3/4;">
+                            <img src="assets/images/parfums/10-leonie.jpg" alt="Léonie — Eau de Parfum" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cta">Les Secrets</button>
+                        </div>
+                    </div>
+
+                    <!-- Slide 8 : Dak Imperia -->
+                    <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
+                        <div class="sig-card" style="aspect-ratio: 3/4;">
+                            <img src="assets/images/parfums/11-dak-imperia.jpg" alt="Dak Collections Imperia — VOLARÉ" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cta">Les Secrets</button>
+                        </div>
+                    </div>
+
+                    <!-- Slide 9 : Hibiscus Majesté -->
+                    <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
+                        <div class="sig-card" style="aspect-ratio: 3/4;">
+                            <img src="assets/images/parfums/12-hibiscus-majeste.jpg" alt="Hibiscus Majesté — VOLARÉ" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cta">Les Secrets</button>
+                        </div>
+                    </div>
+
+                    <!-- Slide 10 : B Rouge -->
+                    <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
+                        <div class="sig-card" style="aspect-ratio: 3/4;">
+                            <img src="assets/images/parfums/13-b-rouge.jpg" alt="B Rouge — Eau de Parfum" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cta">Les Secrets</button>
+                        </div>
+                    </div>
+
+                    <!-- Slide 11 : Watermelon On Ice -->
+                    <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
+                        <div class="sig-card" style="aspect-ratio: 3/4;">
+                            <img src="assets/images/parfums/01-watermelon-on-ice.jpg" alt="KENZIE Watermelon On Ice — Eau de Parfum" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cta">Les Secrets</button>
+                        </div>
+                    </div>
+
+                    <!-- Slide 12 : Irish Vanilla -->
+                    <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
+                        <div class="sig-card" style="aspect-ratio: 3/4;">
+                            <img src="assets/images/parfums/02-irish-vanilla.jpg" alt="KENZIE Irish Vanilla — Eau de Parfum" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cta">Les Secrets</button>
+                        </div>
+                    </div>
+
+                    <!-- Slide 13 : Summer Bottled -->
+                    <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
+                        <div class="sig-card" style="aspect-ratio: 3/4;">
+                            <img src="assets/images/parfums/14-summer-bottled.jpg" alt="KENZIE Summer Bottled — VOLARÉ" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cta">Les Secrets</button>
+                        </div>
+                    </div>
+
+                    <!-- Slide 14 : Lemon Spark -->
+                    <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
+                        <div class="sig-card" style="aspect-ratio: 3/4;">
+                            <img src="assets/images/parfums/03-lemon-spark.jpg" alt="KENZIE Lemon Spark — Eau de Parfum" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cta">Les Secrets</button>
+                        </div>
+                    </div>
+
+                    <!-- Slide 15 : Silk Serenity -->
+                    <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
+                        <div class="sig-card" style="aspect-ratio: 3/4;">
+                            <img src="assets/images/parfums/15-silk-serenity.jpg" alt="KENZIE Silk Serenity — Eau de Parfum" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cta">Les Secrets</button>
+                        </div>
+                    </div>
+
+                    <!-- Slide 16 : Amber Lychee -->
+                    <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
+                        <div class="sig-card" style="aspect-ratio: 3/4;">
+                            <img src="assets/images/parfums/16-amber-lychee.jpg" alt="KENZIE Amber Lychee — Eau de Parfum" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cta">Les Secrets</button>
+                        </div>
+                    </div>
+
+                    <!-- Slide 17 : Candid Vanilla -->
+                    <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
+                        <div class="sig-card" style="aspect-ratio: 3/4;">
+                            <img src="assets/images/parfums/17-candid-vanilla.jpg" alt="KENZIE Candid Vanilla — Eau de Parfum" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cta">Les Secrets</button>
+                        </div>
+                    </div>
+
+                    <!-- Slide 18 : Mystique Fieber -->
+                    <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
+                        <div class="sig-card" style="aspect-ratio: 3/4;">
+                            <img src="assets/images/parfums/18-mystique-fieber.jpg" alt="KENZIE Mystique Fieber — Eau de Parfum" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cta">Les Secrets</button>
+                        </div>
+                    </div>
+
+                    <!-- Slide 19 : Exotic Apple Crush -->
+                    <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
+                        <div class="sig-card" style="aspect-ratio: 3/4;">
+                            <img src="assets/images/parfums/19-exotic-apple-crush.jpg" alt="KENZIE Exotic Apple Crush — Eau de Parfum" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cta">Les Secrets</button>
+                        </div>
+                    </div>
+
+                    <!-- Slide 20 : Classic Pistachio -->
+                    <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
+                        <div class="sig-card" style="aspect-ratio: 3/4;">
+                            <img src="assets/images/parfums/20-classic-pistachio.jpg" alt="KENZIE Classic Pistachio — Eau de Parfum" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cta">Les Secrets</button>
+                        </div>
+                    </div>
+
+                    <!-- Slide 21 : Vanilla 70 -->
+                    <div class="embla-signatures__slide w-44 md:w-52 lg:w-56">
+                        <div class="sig-card" style="aspect-ratio: 3/4;">
+                            <img src="assets/images/parfums/21-vanilla-70.jpg" alt="KENZIE Vanilla 70 — Eau de Parfum" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cta">Les Secrets</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ── BOTTOM : Call To Action "Explorer" ── -->
+        <div class="sig-reveal sig-reveal-delay-3 text-center mt-12 md:mt-16">
+            <a href="#nos-signatures"
+               id="btn-explorer-signatures"
+               class="cta-explorer-sig inline-flex items-center justify-center gap-4 px-20 py-5 md:px-24 md:py-6 rounded-full border border-[#F5EDD8] text-[#FFFFFF] font-sans-luxury text-xl md:text-2xl font-light uppercase tracking-[0.24em] cursor-pointer hover:text-white transition-colors duration-300">
+                <span>Explorer</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:translate-x-1">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+
+        <!-- Texture overlay subtile -->
+        <div class="absolute inset-0 opacity-[0.02] pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23d4a44a%22 fill-opacity=%220.4%22%3E%3Cpath d=%22M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+    </section>
+
 
     <!-- ═══════════════════════════════════════════════════════
          OVERLAY MENU - Panneau ultra-premium avec angles arrondis
@@ -1963,6 +2299,64 @@
                     }
                 }
             });
+
+
+            // ═══ NOS SIGNATURES — Embla Carousel Init ═══
+            const emblaNode = document.getElementById('embla-signatures');
+            if (emblaNode && typeof EmblaCarousel !== 'undefined') {
+                const emblaApi = EmblaCarousel(emblaNode, {
+                    loop: false,
+                    align: 'start',
+                    containScroll: 'trimSnaps',
+                    dragFree: true,
+                    // Luxurious momentum: lower = heavier/smoother glide
+                    speed: 8,
+                    // Friction for the deceleration curve
+                    dragThreshold: 10,
+                });
+
+                // Visual feedback: toggle grabbing cursor
+                const container = emblaNode.querySelector('.embla-signatures__container');
+                emblaApi.on('pointerDown', () => {
+                    if (container) container.classList.add('is-dragging');
+                });
+                emblaApi.on('pointerUp', () => {
+                    if (container) container.classList.remove('is-dragging');
+                });
+
+                // Call to action button click listener with drag prevention
+                const sigCtaButtons = emblaNode.querySelectorAll('.sig-card-cta');
+                sigCtaButtons.forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        if (!emblaApi.clickAllowed()) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            return;
+                        }
+                        e.preventDefault();
+                        if (typeof openContact === 'function') {
+                            openContact();
+                        }
+                    });
+                });
+            }
+
+            // ═══ NOS SIGNATURES — Scroll Reveal Observer ═══
+            const sigRevealEls = document.querySelectorAll('.sig-reveal');
+            if (sigRevealEls.length > 0) {
+                const sigObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            sigObserver.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.15,
+                    rootMargin: '0px 0px -60px 0px'
+                });
+                sigRevealEls.forEach(el => sigObserver.observe(el));
+            }
 
             // Contact Form handler
             if (contactForm) {
