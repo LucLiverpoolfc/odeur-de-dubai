@@ -2123,6 +2123,15 @@
 
     <!-- Native JavaScript for menu & contact interactions -->
     <script>
+        // Global error catcher for remote debugging
+        window.onerror = function (msg, url, lineNo, columnNo, error) {
+            console.error('Odeur de Dubai JS Error:', msg, 'at', url, 'line', lineNo);
+            if (window.location.search.includes('debug=true')) {
+                alert('Erreur JS : ' + msg + '\nLigne : ' + lineNo + '\nFichier : ' + url);
+            }
+            return false;
+        };
+
         document.addEventListener('DOMContentLoaded', () => {
             console.log('Odeur de Dubai: DOMContentLoaded fired.');
             console.log('Odeur de Dubai: EmblaCarousel global type is:', typeof EmblaCarousel);
@@ -2530,11 +2539,12 @@
 
 
             // ═══ NOS SIGNATURES — Embla Carousel Init ═══
+            let emblaApi;
             const emblaNode = document.getElementById('embla-signatures');
             console.log('Odeur de Dubai: emblaNode found:', !!emblaNode);
             if (emblaNode && typeof EmblaCarousel !== 'undefined') {
                 console.log('Odeur de Dubai: Initializing EmblaCarousel...');
-                const emblaApi = EmblaCarousel(emblaNode, {
+                emblaApi = EmblaCarousel(emblaNode, {
                     loop: false,
                     align: 'start',
                     containScroll: 'trimSnaps',
@@ -2553,14 +2563,19 @@
                 emblaApi.on('pointerUp', () => {
                     if (container) container.classList.remove('is-dragging');
                 });
+            } else {
+                console.warn('Odeur de Dubai: Carousel init skipped because emblaNode is null or EmblaCarousel is undefined.', { emblaNode, hasEmblaCarousel: typeof EmblaCarousel !== 'undefined' });
+            }
 
-                // Click listener on signatures cards with drag prevention
+            // Click listener on signatures cards (outside Embla block for maximum robustness)
+            if (emblaNode) {
                 const sigCards = emblaNode.querySelectorAll('.sig-card');
-                console.log('Odeur de Dubai: Found sigCards count:', sigCards.length);
+                console.log('Odeur de Dubai: Binding click listeners to cards. Count:', sigCards.length);
                 sigCards.forEach(card => {
                     card.addEventListener('click', (e) => {
-                        // Drag prevention
-                        if (!emblaApi.clickAllowed()) {
+                        console.log('Odeur de Dubai: Card clicked. Notes key:', card.getAttribute('data-notes'));
+                        // Drag prevention (only check if emblaApi is loaded/active)
+                        if (emblaApi && !emblaApi.clickAllowed()) {
                             console.log('Odeur de Dubai: Click prevented because clickAllowed() is false');
                             e.preventDefault();
                             e.stopPropagation();
