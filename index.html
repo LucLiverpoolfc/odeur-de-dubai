@@ -527,12 +527,12 @@
         }
 
         /* Explorer CTA capsule button */
-        .cta-explorer-sig {
+        .cta-explorer-sig, .cta-notre-histoire {
             position: relative;
             overflow: hidden;
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .cta-explorer-sig::before {
+        .cta-explorer-sig::before, .cta-notre-histoire::before {
             content: '';
             position: absolute;
             inset: 0;
@@ -540,10 +540,10 @@
             transform: translateX(-100%);
             transition: transform 0.7s ease;
         }
-        .cta-explorer-sig:hover::before {
+        .cta-explorer-sig:hover::before, .cta-notre-histoire:hover::before {
             transform: translateX(100%);
         }
-        .cta-explorer-sig:hover {
+        .cta-explorer-sig:hover, .cta-notre-histoire:hover {
             border-color: #F5EDD8;
             background-color: rgba(245, 237, 216, 0.08);
             box-shadow: 0 0 25px rgba(245, 237, 216, 0.15),
@@ -1319,6 +1319,95 @@
 
         <!-- Texture overlay subtile -->
         <div class="absolute inset-0 opacity-[0.02] pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23d4a44a%22 fill-opacity=%220.4%22%3E%3Cpath d=%22M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════
+         SKYLINE SECTION — Vitrine immersive Ligne d'horizon
+         Même hauteur et impact visuel que la Hero Section (Bloc 1)
+         ═══════════════════════════════════════════════════════ -->
+    <section
+        id="skyline-showcase"
+        class="relative w-full h-[calc(100vh-5rem)] sm:h-[calc(100vh-6rem)] min-h-[500px] overflow-hidden border-b-2 border-[#FFFFFF]"
+        aria-label="Ligne d'horizon de Dubaï"
+    >
+
+        <!-- ── Background Image (Full width, matching Hero dimensions, crop from the top) ── -->
+        <img
+            id="skyline-bg-image"
+            src="assets/images/ryan-miglinczy-02n9_v-d1yY-unsplash.jpg"
+            alt="Ligne d'horizon de Dubaï illuminée de nuit, symbole de modernité et de grandeur"
+            class="absolute inset-0 w-full h-full object-cover object-[25%_bottom] sm:object-[center_bottom]"
+            loading="lazy"
+        >
+
+        <!-- ── Double Overlay Dégradé Premium (Haut et Bas) ──
+             from-black via-transparent to-black pour lier
+             le bloc aux sections noires adjacentes au défilement.
+             ────────────────────────────────────────────────── -->
+        <div
+            class="absolute inset-0 z-10
+                   bg-gradient-to-b from-black/50 via-transparent to-black/80"
+            aria-hidden="true"
+        ></div>
+
+        <!-- ── Texte éditorial — Aligné sur la gauche ──────────── -->
+        <div class="relative z-20 w-full h-full
+                    flex flex-col justify-center items-start
+                    px-6 sm:px-12 md:px-20 lg:px-24 xl:px-32
+                    py-10 sm:py-14 md:py-16 lg:py-20">
+
+            <div class="w-full max-w-4xl text-left">
+
+                <!-- Titre de la Ligne d'horizon
+                     Mêmes classes de typographie haut de gamme Cormorant Garamond -->
+                <h2
+                    id="skyline-title"
+                    class="sig-reveal
+                           font-serif-luxury
+                           font-light italic
+                           text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[4.5rem] xl:text-[5.5rem]
+                           leading-[1.1] sm:leading-[1.08]
+                           tracking-tight
+                           text-[#faf5eb]
+                           mb-6 sm:mb-8 md:mb-10"
+                >
+                    Le sillage d’exception de Dubaï, enfin vôtre.
+                </h2>
+
+                <!-- Paragraphe descriptif
+                     Mêmes styles de texte que la Hero Section -->
+                <div
+                    id="skyline-description"
+                    class="sig-reveal sig-reveal-delay-2
+                           font-serif-luxury
+                           font-normal
+                           text-base sm:text-xl md:text-[1.375rem] lg:text-[1.5rem] xl:text-2xl
+                           leading-relaxed sm:leading-[1.6]
+                           text-[#faf5eb]/90
+                           flex flex-col gap-4 sm:gap-6"
+                >
+                    <p>Incarner l’audace de la découverte en brisant les codes de l'exclusivité.</p>
+                    <p>Nos effluves, authentiques et rares, sont cueillis à la source par nos artisans locaux.</p>
+                    <p>Un nectar de luxe absolu, ciselé par Dubaï, pour que l’élégance suprême devienne une vérité partagée.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ── BOTTOM RIGHT: Call To Action "Notre Histoire" ── -->
+        <div class="absolute bottom-10 right-6 sm:right-10 md:right-14 lg:right-20 z-30">
+            <a href="#"
+               id="btn-notre-histoire"
+               class="cta-notre-histoire inline-flex items-center justify-center gap-4 px-12 py-4 md:px-14 md:py-5 rounded-full border border-[#F5EDD8] text-[#FFFFFF] font-sans-luxury text-sm md:text-base font-light uppercase tracking-[0.24em] cursor-pointer hover:text-white transition-colors duration-300">
+                <span>Notre Histoire</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:translate-x-1">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+
     </section>
 
 
@@ -2364,12 +2453,19 @@
             }
 
             // About Presentation triggers
+            const notreHistoireBtn = document.getElementById('btn-notre-histoire');
             if (reassuranceShippingBtn && aboutOverlay && aboutCard && aboutCloseBtn) {
                 reassuranceShippingBtn.addEventListener('click', openAbout);
                 aboutCloseBtn.addEventListener('click', closeAbout);
                 aboutOverlay.addEventListener('click', (e) => {
                     if (e.target === aboutOverlay) closeAbout();
                 });
+                if (notreHistoireBtn) {
+                    notreHistoireBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        openAbout();
+                    });
+                }
             }
 
             // Authenticity Presentation triggers
