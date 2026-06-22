@@ -2330,7 +2330,7 @@
         <!-- Card Container: Light premium ivory/cream / rounded-3xl / shadow-2xl / border-[#d4a44a]/30 / overflow-hidden -->
         <div
             id="notes-card"
-            class="bg-[#F4F0E6] w-full max-w-[420px] rounded-[36px] shadow-2xl relative border border-[#d4a44a]/30 transform scale-95 translate-y-8 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden"
+            class="bg-[#F4F0E6] w-full max-w-[420px] rounded-[36px] shadow-2xl relative border border-[#d4a44a]/30 transform scale-[0.98] translate-y-3 opacity-0 transition-all duration-400 ease-out overflow-hidden"
         >
             <img id="notes-image" src="" alt="Fiche Olfactive" class="w-full h-auto block select-none pointer-events-none">
 
@@ -2477,7 +2477,7 @@
                 notesOverlay.classList.remove('pointer-events-none', 'opacity-0');
                 notesOverlay.classList.add('opacity-100', 'pointer-events-auto');
                 
-                notesCard.classList.remove('translate-y-8', 'scale-95', 'opacity-0');
+                notesCard.classList.remove('translate-y-3', 'scale-[0.98]', 'opacity-0');
                 notesCard.classList.add('translate-y-0', 'scale-100', 'opacity-100');
                 
                 document.body.classList.add('overflow-hidden');
@@ -2488,7 +2488,7 @@
                 if (!notesOverlay || !notesCard) return;
                 
                 notesCard.classList.remove('translate-y-0', 'scale-100', 'opacity-100');
-                notesCard.classList.add('translate-y-8', 'scale-95', 'opacity-0');
+                notesCard.classList.add('translate-y-3', 'scale-[0.98]', 'opacity-0');
                 
                 notesOverlay.classList.remove('opacity-100', 'pointer-events-auto');
                 notesOverlay.classList.add('opacity-0');
