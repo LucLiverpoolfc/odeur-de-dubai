@@ -2790,14 +2790,11 @@
                             e.stopPropagation();
                             openNotes(notesSrc);
                         } else {
-                            // Other cards: only trigger contact overlay if the CTA button was clicked specifically
+                            // Other cards: do not open contact overlay anymore when clicking 'Les Secrets'
                             if (e.target.classList.contains('sig-card-cta')) {
                                 e.preventDefault();
                                 e.stopPropagation();
-                                console.log('Odeur de Dubai: CTA clicked on standard card, calling openContact()');
-                                if (typeof openContact === 'function') {
-                                    openContact();
-                                }
+                                console.log('Odeur de Dubai: CTA clicked on standard card (no action mapped)');
                             }
                         }
                     });
