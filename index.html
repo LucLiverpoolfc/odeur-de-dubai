@@ -1805,234 +1805,241 @@
         <!-- Card Container: Off-white royal (#F4F0E6) / rounded-[48px] / w-full max-w-[480px] -->
         <div
             id="contact-card"
-            class="bg-[#F4F0E6] w-full max-w-[480px] max-h-[90vh] overflow-y-auto rounded-[48px] shadow-2xl p-6 sm:p-10 relative flex flex-col items-center justify-between border border-white/30 transform translate-y-20 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+            class="bg-[#F4F0E6] w-full max-w-[480px] max-h-[90vh] sm:max-h-[85vh] rounded-[2rem] sm:rounded-[48px] shadow-2xl relative flex flex-col border border-white/30 transform translate-y-20 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden"
         >
-            <!-- Close Button (Fine Gold X in the top-right corner) -->
+            <!-- Close Button (Fine Gold X - Fixed in the top-right corner, non-scrolling) -->
             <button
                 id="contact-close"
                 type="button"
-                class="absolute top-6 right-6 group flex items-center justify-center w-10 h-10 rounded-full border border-[#C5A880]/30 hover:border-[#C5A880]/90 transition-colors duration-300 focus:outline-none"
+                class="absolute top-4 right-4 sm:top-6 sm:right-6 group flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-[#C5A880]/30 hover:border-[#C5A880]/90 bg-[#F4F0E6]/80 backdrop-blur-md transition-all duration-300 focus:outline-none z-50"
                 aria-label="Fermer le panneau de contact"
             >
-                <svg class="w-5 h-5 stroke-[#C5A880] fill-none group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="w-4 h-4 sm:w-5 sm:h-5 stroke-[#C5A880] fill-none group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="18" y1="6" x2="6" y2="18"></line>
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
             </button>
 
-            <!-- 1. Logo central majestueux et agrandi (60% à 70% de la largeur du panneau) -->
-            <div class="flex flex-col items-center gap-3 mb-6 mt-4 w-[65%] text-center">
-                <!-- Emblème SVG (Triple arche ogive orientale entrelacée) -->
-                <svg
-                    class="w-full h-auto max-w-[150px] transition-transform duration-500 hover:scale-105"
-                    viewBox="0 0 120 80"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                >
-                    <defs>
-                        <linearGradient id="emblemGoldContact" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stop-color="#d4a44a" />
-                            <stop offset="50%" stop-color="#c5a055" />
-                            <stop offset="100%" stop-color="#a88a3a" />
-                        </linearGradient>
-                        <linearGradient id="emblemGoldLightContact" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stop-color="#e5c77a" />
-                            <stop offset="100%" stop-color="#c5a055" />
-                        </linearGradient>
-                    </defs>
-                    <path
-                        d="M60 4 C60 4, 42 20, 42 42 C42 54, 50 62, 60 62 C70 62, 78 54, 78 42 C78 20, 60 4, 60 4Z"
-                        stroke="url(#emblemGoldContact)"
-                        stroke-width="1.4"
-                        stroke-linejoin="round"
-                        fill="none"
-                    />
-                    <path
-                        d="M38 18 C38 18, 20 32, 20 48 C20 58, 28 66, 38 66 C48 66, 54 60, 54 52 C54 44, 48 36, 42 30"
-                        stroke="url(#emblemGoldContact)"
-                        stroke-width="1.4"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        fill="none"
-                    />
-                    <path
-                        d="M38 66 C30 66, 22 60, 22 50"
-                        stroke="url(#emblemGoldContact)"
-                        stroke-width="1.2"
-                        stroke-linecap="round"
-                        fill="none"
-                        opacity="0.7"
-                    />
-                    <path
-                        d="M82 18 C82 18, 100 32, 100 48 C100 58, 92 66, 82 66 C72 66, 66 60, 66 52 C66 44, 72 36, 78 30"
-                        stroke="url(#emblemGoldContact)"
-                        stroke-width="1.4"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        fill="none"
-                    />
-                    <path
-                        d="M82 66 C90 66, 98 60, 98 50"
-                        stroke="url(#emblemGoldContact)"
-                        stroke-width="1.2"
-                        stroke-linecap="round"
-                        fill="none"
-                        opacity="0.7"
-                    />
-                    <path
-                        d="M60 16 C60 16, 50 30, 50 42 C50 48, 54 52, 60 52 C66 52, 70 48, 70 42 C70 30, 60 16, 60 16Z"
-                        stroke="url(#emblemGoldLightContact)"
-                        stroke-width="0.8"
-                        fill="none"
-                        opacity="0.5"
-                    />
-                    <path d="M60 44 C58 40, 62 40, 60 44" fill="url(#emblemGoldContact)" opacity="0.9" />
-                    <path d="M60 44 C64 42, 65 46, 60 44" fill="url(#emblemGoldContact)" opacity="0.9" />
-                    <path d="M60 44 C64 46, 62 49, 60 44" fill="url(#emblemGoldContact)" opacity="0.9" />
-                    <path d="M60 44 C56 46, 58 49, 60 44" fill="url(#emblemGoldContact)" opacity="0.9" />
-                    <path d="M60 44 C56 42, 55 46, 60 44" fill="url(#emblemGoldContact)" opacity="0.9" />
-                    <circle cx="60" cy="44" r="1.2" fill="url(#emblemGoldLightContact)" />
-                    <line x1="30" y1="68" x2="90" y2="68" stroke="url(#emblemGoldContact)" stroke-width="0.6" opacity="0.3" />
-                </svg>
-                <span class="logo-gold-gradient font-serif-luxury text-xs sm:text-sm font-semibold tracking-[0.24em] uppercase leading-none select-none mt-1">
-                    Odeur de Dubaï
-                </span>
-            </div>
+            <!-- Scrollable Content Wrapper -->
+            <div class="w-full overflow-y-auto p-5 sm:p-10 flex flex-col items-center">
 
-            <!-- 2. Formulaire modernisé "Haute Parfumerie" -->
-            <form id="contact-form" class="w-full flex flex-col gap-3 mb-6">
-                <div class="grid grid-cols-2 gap-3">
-                    <div class="flex flex-col">
-                        <input
-                            type="text"
-                            name="firstname"
-                            placeholder="Prénom"
-                            required
-                            class="bg-white/80 border border-[#C5A880]/30 rounded-xl py-2.5 px-4 font-sans text-sm text-[#3C352E] placeholder-[#C5A880]/70 focus:ring-1 focus:ring-[#C5A880] focus:border-[#C5A880] outline-none transition-all duration-300"
-                        />
-                    </div>
-                    <div class="flex flex-col">
-                        <input
-                            type="text"
-                            name="lastname"
-                            placeholder="Nom"
-                            required
-                            class="bg-white/80 border border-[#C5A880]/30 rounded-xl py-2.5 px-4 font-sans text-sm text-[#3C352E] placeholder-[#C5A880]/70 focus:ring-1 focus:ring-[#C5A880] focus:border-[#C5A880] outline-none transition-all duration-300"
-                        />
-                    </div>
-                </div>
-                <div class="flex flex-col">
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Mail"
-                        required
-                        class="bg-white/80 border border-[#C5A880]/30 rounded-xl py-2.5 px-4 font-sans text-sm text-[#3C352E] placeholder-[#C5A880]/70 focus:ring-1 focus:ring-[#C5A880] focus:border-[#C5A880] outline-none transition-all duration-300"
-                    />
-                </div>
-                <div class="flex flex-col">
-                    <textarea
-                        name="message"
-                        placeholder="Message"
-                        rows="3"
-                        required
-                        class="bg-white/80 border border-[#C5A880]/30 rounded-xl py-2.5 px-4 font-sans text-sm text-[#3C352E] placeholder-[#C5A880]/70 focus:ring-1 focus:ring-[#C5A880] focus:border-[#C5A880] outline-none transition-all duration-300 resize-none"
-                    ></textarea>
-                </div>
-                <div class="flex justify-end">
-                    <button
-                        type="submit"
-                        class="bg-[#A3704C] hover:bg-[#8D5E3B] text-white font-sans text-xs font-medium tracking-wider uppercase py-2.5 px-6 rounded-xl transition-all duration-300 hover:shadow-lg focus:outline-none"
+                <!-- 1. Logo central majestueux et agrandi (60% à 70% de la largeur du panneau) -->
+                <div class="flex flex-col items-center gap-2 sm:gap-3 mb-4 sm:mb-6 mt-2 sm:mt-4 w-[60%] sm:w-[65%] text-center">
+                    <!-- Emblème SVG (Triple arche ogive orientale entrelacée) -->
+                    <svg
+                        class="w-full h-auto max-w-[110px] sm:max-w-[150px] transition-transform duration-500 hover:scale-105"
+                        viewBox="0 0 120 80"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
                     >
-                        Envoyer
-                    </button>
-                </div>
-            </form>
-
-            <!-- Séparateur horizontal discret -->
-            <div class="w-full h-[1px] bg-[#C5A880]/20 mb-5"></div>
-
-            <!-- 3. Données Fixes & Coordonnées -->
-            <div class="w-full flex flex-col gap-3.5 mb-6 text-left px-2">
-                <!-- Ligne 1 : Farid BENAHSSAINE -->
-                <div class="flex items-center gap-3.5">
-                    <div class="flex items-center justify-center w-8 h-8 rounded-full bg-white/50 border border-[#C5A880]/20">
-                        <!-- Icône flacon/parfum fine -->
-                        <svg class="w-4 h-4 stroke-[#C5A880] fill-none" viewBox="0 0 24 24" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M6 18h12a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2z" />
-                            <path d="M9 6V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3" />
-                            <path d="M12 9v5" />
-                            <path d="M10 11h4" />
-                        </svg>
-                    </div>
-                    <span class="font-sans text-sm font-medium text-[#3C352E]">Farid BENAHSSAINE</span>
-                </div>
-
-                <!-- Ligne 2 : Téléphone -->
-                <div class="flex items-center gap-3.5">
-                    <div class="flex items-center justify-center w-8 h-8 rounded-full bg-white/50 border border-[#C5A880]/20">
-                        <!-- Icône téléphone fine -->
-                        <svg class="w-4 h-4 stroke-[#C5A880] fill-none" viewBox="0 0 24 24" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                        </svg>
-                    </div>
-                    <a href="tel:+33658230585" class="font-sans text-sm font-medium text-[#3C352E] hover:text-[#C5A880] transition-colors duration-300">+ 33 6 58 23 05 85</a>
-                </div>
-
-                <!-- Ligne 3 : Mail -->
-                <div class="flex items-center gap-3.5">
-                    <div class="flex items-center justify-center w-8 h-8 rounded-full bg-white/50 border border-[#C5A880]/20">
-                        <!-- Icône @ fine -->
-                        <svg class="w-4 h-4 stroke-[#C5A880] fill-none" viewBox="0 0 24 24" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="4" />
-                            <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94" />
-                        </svg>
-                    </div>
-                    <a href="mailto:farid.benahssaine@gmail.com" class="font-sans text-sm font-medium text-[#3C352E] hover:text-[#C5A880] transition-colors duration-300 break-all">farid.benahssaine@gmail.com</a>
-                </div>
-            </div>
-
-            <!-- 4. Intégration stricte des liens réseaux sociaux (Bas de page) -->
-            <div class="flex items-center justify-center gap-6 mt-2">
-                <!-- Instagram -->
-                <a
-                    href="https://www.instagram.com/odeurs_de_dubai?igsh=MTZwdnkyZ2VjOWh1dQ=="
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="flex items-center justify-center w-10 h-10 rounded-full bg-white/70 border border-[#C5A880]/30 hover:border-[#C5A880] text-[#C5A880] hover:bg-white transition-all duration-300 hover:scale-105"
-                    aria-label="Instagram"
-                >
-                    <svg class="w-4.5 h-4.5 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        <defs>
+                            <linearGradient id="emblemGoldContact" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#d4a44a" />
+                                <stop offset="50%" stop-color="#c5a055" />
+                                <stop offset="100%" stop-color="#a88a3a" />
+                            </linearGradient>
+                            <linearGradient id="emblemGoldLightContact" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#e5c77a" />
+                                <stop offset="100%" stop-color="#c5a055" />
+                            </linearGradient>
+                        </defs>
+                        <path
+                            d="M60 4 C60 4, 42 20, 42 42 C42 54, 50 62, 60 62 C70 62, 78 54, 78 42 C78 20, 60 4, 60 4Z"
+                            stroke="url(#emblemGoldContact)"
+                            stroke-width="1.4"
+                            stroke-linejoin="round"
+                            fill="none"
+                        />
+                        <path
+                            d="M38 18 C38 18, 20 32, 20 48 C20 58, 28 66, 38 66 C48 66, 54 60, 54 52 C54 44, 48 36, 42 30"
+                            stroke="url(#emblemGoldContact)"
+                            stroke-width="1.4"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            fill="none"
+                        />
+                        <path
+                            d="M38 66 C30 66, 22 60, 22 50"
+                            stroke="url(#emblemGoldContact)"
+                            stroke-width="1.2"
+                            stroke-linecap="round"
+                            fill="none"
+                            opacity="0.7"
+                        />
+                        <path
+                            d="M82 18 C82 18, 100 32, 100 48 C100 58, 92 66, 82 66 C72 66, 66 60, 66 52 C66 44, 72 36, 78 30"
+                            stroke="url(#emblemGoldContact)"
+                            stroke-width="1.4"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            fill="none"
+                        />
+                        <path
+                            d="M82 66 C90 66, 98 60, 98 50"
+                            stroke="url(#emblemGoldContact)"
+                            stroke-width="1.2"
+                            stroke-linecap="round"
+                            fill="none"
+                            opacity="0.7"
+                        />
+                        <path
+                            d="M60 16 C60 16, 50 30, 50 42 C50 48, 54 52, 60 52 C66 52, 70 48, 70 42 C70 30, 60 16, 60 16Z"
+                            stroke="url(#emblemGoldLightContact)"
+                            stroke-width="0.8"
+                            fill="none"
+                            opacity="0.5"
+                        />
+                        <path d="M60 44 C58 40, 62 40, 60 44" fill="url(#emblemGoldContact)" opacity="0.9" />
+                        <path d="M60 44 C64 42, 65 46, 60 44" fill="url(#emblemGoldContact)" opacity="0.9" />
+                        <path d="M60 44 C64 46, 62 49, 60 44" fill="url(#emblemGoldContact)" opacity="0.9" />
+                        <path d="M60 44 C56 46, 58 49, 60 44" fill="url(#emblemGoldContact)" opacity="0.9" />
+                        <path d="M60 44 C56 42, 55 46, 60 44" fill="url(#emblemGoldContact)" opacity="0.9" />
+                        <circle cx="60" cy="44" r="1.2" fill="url(#emblemGoldLightContact)" />
+                        <line x1="30" y1="68" x2="90" y2="68" stroke="url(#emblemGoldContact)" stroke-width="0.6" opacity="0.3" />
                     </svg>
-                </a>
-                <!-- Snapchat -->
-                <a
-                    href="https://snapchat.com/t/wTQDSxa4"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="flex items-center justify-center w-10 h-10 rounded-full bg-white/70 border border-[#C5A880]/30 hover:border-[#C5A880] text-[#C5A880] hover:bg-white transition-all duration-300 hover:scale-105"
-                    aria-label="Snapchat"
-                >
-                    <svg class="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24">
-                        <path d="M12 2c-.67 0-1.57.17-2.31.55-.42.22-.84.56-1.12.94-.39.52-.57 1.14-.57 1.77 0 .37.06.74.19 1.09.08.21.14.43.14.66 0 .42-.23.82-.57 1.06-.49.34-1.07.54-1.67.58-.69.05-1.18.42-1.34 1.05-.11.43.04.88.37 1.18.34.31.78.47 1.23.44.47-.03.95-.14 1.39-.32.31-.13.67-.05.9.2.33.37.5.86.47 1.36-.04.66-.46 1.23-1.07 1.49-.64.27-1.35.33-2.03.17-.46-.11-.94.13-1.08.59-.14.47.1.97.56 1.12a8.6 8.6 0 0 0 3.09.04c.59-.11 1.15-.36 1.63-.73.23-.17.53-.22.8-.13.79.27 1.63.41 2.47.41.84 0 1.68-.14 2.47-.41.27-.09.57-.04.8.13.48.37 1.04.62 1.63.73a8.6 8.6 0 0 0 3.09-.04c.46-.15.7-.65.56-1.12-.14-.46-.62-.7-1.08-.59-.68.16-1.39.1-2.03-.17-.61-.26-1.03-.83-1.07-1.49-.03-.5.14-.99.47-1.36.23-.25.59-.33.9-.2.44.18.92.29 1.39.32.45.03.89-.13 1.23-.44.33-.3.48-.75.37-1.18-.16-.63-.65-1-1.34-1.05-.6-.04-1.18-.24-1.67-.58-.34-.24-.57-.64-.57-1.06 0-.23.06-.45.14-.66.13-.35.19-.72.19-1.09 0-.63-.18-1.25-.57-1.77-.28-.38-.7-.72-1.12-.94C13.57 2.17 12.67 2 12 2z"/>
-                    </svg>
-                </a>
-                <!-- TikTok -->
-                <a
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="flex items-center justify-center w-10 h-10 rounded-full bg-white/70 border border-[#C5A880]/30 hover:border-[#C5A880] text-[#C5A880] hover:bg-white transition-all duration-300 hover:scale-105"
-                    aria-label="TikTok"
-                >
-                    <svg class="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24">
-                        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.74-3.99-1.72-.18-.17-.36-.36-.52-.55v7.44c0 3.94-2.52 7.64-6.4 8.35-3.89.78-8.3-1.48-9.28-5.34-1.11-4.19 1.48-8.96 5.69-9.74.88-.17 1.79-.18 2.68-.04V12.7c-2.09.11-4.09 1.47-4.59 3.52-.69 2.59.98 5.48 3.61 5.86 2.82.44 5.72-1.44 5.9-4.33.05-1.57.02-3.13.03-4.7V.02z"/>
-                    </svg>
-                </a>
+                    <span class="logo-gold-gradient font-serif-luxury text-[10px] sm:text-xs md:text-sm font-semibold tracking-[0.24em] uppercase leading-none select-none mt-1">
+                        Odeur de Dubaï
+                    </span>
+                </div>
+
+                <!-- 2. Formulaire modernisé "Haute Parfumerie" -->
+                <form id="contact-form" class="w-full flex flex-col gap-2.5 sm:gap-3 mb-4 sm:mb-6">
+                    <div class="grid grid-cols-2 gap-2.5 sm:gap-3">
+                        <div class="flex flex-col">
+                            <input
+                                type="text"
+                                name="firstname"
+                                placeholder="Prénom"
+                                required
+                                class="bg-white/80 border border-[#C5A880]/30 rounded-xl py-2 px-3 sm:py-2.5 sm:px-4 font-sans text-xs sm:text-sm text-[#3C352E] placeholder-[#C5A880]/70 focus:ring-1 focus:ring-[#C5A880] focus:border-[#C5A880] outline-none transition-all duration-300"
+                            />
+                        </div>
+                        <div class="flex flex-col">
+                            <input
+                                type="text"
+                                name="lastname"
+                                placeholder="Nom"
+                                required
+                                class="bg-white/80 border border-[#C5A880]/30 rounded-xl py-2 px-3 sm:py-2.5 sm:px-4 font-sans text-xs sm:text-sm text-[#3C352E] placeholder-[#C5A880]/70 focus:ring-1 focus:ring-[#C5A880] focus:border-[#C5A880] outline-none transition-all duration-300"
+                            />
+                        </div>
+                    </div>
+                    <div class="flex flex-col">
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Mail"
+                            required
+                            class="bg-white/80 border border-[#C5A880]/30 rounded-xl py-2 px-3 sm:py-2.5 sm:px-4 font-sans text-xs sm:text-sm text-[#3C352E] placeholder-[#C5A880]/70 focus:ring-1 focus:ring-[#C5A880] focus:border-[#C5A880] outline-none transition-all duration-300"
+                        />
+                    </div>
+                    <div class="flex flex-col">
+                        <textarea
+                            name="message"
+                            placeholder="Message"
+                            required
+                            class="bg-white/80 border border-[#C5A880]/30 rounded-xl py-2 px-3 sm:py-2.5 sm:px-4 font-sans text-xs sm:text-sm text-[#3C352E] placeholder-[#C5A880]/70 focus:ring-1 focus:ring-[#C5A880] focus:border-[#C5A880] outline-none transition-all duration-300 resize-none h-16 sm:h-24"
+                        ></textarea>
+                    </div>
+                    <div class="flex justify-end">
+                        <button
+                            type="submit"
+                            class="bg-[#A3704C] hover:bg-[#8D5E3B] text-white font-sans text-[10px] sm:text-xs font-medium tracking-wider uppercase py-2 px-5 sm:py-2.5 sm:px-6 rounded-xl transition-all duration-300 hover:shadow-lg focus:outline-none"
+                        >
+                            Envoyer
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Séparateur horizontal discret -->
+                <div class="w-full h-[1px] bg-[#C5A880]/20 my-4 sm:my-5"></div>
+
+                <!-- 3. Données Fixes & Coordonnées -->
+                <div class="w-full flex flex-col gap-2.5 sm:gap-3.5 mb-4 sm:mb-6 text-left px-2">
+                    <!-- Ligne 1 : Farid BENAHSSAINE -->
+                    <div class="flex items-center gap-3">
+                        <div class="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/50 border border-[#C5A880]/20 shrink-0">
+                            <!-- Icône flacon/parfum fine -->
+                            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[#C5A880] fill-none" viewBox="0 0 24 24" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M6 18h12a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2z" />
+                                <path d="M9 6V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3" />
+                                <path d="M12 9v5" />
+                                <path d="M10 11h4" />
+                            </svg>
+                        </div>
+                        <span class="font-sans text-xs sm:text-sm font-medium text-[#3C352E]">Farid BENAHSSAINE</span>
+                    </div>
+
+                    <!-- Ligne 2 : Téléphone -->
+                    <div class="flex items-center gap-3">
+                        <div class="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/50 border border-[#C5A880]/20 shrink-0">
+                            <!-- Icône téléphone fine -->
+                            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[#C5A880] fill-none" viewBox="0 0 24 24" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg>
+                        </div>
+                        <a href="tel:+33658230585" class="font-sans text-xs sm:text-sm font-medium text-[#3C352E] hover:text-[#C5A880] transition-colors duration-300">+ 33 6 58 23 05 85</a>
+                    </div>
+
+                    <!-- Ligne 3 : Mail -->
+                    <div class="flex items-center gap-3">
+                        <div class="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/50 border border-[#C5A880]/20 shrink-0">
+                            <!-- Icône @ fine -->
+                            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[#C5A880] fill-none" viewBox="0 0 24 24" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="4" />
+                                <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94" />
+                            </svg>
+                        </div>
+                        <a href="mailto:farid.benahssaine@gmail.com" class="font-sans text-xs sm:text-sm font-medium text-[#3C352E] hover:text-[#C5A880] transition-colors duration-300 break-all">farid.benahssaine@gmail.com</a>
+                    </div>
+                </div>
+
+                <!-- 4. Intégration stricte des liens réseaux sociaux (Bas de page) -->
+                <div class="flex items-center justify-center gap-4 sm:gap-6 mt-1 sm:mt-2">
+                    <!-- Instagram -->
+                    <a
+                        href="https://www.instagram.com/odeurs_de_dubai?igsh=MTZwdnkyZ2VjOWh1dQ=="
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/70 border border-[#C5A880]/30 hover:border-[#C5A880] text-[#C5A880] hover:bg-white transition-all duration-300 hover:scale-105 shrink-0"
+                        aria-label="Instagram"
+                    >
+                        <svg class="w-4 h-4 sm:w-4.5 sm:h-4.5 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <!-- Snapchat -->
+                    <a
+                        href="https://snapchat.com/t/wTQDSxa4"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/70 border border-[#C5A880]/30 hover:border-[#C5A880] text-[#C5A880] hover:bg-white transition-all duration-300 hover:scale-105 shrink-0"
+                        aria-label="Snapchat"
+                    >
+                        <svg class="w-4 h-4 sm:w-4.5 sm:h-4.5 fill-current" viewBox="0 0 24 24">
+                            <path d="M12 2c-.67 0-1.57.17-2.31.55-.42.22-.84.56-1.12.94-.39.52-.57 1.14-.57 1.77 0 .37.06.74.19 1.09.08.21.14.43.14.66 0 .42-.23.82-.57 1.06-.49.34-1.07.54-1.67.58-.69.05-1.18.42-1.34 1.05-.11.43.04.88.37 1.18.34.31.78.47 1.23.44.47-.03.95-.14 1.39-.32.31-.13.67-.05.9.2.33.37.5.86.47 1.36-.04.66-.46 1.23-1.07 1.49-.64.27-1.35.33-2.03.17-.46-.11-.94.13-1.08.59-.14.47.1.97.56 1.12a8.6 8.6 0 0 0 3.09.04c.59-.11 1.15-.36 1.63-.73.23-.17.53-.22.8-.13.79.27 1.63.41 2.47.41.84 0 1.68-.14 2.47-.41.27-.09.57-.04.8.13.48.37 1.04.62 1.63.73a8.6 8.6 0 0 0 3.09-.04c.46-.15.7-.65.56-1.12-.14-.46-.62-.7-1.08-.59-.68.16-1.39.1-2.03-.17-.61-.26-1.03-.83-1.07-1.49-.03-.5.14-.99.47-1.36.23-.25.59-.33.9-.2.44.18.92.29 1.39.32.45.03.89-.13 1.23-.44.33-.3.48-.75.37-1.18-.16-.63-.65-1-1.34-1.05-.6-.04-1.18-.24-1.67-.58-.34-.24-.57-.64-.57-1.06 0-.23.06-.45.14-.66.13-.35.19-.72.19-1.09 0-.63-.18-1.25-.57-1.77-.28-.38-.7-.72-1.12-.94C13.57 2.17 12.67 2 12 2z"/>
+                        </svg>
+                    </a>
+                    <!-- TikTok -->
+                    <a
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/70 border border-[#C5A880]/30 hover:border-[#C5A880] text-[#C5A880] hover:bg-white transition-all duration-300 hover:scale-105 shrink-0"
+                        aria-label="TikTok"
+                    >
+                        <svg class="w-4 h-4 sm:w-4.5 sm:h-4.5 fill-current" viewBox="0 0 24 24">
+                            <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.74-3.99-1.72-.18-.17-.36-.36-.52-.55v7.44c0 3.94-2.52 7.64-6.4 8.35-3.89.78-8.3-1.48-9.28-5.34-1.11-4.19 1.48-8.96 5.69-9.74.88-.17 1.79-.18 2.68-.04V12.7c-2.09.11-4.09 1.47-4.59 3.52-.69 2.59.98 5.48 3.61 5.86 2.82.44 5.72-1.44 5.9-4.33.05-1.57.02-3.13.03-4.7V.02z"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Bottom spacer to prevent any content clipping inside the rounded boundaries -->
+                <div class="h-6 sm:h-2 w-full shrink-0"></div>
+
             </div>
         </div>
     </div>
