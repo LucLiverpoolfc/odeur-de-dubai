@@ -569,6 +569,11 @@
         .sig-reveal-delay-2 { transition-delay: 0.25s; }
         .sig-reveal-delay-3 { transition-delay: 0.4s; }
 
+        /* Gold rating stars glow effect for contrast */
+        .gold-stars-glow svg {
+            filter: drop-shadow(0 0 4px rgba(212, 164, 74, 0.75));
+        }
+
         /* Right-edge soft fade mask */
         .embla-signatures::after {
             content: '';
@@ -1461,20 +1466,20 @@
                     L’Écho de Vos <em class="italic">Sillages</em>
                 </h2>
                 <!-- Étoiles de notation globale -->
-                <div class="flex justify-center gap-1.5 mt-6">
-                    <svg class="w-5 h-5 fill-[#C5A880] stroke-[#C5A880]" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <div class="flex justify-center gap-1.5 mt-6 gold-stars-glow">
+                    <svg class="w-5 h-5 fill-[#d4a44a] stroke-[#d4a44a]" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
                     </svg>
-                    <svg class="w-5 h-5 fill-[#C5A880] stroke-[#C5A880]" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-5 h-5 fill-[#d4a44a] stroke-[#d4a44a]" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
                     </svg>
-                    <svg class="w-5 h-5 fill-[#C5A880] stroke-[#C5A880]" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-5 h-5 fill-[#d4a44a] stroke-[#d4a44a]" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
                     </svg>
-                    <svg class="w-5 h-5 fill-[#C5A880] stroke-[#C5A880]" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-5 h-5 fill-[#d4a44a] stroke-[#d4a44a]" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
                     </svg>
-                    <svg class="w-5 h-5 fill-[#C5A880] stroke-[#C5A880]" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-5 h-5 fill-[#d4a44a] stroke-[#d4a44a]" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
                     </svg>
                 </div>
