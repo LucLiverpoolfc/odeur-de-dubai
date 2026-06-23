@@ -621,6 +621,51 @@
             box-shadow: 0 0 15px rgba(212, 164, 74, 0.25), 0 4px 15px rgba(0, 0, 0, 0.5);
             transform: translate(-50%, -2px);
         }
+
+        /* Cart button inside signatures cards */
+        .sig-card-cart-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 20;
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(212, 164, 74, 0.3);
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            pointer-events: auto;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+        }
+        
+        .sig-card:hover .sig-card-cart-btn {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        
+        .sig-card-cart-btn:hover {
+            border-color: rgba(212, 164, 74, 0.95);
+            background: rgba(212, 164, 74, 0.25);
+            box-shadow: 0 0 15px rgba(212, 164, 74, 0.3), 0 4px 15px rgba(0, 0, 0, 0.5);
+            transform: scale(1.15) !important;
+        }
+
+        @media (max-width: 768px) {
+            .sig-card-cart-btn {
+                opacity: 0.9;
+                top: 0.75rem;
+                right: 0.75rem;
+                width: 2.1rem;
+                height: 2.1rem;
+            }
+        }
     </style>
 </head>
 
@@ -867,11 +912,51 @@
             </a>
 
 
-            <!-- ── BLOC DROIT : Icône Contact Téléphonique ──────
-                 Déclenche le panneau de contact premium en superposition.
+            <!-- ── BLOC DROIT : Panier & Contact Téléphonique ──────
+                 Déclenche le panier ou le panneau de contact premium.
                  Même couleur champagne #C5A880, traits fins 1.2-1.5px.
                  ─────────────────────────────────────────────── -->
-            <div class="flex items-center">
+            <div class="flex items-center gap-1.5 sm:gap-2.5">
+                <!-- Bouton Panier -->
+                <button
+                    id="cart-btn"
+                    type="button"
+                    class="relative group
+                           flex items-center justify-center
+                           w-11 h-11 sm:w-[50px] sm:h-[50px]
+                           rounded-2xl
+                           transition-all duration-300 ease-in-out
+                           hover:bg-white/[0.03]
+                           focus:outline-none focus:ring-1 focus:ring-[#C5A880]/40"
+                    aria-label="Ouvrir le panier"
+                >
+                    <svg
+                        class="w-[24px] h-[24px] sm:w-[28px] sm:h-[28px] text-[#C5A880] stroke-current fill-none transition-all duration-300 group-hover:scale-110"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <!-- Badge Panier -->
+                    <span
+                        id="cart-badge"
+                        class="absolute -top-0.5 -right-0.5
+                               hidden items-center justify-center
+                               w-4 h-4 sm:w-5 sm:h-5
+                               rounded-full
+                               bg-[#C5A880] text-black
+                               font-sans-luxury text-[9px] sm:text-[10px] font-bold"
+                    >
+                        0
+                    </span>
+                </button>
+
+                <!-- Bouton Contact -->
                 <button
                     id="contact-phone"
                     type="button"
@@ -1146,6 +1231,13 @@
                     <div class="embla-signatures__slide w-40 md:w-52 lg:w-56">
                         <div class="sig-card cursor-pointer" style="aspect-ratio: 3/4;" data-notes="confidential">
                             <img src="assets/images/parfums/06-confidential-private-gold.jpg" alt="Confidential Private Gold — Lattafa" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cart-btn" aria-label="Ajouter au panier">
+                                <svg class="w-4 h-4 text-[#C5A880] stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
                             <button class="sig-card-cta">Les Secrets</button>
                         </div>
                     </div>
@@ -1154,6 +1246,13 @@
                     <div class="embla-signatures__slide w-40 md:w-52 lg:w-56">
                         <div class="sig-card cursor-pointer" style="aspect-ratio: 3/4;" data-notes="vanilla-powdery">
                             <img src="assets/images/parfums/08-vanilla-powdery.jpg" alt="Vanilla Powdery — Loui Martin" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cart-btn" aria-label="Ajouter au panier">
+                                <svg class="w-4 h-4 text-[#C5A880] stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
                             <button class="sig-card-cta">Les Secrets</button>
                         </div>
                     </div>
@@ -1162,6 +1261,13 @@
                     <div class="embla-signatures__slide w-40 md:w-52 lg:w-56">
                         <div class="sig-card cursor-pointer" style="aspect-ratio: 3/4;" data-notes="vanilla-latte">
                             <img src="assets/images/parfums/05-vanilla-latte.jpg" alt="Vanilla Latte — Gulf Orchid" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cart-btn" aria-label="Ajouter au panier">
+                                <svg class="w-4 h-4 text-[#C5A880] stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
                             <button class="sig-card-cta">Les Secrets</button>
                         </div>
                     </div>
@@ -1170,6 +1276,13 @@
                     <div class="embla-signatures__slide w-40 md:w-52 lg:w-56">
                         <div class="sig-card cursor-pointer" style="aspect-ratio: 3/4;" data-notes="esta-fuera">
                             <img src="assets/images/parfums/04-esta-fuera.jpg" alt="Esta Fuera — VOLARÉ" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cart-btn" aria-label="Ajouter au panier">
+                                <svg class="w-4 h-4 text-[#C5A880] stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
                             <button class="sig-card-cta">Les Secrets</button>
                         </div>
                     </div>
@@ -1178,6 +1291,13 @@
                     <div class="embla-signatures__slide w-40 md:w-52 lg:w-56">
                         <div class="sig-card cursor-pointer" style="aspect-ratio: 3/4;" data-notes="barakkat-satin-oud">
                             <img src="assets/images/parfums/07-barakkat-satin-oud.jpg" alt="Barakkat Satin Oud — Eau de Parfum" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cart-btn" aria-label="Ajouter au panier">
+                                <svg class="w-4 h-4 text-[#C5A880] stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
                             <button class="sig-card-cta">Les Secrets</button>
                         </div>
                     </div>
@@ -1186,6 +1306,13 @@
                     <div class="embla-signatures__slide w-40 md:w-52 lg:w-56">
                         <div class="sig-card cursor-pointer" style="aspect-ratio: 3/4;" data-notes="ombre-naomi">
                             <img src="assets/images/parfums/09-ombre-naomi.jpg" alt="Ombre Naomi — Loui Martin" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cart-btn" aria-label="Ajouter au panier">
+                                <svg class="w-4 h-4 text-[#C5A880] stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
                             <button class="sig-card-cta">Les Secrets</button>
                         </div>
                     </div>
@@ -1194,6 +1321,13 @@
                     <div class="embla-signatures__slide w-40 md:w-52 lg:w-56">
                         <div class="sig-card" style="aspect-ratio: 3/4;">
                             <img src="assets/images/parfums/10-leonie.jpg" alt="Léonie — Eau de Parfum" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cart-btn" aria-label="Ajouter au panier">
+                                <svg class="w-4 h-4 text-[#C5A880] stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
                             <button class="sig-card-cta">Les Secrets</button>
                         </div>
                     </div>
@@ -1202,6 +1336,13 @@
                     <div class="embla-signatures__slide w-40 md:w-52 lg:w-56">
                         <div class="sig-card" style="aspect-ratio: 3/4;">
                             <img src="assets/images/parfums/11-dak-imperia.jpg" alt="Dak Collections Imperia — VOLARÉ" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cart-btn" aria-label="Ajouter au panier">
+                                <svg class="w-4 h-4 text-[#C5A880] stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
                             <button class="sig-card-cta">Les Secrets</button>
                         </div>
                     </div>
@@ -1210,6 +1351,13 @@
                     <div class="embla-signatures__slide w-40 md:w-52 lg:w-56">
                         <div class="sig-card" style="aspect-ratio: 3/4;">
                             <img src="assets/images/parfums/12-hibiscus-majeste.jpg" alt="Hibiscus Majesté — VOLARÉ" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cart-btn" aria-label="Ajouter au panier">
+                                <svg class="w-4 h-4 text-[#C5A880] stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
                             <button class="sig-card-cta">Les Secrets</button>
                         </div>
                     </div>
@@ -1218,6 +1366,13 @@
                     <div class="embla-signatures__slide w-40 md:w-52 lg:w-56">
                         <div class="sig-card" style="aspect-ratio: 3/4;">
                             <img src="assets/images/parfums/13-b-rouge.jpg" alt="B Rouge — Eau de Parfum" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cart-btn" aria-label="Ajouter au panier">
+                                <svg class="w-4 h-4 text-[#C5A880] stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
                             <button class="sig-card-cta">Les Secrets</button>
                         </div>
                     </div>
@@ -1226,6 +1381,13 @@
                     <div class="embla-signatures__slide w-40 md:w-52 lg:w-56">
                         <div class="sig-card" style="aspect-ratio: 3/4;">
                             <img src="assets/images/parfums/01-watermelon-on-ice.jpg" alt="KENZIE Watermelon On Ice — Eau de Parfum" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cart-btn" aria-label="Ajouter au panier">
+                                <svg class="w-4 h-4 text-[#C5A880] stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
                             <button class="sig-card-cta">Les Secrets</button>
                         </div>
                     </div>
@@ -1234,6 +1396,13 @@
                     <div class="embla-signatures__slide w-40 md:w-52 lg:w-56">
                         <div class="sig-card" style="aspect-ratio: 3/4;">
                             <img src="assets/images/parfums/02-irish-vanilla.jpg" alt="KENZIE Irish Vanilla — Eau de Parfum" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cart-btn" aria-label="Ajouter au panier">
+                                <svg class="w-4 h-4 text-[#C5A880] stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
                             <button class="sig-card-cta">Les Secrets</button>
                         </div>
                     </div>
@@ -1242,6 +1411,13 @@
                     <div class="embla-signatures__slide w-40 md:w-52 lg:w-56">
                         <div class="sig-card" style="aspect-ratio: 3/4;">
                             <img src="assets/images/parfums/14-summer-bottled.jpg" alt="KENZIE Summer Bottled — VOLARÉ" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cart-btn" aria-label="Ajouter au panier">
+                                <svg class="w-4 h-4 text-[#C5A880] stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
                             <button class="sig-card-cta">Les Secrets</button>
                         </div>
                     </div>
@@ -1250,6 +1426,13 @@
                     <div class="embla-signatures__slide w-40 md:w-52 lg:w-56">
                         <div class="sig-card" style="aspect-ratio: 3/4;">
                             <img src="assets/images/parfums/03-lemon-spark.jpg" alt="KENZIE Lemon Spark — Eau de Parfum" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cart-btn" aria-label="Ajouter au panier">
+                                <svg class="w-4 h-4 text-[#C5A880] stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
                             <button class="sig-card-cta">Les Secrets</button>
                         </div>
                     </div>
@@ -1258,6 +1441,13 @@
                     <div class="embla-signatures__slide w-40 md:w-52 lg:w-56">
                         <div class="sig-card" style="aspect-ratio: 3/4;">
                             <img src="assets/images/parfums/15-silk-serenity.jpg" alt="KENZIE Silk Serenity — Eau de Parfum" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cart-btn" aria-label="Ajouter au panier">
+                                <svg class="w-4 h-4 text-[#C5A880] stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
                             <button class="sig-card-cta">Les Secrets</button>
                         </div>
                     </div>
@@ -1266,6 +1456,13 @@
                     <div class="embla-signatures__slide w-40 md:w-52 lg:w-56">
                         <div class="sig-card" style="aspect-ratio: 3/4;">
                             <img src="assets/images/parfums/16-amber-lychee.jpg" alt="KENZIE Amber Lychee — Eau de Parfum" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cart-btn" aria-label="Ajouter au panier">
+                                <svg class="w-4 h-4 text-[#C5A880] stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
                             <button class="sig-card-cta">Les Secrets</button>
                         </div>
                     </div>
@@ -1274,6 +1471,13 @@
                     <div class="embla-signatures__slide w-40 md:w-52 lg:w-56">
                         <div class="sig-card" style="aspect-ratio: 3/4;">
                             <img src="assets/images/parfums/17-candid-vanilla.jpg" alt="KENZIE Candid Vanilla — Eau de Parfum" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cart-btn" aria-label="Ajouter au panier">
+                                <svg class="w-4 h-4 text-[#C5A880] stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
                             <button class="sig-card-cta">Les Secrets</button>
                         </div>
                     </div>
@@ -1282,6 +1486,13 @@
                     <div class="embla-signatures__slide w-40 md:w-52 lg:w-56">
                         <div class="sig-card" style="aspect-ratio: 3/4;">
                             <img src="assets/images/parfums/18-mystique-fieber.jpg" alt="KENZIE Mystique Fieber — Eau de Parfum" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cart-btn" aria-label="Ajouter au panier">
+                                <svg class="w-4 h-4 text-[#C5A880] stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
                             <button class="sig-card-cta">Les Secrets</button>
                         </div>
                     </div>
@@ -1290,6 +1501,13 @@
                     <div class="embla-signatures__slide w-40 md:w-52 lg:w-56">
                         <div class="sig-card" style="aspect-ratio: 3/4;">
                             <img src="assets/images/parfums/19-exotic-apple-crush.jpg" alt="KENZIE Exotic Apple Crush — Eau de Parfum" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cart-btn" aria-label="Ajouter au panier">
+                                <svg class="w-4 h-4 text-[#C5A880] stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
                             <button class="sig-card-cta">Les Secrets</button>
                         </div>
                     </div>
@@ -1298,6 +1516,13 @@
                     <div class="embla-signatures__slide w-40 md:w-52 lg:w-56">
                         <div class="sig-card" style="aspect-ratio: 3/4;">
                             <img src="assets/images/parfums/20-classic-pistachio.jpg" alt="KENZIE Classic Pistachio — Eau de Parfum" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cart-btn" aria-label="Ajouter au panier">
+                                <svg class="w-4 h-4 text-[#C5A880] stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
                             <button class="sig-card-cta">Les Secrets</button>
                         </div>
                     </div>
@@ -1306,6 +1531,13 @@
                     <div class="embla-signatures__slide w-40 md:w-52 lg:w-56">
                         <div class="sig-card" style="aspect-ratio: 3/4;">
                             <img src="assets/images/parfums/21-vanilla-70.jpg" alt="KENZIE Vanilla 70 — Eau de Parfum" class="absolute inset-0 w-full h-full object-cover rounded-3xl" loading="lazy">
+                            <button class="sig-card-cart-btn" aria-label="Ajouter au panier">
+                                <svg class="w-4 h-4 text-[#C5A880] stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
                             <button class="sig-card-cta">Les Secrets</button>
                         </div>
                     </div>
@@ -2529,6 +2761,353 @@
         </div>
     </div>
 
+    <!-- ═══════════════════════════════════════════════════════
+         PANIER DRAWER — Tiroir latéral coulissant depuis la droite
+         ═══════════════════════════════════════════════════════ -->
+    <div
+        id="cart-overlay"
+        class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-500 ease-out flex justify-end"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mon Panier"
+    >
+        <div
+            id="cart-drawer"
+            class="w-full max-w-[440px] h-full bg-black border-l border-[#C5A880]/30 flex flex-col justify-between transform translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-2xl relative"
+        >
+            <!-- Header du panier -->
+            <div class="flex items-center justify-between px-6 py-6 border-b border-[#C5A880]/20">
+                <h2 class="font-serif-luxury text-xl sm:text-2xl font-light text-[#F5EDD8] tracking-[0.15em] uppercase">Mon Panier</h2>
+                <button
+                    id="cart-close"
+                    type="button"
+                    class="group flex items-center justify-center w-8 h-8 rounded-full border border-[#C5A880]/30 hover:border-[#C5A880]/90 bg-transparent transition-all duration-300 focus:outline-none"
+                    aria-label="Fermer le panier"
+                >
+                    <svg class="w-4 h-4 stroke-[#C5A880] fill-none group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Liste défilante des articles -->
+            <div id="cart-items-list" class="flex-1 overflow-y-auto px-6 py-4 space-y-6 scrollbar-thin">
+                <!-- Rempli dynamiquement en JS -->
+            </div>
+
+            <!-- Footer du panier -->
+            <div class="px-6 py-6 border-t border-[#C5A880]/20 bg-[#0c0c0c]/90 space-y-4">
+                <div class="flex items-center justify-between font-sans-luxury text-sm font-light text-[#F5EDD8]">
+                    <span class="tracking-[0.1em] uppercase">Sous-total</span>
+                    <span id="cart-subtotal" class="font-semibold text-base text-[#C5A880]">0,00 €</span>
+                </div>
+                <button
+                    id="cart-checkout-btn"
+                    type="button"
+                    class="w-full py-4 rounded-full border border-[#C5A880] bg-transparent text-[#F5EDD8] font-sans-luxury text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 hover:bg-[#C5A880] hover:text-black hover:shadow-[0_0_25px_rgba(197,168,128,0.25)] disabled:opacity-40 disabled:pointer-events-none"
+                    disabled
+                >
+                    Procéder à la commande
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         OVERLAY TUNNEL D'ACHAT (CHECKOUT)
+         ═══════════════════════════════════════════════════════ -->
+    <div
+        id="checkout-overlay"
+        class="fixed inset-0 z-50 bg-black opacity-0 pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden flex items-center justify-center"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Tunnel de commande"
+    >
+        <div
+            id="checkout-card"
+            class="w-full h-full relative flex flex-col transform translate-y-20 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden"
+        >
+            <!-- Bouton de fermeture (Croix fine en or en haut à droite) -->
+            <button
+                id="checkout-close"
+                type="button"
+                class="absolute top-6 right-6 md:top-8 md:right-8 z-30 group flex items-center justify-center w-10 h-10 rounded-full border border-[#C5A880]/30 hover:border-[#C5A880]/90 bg-black/60 hover:bg-black/90 transition-all duration-300 focus:outline-none"
+                aria-label="Fermer la commande"
+            >
+                <svg class="w-5 h-5 stroke-[#C5A880] fill-none group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+
+            <!-- Zone de contenu défilant -->
+            <div class="w-full h-full overflow-y-auto px-4 py-12 md:px-16 md:py-16 scrollbar-thin bg-black flex flex-col items-center">
+                <!-- Top Section: Logo & Emblème -->
+                <div class="flex flex-col items-center gap-4 text-center select-none mb-8">
+                    <!-- Emblème SVG (Proportions strictes 3:2 respectées) -->
+                    <svg
+                        class="w-24 h-16 md:w-36 md:h-24 transition-transform duration-500 hover:scale-105"
+                        viewBox="0 0 120 80"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                    >
+                        <defs>
+                            <linearGradient id="emblemGoldCheckout" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#d4a44a" />
+                                <stop offset="50%" stop-color="#c5a055" />
+                                <stop offset="100%" stop-color="#a88a3a" />
+                            </linearGradient>
+                            <linearGradient id="emblemGoldLightCheckout" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#e5c77a" />
+                                <stop offset="100%" stop-color="#c5a055" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M60 4 C60 4, 42 20, 42 42 C42 54, 50 62, 60 62 C70 62, 78 54, 78 42 C78 20, 60 4, 60 4Z" stroke="url(#emblemGoldCheckout)" stroke-width="1.4" stroke-linejoin="round" fill="none" />
+                        <path d="M38 18 C38 18, 20 32, 20 48 C20 58, 28 66, 38 66 C48 66, 54 60, 54 52 C54 44, 48 36, 42 30" stroke="url(#emblemGoldCheckout)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                        <path d="M38 66 C30 66, 22 60, 22 50" stroke="url(#emblemGoldCheckout)" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.7" />
+                        <path d="M82 18 C82 18, 100 32, 100 48 C100 58, 92 66, 82 66 C72 66, 66 60, 66 52 C66 44, 72 36, 78 30" stroke="url(#emblemGoldCheckout)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                        <path d="M82 66 C90 66, 98 60, 98 50" stroke="url(#emblemGoldCheckout)" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.7" />
+                        <path d="M60 16 C60 16, 50 30, 50 42 C50 48, 54 52, 60 52 C66 52, 70 48, 70 42 C70 30, 60 16, 60 16Z" stroke="url(#emblemGoldLightCheckout)" stroke-width="0.8" fill="none" opacity="0.5" />
+                        <circle cx="60" cy="44" r="1.2" fill="url(#emblemGoldLightCheckout)" />
+                        <line x1="30" y1="68" x2="90" y2="68" stroke="url(#emblemGoldCheckout)" stroke-width="0.6" opacity="0.3" />
+                    </svg>
+                    <span class="logo-gold-gradient font-serif-luxury text-xl md:text-2xl font-semibold tracking-[0.26em] uppercase leading-none mt-2">
+                        Odeur de Dubaï
+                    </span>
+                </div>
+
+                <!-- Ligne de séparation fine -->
+                <hr class="border-t border-[#C5A880]/30 w-full max-w-3xl my-6">
+
+                <!-- Indicateur de progression linéaire minimaliste -->
+                <div class="w-full max-w-xl px-4 mb-10 select-none">
+                    <div class="relative flex items-center justify-between w-full">
+                        <!-- Ligne de progression en arrière-plan -->
+                        <div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-[2px] bg-white/10 z-0"></div>
+                        <!-- Ligne de progression active -->
+                        <div id="checkout-progress-bar" class="absolute left-0 top-1/2 -translate-y-1/2 h-[2px] bg-[#C5A880] transition-all duration-500 ease-out z-0" style="width: 0%;"></div>
+
+                        <!-- Étape 1 -->
+                        <div class="relative z-10 flex flex-col items-center">
+                            <div id="step-dot-1" class="w-7 h-7 rounded-full bg-black border border-[#C5A880] text-[#C5A880] flex items-center justify-center text-xs font-bold font-sans-luxury transition-all duration-300 shadow-[0_0_10px_rgba(197,168,128,0.2)]">1</div>
+                            <span id="step-label-1" class="font-sans-luxury text-[10px] font-semibold uppercase tracking-[0.1em] text-[#C5A880] mt-2">Panier</span>
+                        </div>
+                        <!-- Étape 2 -->
+                        <div class="relative z-10 flex flex-col items-center">
+                            <div id="step-dot-2" class="w-7 h-7 rounded-full bg-black border border-white/20 text-white/40 flex items-center justify-center text-xs font-bold font-sans-luxury transition-all duration-300">2</div>
+                            <span id="step-label-2" class="font-sans-luxury text-[10px] font-medium uppercase tracking-[0.1em] text-white/40 mt-2">Livraison</span>
+                        </div>
+                        <!-- Étape 3 -->
+                        <div class="relative z-10 flex flex-col items-center">
+                            <div id="step-dot-3" class="w-7 h-7 rounded-full bg-black border border-white/20 text-white/40 flex items-center justify-center text-xs font-bold font-sans-luxury transition-all duration-300">3</div>
+                            <span id="step-label-3" class="font-sans-luxury text-[10px] font-medium uppercase tracking-[0.1em] text-white/40 mt-2">Validation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conteneur des étapes -->
+                <div class="w-full max-w-3xl flex-1 flex flex-col justify-start min-h-[300px]">
+
+                    <!-- ÉTAPE 1 : RÉSUMÉ DU PANIER -->
+                    <div id="checkout-step-1" class="w-full space-y-6 transition-all duration-300 ease-out transform opacity-100 translate-x-0 block">
+                        <div class="space-y-4">
+                            <h3 class="font-serif-luxury text-xl font-light text-[#F5EDD8] tracking-[0.15em] uppercase border-b border-[#C5A880]/20 pb-2">Résumé du panier</h3>
+                            <!-- Items Checkout Grid -->
+                            <div id="checkout-items-list" class="divide-y divide-[#C5A880]/10 space-y-4 max-h-[320px] overflow-y-auto pr-2 scrollbar-thin">
+                                <!-- Dynamiquement inséré par JS -->
+                            </div>
+                        </div>
+
+                        <!-- Financier recap -->
+                        <div class="border-t border-[#C5A880]/20 pt-6 space-y-4 font-sans-luxury text-sm font-light text-[#F5EDD8]">
+                            <div class="flex justify-between">
+                                <span class="opacity-75">Sous-total</span>
+                                <span id="checkout-subtotal">0,00 €</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="opacity-75">Frais de livraison</span>
+                                <span class="text-[#C5A880]">Offerts</span>
+                            </div>
+                            <div class="flex justify-between text-base font-medium border-t border-[#C5A880]/10 pt-4">
+                                <span class="tracking-[0.1em]">Total</span>
+                                <span id="checkout-total" class="text-[#C5A880]">0,00 €</span>
+                            </div>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="pt-6 flex justify-end">
+                            <button
+                                id="checkout-to-step-2"
+                                type="button"
+                                class="px-8 py-3.5 rounded-full border border-[#C5A880] bg-transparent text-[#F5EDD8] font-sans-luxury text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 hover:bg-[#C5A880] hover:text-black hover:shadow-[0_0_20px_rgba(197,168,128,0.3)]"
+                            >
+                                Continuer vers la livraison
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ÉTAPE 2 : INFORMATIONS DE LIVRAISON -->
+                    <div id="checkout-step-2" class="w-full space-y-6 transition-all duration-300 ease-out transform opacity-0 translate-x-10 hidden">
+                        <div class="space-y-4">
+                            <h3 class="font-serif-luxury text-xl font-light text-[#F5EDD8] tracking-[0.15em] uppercase border-b border-[#C5A880]/20 pb-2">Adresse de Livraison</h3>
+                            <form id="checkout-shipping-form" class="grid grid-cols-1 md:grid-cols-2 gap-4" onsubmit="return false;">
+                                <div>
+                                    <label for="shipping-firstname" class="block font-sans-luxury text-[10px] font-medium text-white/60 uppercase tracking-[0.1em] mb-1">Prénom *</label>
+                                    <input type="text" id="shipping-firstname" required class="w-full bg-white/5 border border-white/20 focus:border-[#C5A880] rounded-xl px-4 py-3 text-white font-sans-luxury text-sm outline-none transition-colors duration-300 placeholder-white/20" placeholder="Jean">
+                                    <span class="error-msg hidden text-[10px] text-red-400 mt-1 font-sans-luxury">Ce champ est requis.</span>
+                                </div>
+                                <div>
+                                    <label for="shipping-lastname" class="block font-sans-luxury text-[10px] font-medium text-white/60 uppercase tracking-[0.1em] mb-1">Nom *</label>
+                                    <input type="text" id="shipping-lastname" required class="w-full bg-white/5 border border-white/20 focus:border-[#C5A880] rounded-xl px-4 py-3 text-white font-sans-luxury text-sm outline-none transition-colors duration-300 placeholder-white/20" placeholder="Dupont">
+                                    <span class="error-msg hidden text-[10px] text-red-400 mt-1 font-sans-luxury">Ce champ est requis.</span>
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label for="shipping-address" class="block font-sans-luxury text-[10px] font-medium text-white/60 uppercase tracking-[0.1em] mb-1">Adresse postale *</label>
+                                    <input type="text" id="shipping-address" required class="w-full bg-white/5 border border-white/20 focus:border-[#C5A880] rounded-xl px-4 py-3 text-white font-sans-luxury text-sm outline-none transition-colors duration-300 placeholder-white/20" placeholder="123 Rue de la Paix">
+                                    <span class="error-msg hidden text-[10px] text-red-400 mt-1 font-sans-luxury">Ce champ est requis.</span>
+                                </div>
+                                <div>
+                                    <label for="shipping-zip" class="block font-sans-luxury text-[10px] font-medium text-white/60 uppercase tracking-[0.1em] mb-1">Code Postal *</label>
+                                    <input type="text" id="shipping-zip" required class="w-full bg-white/5 border border-white/20 focus:border-[#C5A880] rounded-xl px-4 py-3 text-white font-sans-luxury text-sm outline-none transition-colors duration-300 placeholder-white/20" placeholder="75001">
+                                    <span class="error-msg hidden text-[10px] text-red-400 mt-1 font-sans-luxury">Ce champ est requis.</span>
+                                </div>
+                                <div>
+                                    <label for="shipping-city" class="block font-sans-luxury text-[10px] font-medium text-white/60 uppercase tracking-[0.1em] mb-1">Ville *</label>
+                                    <input type="text" id="shipping-city" required class="w-full bg-white/5 border border-white/20 focus:border-[#C5A880] rounded-xl px-4 py-3 text-white font-sans-luxury text-sm outline-none transition-colors duration-300 placeholder-white/20" placeholder="Paris">
+                                    <span class="error-msg hidden text-[10px] text-red-400 mt-1 font-sans-luxury">Ce champ est requis.</span>
+                                </div>
+                                <div>
+                                    <label for="shipping-country" class="block font-sans-luxury text-[10px] font-medium text-white/60 uppercase tracking-[0.1em] mb-1">Pays *</label>
+                                    <input type="text" id="shipping-country" required class="w-full bg-white/5 border border-white/20 focus:border-[#C5A880] rounded-xl px-4 py-3 text-white font-sans-luxury text-sm outline-none transition-colors duration-300 placeholder-white/20" placeholder="France">
+                                    <span class="error-msg hidden text-[10px] text-red-400 mt-1 font-sans-luxury">Ce champ est requis.</span>
+                                </div>
+                                <div>
+                                    <label for="shipping-phone" class="block font-sans-luxury text-[10px] font-medium text-white/60 uppercase tracking-[0.1em] mb-1">Téléphone *</label>
+                                    <input type="tel" id="shipping-phone" required class="w-full bg-white/5 border border-white/20 focus:border-[#C5A880] rounded-xl px-4 py-3 text-white font-sans-luxury text-sm outline-none transition-colors duration-300 placeholder-white/20" placeholder="06 12 34 56 78">
+                                    <span class="error-msg hidden text-[10px] text-red-400 mt-1 font-sans-luxury">Ce champ est requis.</span>
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label for="shipping-email" class="block font-sans-luxury text-[10px] font-medium text-white/60 uppercase tracking-[0.1em] mb-1">Adresse Email *</label>
+                                    <input type="email" id="shipping-email" required class="w-full bg-white/5 border border-white/20 focus:border-[#C5A880] rounded-xl px-4 py-3 text-white font-sans-luxury text-sm outline-none transition-colors duration-300 placeholder-white/20" placeholder="jean.dupont@email.com">
+                                    <span class="error-msg hidden text-[10px] text-red-400 mt-1 font-sans-luxury">Veuillez saisir un email valide.</span>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="pt-6 flex justify-between items-center">
+                            <button
+                                id="checkout-back-to-step-1"
+                                type="button"
+                                class="text-white/60 hover:text-white font-sans-luxury text-xs font-semibold uppercase tracking-[0.15em] transition-colors duration-300"
+                            >
+                                Retour au panier
+                            </button>
+                            <button
+                                id="checkout-to-step-3"
+                                type="button"
+                                class="px-8 py-3.5 rounded-full border border-[#C5A880] bg-transparent text-[#F5EDD8] font-sans-luxury text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 hover:bg-[#C5A880] hover:text-black hover:shadow-[0_0_20px_rgba(197,168,128,0.3)]"
+                            >
+                                Continuer vers la validation
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ÉTAPE 3 : SYNTHÈSE FINALE & VERIFICATION -->
+                    <div id="checkout-step-3" class="w-full space-y-6 transition-all duration-300 ease-out transform opacity-0 translate-x-10 hidden">
+                        <div class="space-y-6">
+                            <h3 class="font-serif-luxury text-xl font-light text-[#F5EDD8] tracking-[0.15em] uppercase border-b border-[#C5A880]/20 pb-2">Récapitulatif de la commande</h3>
+
+                            <!-- Recaps layout -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <!-- Cart list recap -->
+                                <div class="space-y-4">
+                                    <span class="block font-sans-luxury text-xs font-semibold uppercase tracking-[0.1em] text-[#C5A880]">Créations sélectionnées</span>
+                                    <div id="checkout-summary-items" class="space-y-3 max-h-[180px] overflow-y-auto pr-2 scrollbar-thin">
+                                        <!-- Insertion dynamique -->
+                                    </div>
+                                </div>
+
+                                <!-- Shipping details recap -->
+                                <div class="space-y-4">
+                                    <span class="block font-sans-luxury text-xs font-semibold uppercase tracking-[0.1em] text-[#C5A880]">Adresse de livraison</span>
+                                    <div id="checkout-summary-address" class="font-sans-luxury text-sm font-light text-[#F5EDD8]/95 space-y-1 bg-white/5 p-4 rounded-2xl border border-white/10 leading-relaxed">
+                                        <!-- Insertion dynamique -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Financial summary -->
+                            <div class="border-t border-[#C5A880]/20 pt-6 space-y-3 font-sans-luxury text-sm font-light text-[#F5EDD8]">
+                                <div class="flex justify-between">
+                                    <span class="opacity-75">Sous-total</span>
+                                    <span id="checkout-summary-subtotal">0,00 €</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="opacity-75">Frais de livraison</span>
+                                    <span class="text-[#C5A880]">Offerts</span>
+                                </div>
+                                <div class="flex justify-between text-base font-medium border-t border-[#C5A880]/10 pt-4">
+                                    <span class="tracking-[0.1em]">Total</span>
+                                    <span id="checkout-summary-total" class="text-[#C5A880]">0,00 €</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+                            <button
+                                id="checkout-back-to-step-2"
+                                type="button"
+                                class="text-white/60 hover:text-white font-sans-luxury text-xs font-semibold uppercase tracking-[0.15em] transition-colors duration-300"
+                            >
+                                Retour à la livraison
+                            </button>
+                            <button
+                                id="checkout-order-btn"
+                                type="button"
+                                class="w-full sm:w-auto px-12 py-4 rounded-full border border-[#C5A880] bg-[#C5A880] text-black font-sans-luxury text-xs font-semibold uppercase tracking-[0.25em] transition-all duration-300 hover:bg-[#d4bf9a] hover:border-[#d4bf9a] hover:shadow-[0_0_30px_rgba(197,168,128,0.4)] transform hover:-translate-y-0.5"
+                            >
+                                Commander
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ÉCRAN DE SUCCÈS -->
+                    <div id="checkout-success-screen" class="w-full text-center space-y-6 transition-all duration-300 ease-out transform opacity-0 translate-y-8 hidden py-8">
+                        <div class="flex justify-center select-none">
+                            <div class="w-20 h-20 rounded-full border border-[#C5A880]/40 flex items-center justify-center bg-[#C5A880]/10 shadow-[0_0_30px_rgba(197,168,128,0.2)]">
+                                <svg class="w-10 h-10 text-[#C5A880]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <h3 class="font-serif-luxury text-2xl sm:text-3xl font-light text-[#F5EDD8] tracking-[0.15em] uppercase">Votre commande est enregistrée</h3>
+                            <p class="font-sans-luxury text-sm font-light text-[#F5EDD8]/70 max-w-md mx-auto leading-relaxed">Nous vous remercions pour votre confiance. Votre demande de commande prestigieuse a été validée avec succès.</p>
+                            <div class="text-[11px] font-sans-luxury tracking-[0.1em] text-[#C5A880] uppercase mt-2">Référence de commande : <span id="checkout-order-ref" class="font-bold">#OD-39281</span></div>
+                        </div>
+                        <div class="pt-8">
+                            <button
+                                id="checkout-success-close-btn"
+                                type="button"
+                                class="px-10 py-3.5 rounded-full border border-[#C5A880]/40 hover:border-[#C5A880] bg-transparent text-[#F5EDD8] font-sans-luxury text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 hover:bg-[#C5A880] hover:text-black"
+                            >
+                                Fermer et Retourner à l'accueil
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Ligne de séparation fine en bas -->
+                <hr class="border-t border-[#C5A880]/30 w-full max-w-3xl my-6 mt-10">
+            </div>
+        </div>
+    </div>
+
     <!-- Native JavaScript for menu & contact interactions -->
     <script>
         // Global error catcher for remote debugging
@@ -2548,6 +3127,44 @@
             const catalogCard = document.getElementById('catalog-card');
             const catalogCloseBtn = document.getElementById('catalog-close');
             const catalogProductsGrid = document.getElementById('catalog-products-grid');
+
+            // --- CART & CHECKOUT ELEMENTS ---
+            const cartOverlay = document.getElementById('cart-overlay');
+            const cartDrawer = document.getElementById('cart-drawer');
+            const cartBtn = document.getElementById('cart-btn');
+            const cartCloseBtn = document.getElementById('cart-close');
+            const cartItemsList = document.getElementById('cart-items-list');
+            const cartSubtotal = document.getElementById('cart-subtotal');
+            const cartCheckoutBtn = document.getElementById('cart-checkout-btn');
+
+            const checkoutOverlay = document.getElementById('checkout-overlay');
+            const checkoutCard = document.getElementById('checkout-card');
+            const checkoutCloseBtn = document.getElementById('checkout-close');
+            const checkoutItemsList = document.getElementById('checkout-items-list');
+            const checkoutSubtotal = document.getElementById('checkout-subtotal');
+            const checkoutTotal = document.getElementById('checkout-total');
+            const shippingForm = document.getElementById('checkout-shipping-form');
+
+            const btnToStep2 = document.getElementById('checkout-to-step-2');
+            const btnBackToStep1 = document.getElementById('checkout-back-to-step-1');
+            const btnToStep3 = document.getElementById('checkout-to-step-3');
+            const btnBackToStep2 = document.getElementById('checkout-back-to-step-2');
+            const btnOrder = document.getElementById('checkout-order-btn');
+            const btnSuccessClose = document.getElementById('checkout-success-close-btn');
+
+            // --- STATE MANAGEMENT ---
+            let cart = [];
+            let currentCheckoutStep = 1;
+
+            // Load cart from localStorage
+            try {
+                const storedCart = localStorage.getItem('odeur_dubai_cart');
+                if (storedCart) {
+                    cart = JSON.parse(storedCart);
+                }
+            } catch (e) {
+                console.error('Failed to load cart from storage:', e);
+            }
 
             // --- CONTACT OVERLAY ELEMENTS ---
             const contactBtn = document.getElementById('contact-phone');
@@ -2799,7 +3416,7 @@
                         <!-- BOTTOM: Price & Add to Cart -->
                         <div class="w-full flex items-center justify-between border-t border-[#C5A880]/30 pt-2 px-1">
                             <span class="font-sans-luxury text-sm md:text-base font-light text-[#3C352E] select-none">${p.price}</span>
-                            <button type="button" class="group/btn flex items-center justify-center p-1 focus:outline-none" aria-label="Ajouter au panier ${p.brand} ${p.name || ''}">
+                            <button type="button" class="add-to-cart-btn group/btn flex items-center justify-center p-1 focus:outline-none" data-index="${idx}" aria-label="Ajouter au panier ${p.brand} ${p.name || ''}">
                                 <svg class="w-5 h-5 text-[#C5A880] stroke-current fill-none transition-all duration-300 hover:scale-115 transform hover:text-[#d4bf9a]" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
                                     <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -3026,6 +3643,588 @@
                 }, 500);
             };
 
+            // --- CART & CHECKOUT FUNCTIONS ---
+            const saveCart = () => {
+                try {
+                    localStorage.setItem('odeur_dubai_cart', JSON.stringify(cart));
+                } catch (e) {
+                    console.error('Failed to save cart:', e);
+                }
+            };
+
+            const animateCartBadge = () => {
+                const badge = document.getElementById('cart-badge');
+                if (badge) {
+                    badge.classList.remove('animate-wiggle');
+                    void badge.offsetWidth; // Force reflow
+                    badge.classList.add('animate-wiggle');
+                }
+            };
+
+            const showToast = (product) => {
+                let container = document.getElementById('toast-container');
+                if (!container) {
+                    container = document.createElement('div');
+                    container.id = 'toast-container';
+                    container.className = 'fixed top-24 right-4 sm:right-6 z-[60] flex flex-col gap-3 pointer-events-none w-full max-w-[320px] px-4 sm:px-0';
+                    document.body.appendChild(container);
+                }
+
+                const toast = document.createElement('div');
+                toast.className = 'bg-black/95 border border-[#C5A880]/30 rounded-2xl p-4 flex items-center gap-4 shadow-[0_10px_30px_rgba(0,0,0,0.6)] backdrop-blur-md transform translate-x-12 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-auto select-none';
+                
+                toast.innerHTML = `
+                    <div class="w-10 h-10 aspect-square relative overflow-hidden rounded-xl border border-white/20 bg-[#EAE5D8] flex-shrink-0">
+                        <img src="${product.image}" alt="${product.brand} ${product.name || ''}" class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <span class="block font-sans-luxury text-[9px] font-semibold tracking-[0.12em] text-[#C5A880] uppercase">Ajouté au panier</span>
+                        <span class="block font-serif-luxury text-xs text-[#F5EDD8] truncate mt-0.5">${product.brand}</span>
+                        <span class="block font-serif-luxury text-[13px] font-light text-white italic truncate leading-tight">${product.name || ''}</span>
+                    </div>
+                    <button type="button" class="text-white/40 hover:text-[#C5A880] transition-colors p-1" aria-label="Fermer la notification">
+                        <svg class="w-3.5 h-3.5 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                `;
+
+                const closeBtn = toast.querySelector('button');
+                const closeToast = () => {
+                    toast.classList.add('translate-x-12', 'opacity-0');
+                    setTimeout(() => {
+                        toast.remove();
+                    }, 500);
+                };
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', closeToast);
+                }
+
+                container.appendChild(toast);
+
+                setTimeout(() => {
+                    toast.classList.remove('translate-x-12', 'opacity-0');
+                }, 50);
+
+                setTimeout(() => {
+                    if (toast.parentNode) {
+                        closeToast();
+                    }
+                }, 3000);
+            };
+
+            const addToCart = (product) => {
+                const existingItem = cart.find(item => item.product.brand === product.brand && item.product.name === product.name);
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        product: product,
+                        quantity: 1
+                    });
+                }
+                saveCart();
+                updateCartUI();
+                animateCartBadge();
+                showToast(product);
+            };
+
+            const changeQuantity = (index, delta) => {
+                if (cart[index]) {
+                    cart[index].quantity += delta;
+                    if (cart[index].quantity <= 0) {
+                        cart.splice(index, 1);
+                    }
+                    saveCart();
+                    updateCartUI();
+                }
+            };
+
+            const removeFromCart = (index) => {
+                if (cart[index]) {
+                    cart.splice(index, 1);
+                    saveCart();
+                    updateCartUI();
+                }
+            };
+
+            const updateCartUI = () => {
+                const badge = document.getElementById('cart-badge');
+                const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+                
+                if (badge) {
+                    if (totalCount > 0) {
+                        badge.textContent = totalCount;
+                        badge.classList.remove('hidden');
+                        badge.classList.add('flex');
+                    } else {
+                        badge.classList.add('hidden');
+                        badge.classList.remove('flex');
+                    }
+                }
+
+                let subtotal = 0;
+
+                if (cartItemsList) {
+                    if (cart.length === 0) {
+                        cartItemsList.innerHTML = `
+                            <div class="flex flex-col items-center justify-center h-full text-center py-20 select-none">
+                                <svg class="w-12 h-12 text-[#C5A880]/30 mb-4 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                </svg>
+                                <p class="font-sans-luxury text-sm font-light text-white/50 mb-6">Votre panier est vide.</p>
+                                <button type="button" id="cart-empty-explore-btn" class="px-6 py-2.5 rounded-full border border-[#C5A880]/40 hover:border-[#C5A880] bg-transparent text-[#F5EDD8] font-sans-luxury text-[10px] font-semibold uppercase tracking-[0.15em] transition-all duration-300">
+                                    Découvrir nos créations
+                                </button>
+                            </div>
+                        `;
+                        
+                        const emptyExploreBtn = document.getElementById('cart-empty-explore-btn');
+                        if (emptyExploreBtn) {
+                            emptyExploreBtn.addEventListener('click', () => {
+                                closeCartDrawer();
+                                openCatalog();
+                            });
+                        }
+                    } else {
+                        let html = '';
+                        cart.forEach((item, idx) => {
+                            const p = item.product;
+                            const priceNum = parseFloat(p.price.replace('€', '').trim());
+                            const itemTotal = priceNum * item.quantity;
+                            subtotal += itemTotal;
+
+                            html += `
+                            <div class="flex items-start gap-4 pb-4 border-b border-[#C5A880]/10">
+                                <div class="w-16 h-16 sm:w-20 sm:h-20 aspect-square relative overflow-hidden rounded-xl border border-white/20 bg-[#EAE5D8]">
+                                    <img src="${p.image}" alt="${p.brand} ${p.name || ''}" class="absolute inset-0 w-full h-full object-cover">
+                                </div>
+                                <div class="flex-1 flex flex-col justify-between min-h-[64px] sm:min-h-[80px]">
+                                    <div>
+                                        <span class="block font-sans-luxury text-[9px] sm:text-[10px] font-semibold tracking-[0.15em] text-[#C5A880] uppercase">${p.brand}</span>
+                                        <span class="block font-serif-luxury text-xs sm:text-sm font-light text-[#F5EDD8] mt-0.5">${p.name || ''}</span>
+                                    </div>
+                                    <div class="flex items-center justify-between mt-2">
+                                        <div class="flex items-center border border-white/20 rounded-lg overflow-hidden h-7">
+                                            <button type="button" class="cart-qty-minus-btn px-2 h-full text-white/60 hover:text-white hover:bg-white/5 transition-colors text-xs" data-index="${idx}">-</button>
+                                            <span class="px-2 font-sans-luxury text-xs text-white/80 select-none">${item.quantity}</span>
+                                            <button type="button" class="cart-qty-plus-btn px-2 h-full text-white/60 hover:text-white hover:bg-white/5 transition-colors text-xs" data-index="${idx}">+</button>
+                                        </div>
+                                        <div class="flex items-center gap-3">
+                                            <span class="font-sans-luxury text-xs sm:text-sm text-[#C5A880]">${itemTotal.toFixed(2)} €</span>
+                                            <button type="button" class="cart-remove-item-btn text-white/40 hover:text-red-400 transition-colors p-1" data-index="${idx}" aria-label="Retirer l'article">
+                                                <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                                    <polyline points="3 6 5 6 21 6"></polyline>
+                                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            `;
+                        });
+                        cartItemsList.innerHTML = html;
+                    }
+                }
+
+                if (cartSubtotal) {
+                    cartSubtotal.textContent = `${subtotal.toFixed(2)} €`;
+                }
+
+                if (cartCheckoutBtn) {
+                    cartCheckoutBtn.disabled = cart.length === 0;
+                }
+            };
+
+            const openCartDrawer = () => {
+                if (cartOverlay && cartDrawer) {
+                    updateCartUI();
+                    cartOverlay.classList.remove('pointer-events-none', 'opacity-0');
+                    cartOverlay.classList.add('opacity-100');
+                    
+                    cartDrawer.classList.remove('translate-x-full');
+                    cartDrawer.classList.add('translate-x-0');
+                    
+                    document.body.classList.add('overflow-hidden');
+                }
+            };
+
+            const closeCartDrawer = () => {
+                if (cartOverlay && cartDrawer) {
+                    cartDrawer.classList.remove('translate-x-0');
+                    cartDrawer.classList.add('translate-x-full');
+                    
+                    cartOverlay.classList.remove('opacity-100');
+                    cartOverlay.classList.add('opacity-0');
+                    
+                    document.body.classList.remove('overflow-hidden');
+
+                    setTimeout(() => {
+                        cartOverlay.classList.add('pointer-events-none');
+                    }, 500);
+                }
+            };
+
+            const openCheckout = () => {
+                if (checkoutOverlay && checkoutCard) {
+                    closeCartDrawer();
+                    closeCatalog();
+                    
+                    currentCheckoutStep = 1;
+                    renderCheckoutStep();
+                    
+                    checkoutOverlay.classList.remove('pointer-events-none', 'opacity-0');
+                    checkoutOverlay.classList.add('opacity-100');
+                    
+                    checkoutCard.classList.remove('translate-y-20', 'opacity-0');
+                    checkoutCard.classList.add('translate-y-0', 'opacity-100');
+                    
+                    document.body.classList.add('overflow-hidden');
+                }
+            };
+
+            const closeCheckout = () => {
+                if (checkoutOverlay && checkoutCard) {
+                    checkoutCard.classList.remove('translate-y-0', 'opacity-100');
+                    checkoutCard.classList.add('translate-y-20', 'opacity-0');
+                    
+                    checkoutOverlay.classList.remove('opacity-100');
+                    checkoutOverlay.classList.add('opacity-0');
+                    
+                    document.body.classList.remove('overflow-hidden');
+
+                    setTimeout(() => {
+                        checkoutOverlay.classList.add('pointer-events-none');
+                    }, 500);
+                }
+            };
+
+            const updateProgressBar = (stepNumber) => {
+                const bar = document.getElementById('checkout-progress-bar');
+                const dot1 = document.getElementById('step-dot-1');
+                const dot2 = document.getElementById('step-dot-2');
+                const dot3 = document.getElementById('step-dot-3');
+                const label1 = document.getElementById('step-label-1');
+                const label2 = document.getElementById('step-label-2');
+                const label3 = document.getElementById('step-label-3');
+
+                if (!bar) return;
+
+                let width = '0%';
+                if (stepNumber === 2) width = '50%';
+                else if (stepNumber >= 3) width = '100%';
+                bar.style.width = width;
+
+                const resetDot = (dot, label) => {
+                    if (dot) {
+                        dot.classList.remove('border-[#C5A880]', 'text-[#C5A880]', 'shadow-[0_0_10px_rgba(197,168,128,0.2)]');
+                        dot.classList.add('border-white/20', 'text-white/40');
+                    }
+                    if (label) {
+                        label.classList.remove('text-[#C5A880]', 'font-semibold');
+                        label.classList.add('text-white/40', 'font-medium');
+                    }
+                };
+
+                const activateDot = (dot, label) => {
+                    if (dot) {
+                        dot.classList.add('border-[#C5A880]', 'text-[#C5A880]', 'shadow-[0_0_10px_rgba(197,168,128,0.2)]');
+                        dot.classList.remove('border-white/20', 'text-white/40');
+                    }
+                    if (label) {
+                        label.classList.add('text-[#C5A880]', 'font-semibold');
+                        label.classList.remove('text-white/40', 'font-medium');
+                    }
+                };
+
+                resetDot(dot1, label1);
+                resetDot(dot2, label2);
+                resetDot(dot3, label3);
+
+                if (stepNumber >= 1) activateDot(dot1, label1);
+                if (stepNumber >= 2) activateDot(dot2, label2);
+                if (stepNumber >= 3) activateDot(dot3, label3);
+            };
+
+            const setCheckoutStep = (stepNumber) => {
+                const step1El = document.getElementById('checkout-step-1');
+                const step2El = document.getElementById('checkout-step-2');
+                const step3El = document.getElementById('checkout-step-3');
+                const successEl = document.getElementById('checkout-success-screen');
+
+                const steps = [step1El, step2El, step3El, successEl];
+
+                steps.forEach(step => {
+                    if (step) {
+                        step.classList.add('hidden', 'opacity-0', 'translate-x-10');
+                        step.classList.remove('block', 'opacity-100', 'translate-x-0');
+                    }
+                });
+
+                let activeEl = null;
+                if (stepNumber === 1) activeEl = step1El;
+                else if (stepNumber === 2) activeEl = step2El;
+                else if (stepNumber === 3) activeEl = step3El;
+                else if (stepNumber === 4) activeEl = successEl;
+
+                if (activeEl) {
+                    activeEl.classList.remove('hidden');
+                    void activeEl.offsetWidth;
+                    activeEl.classList.remove('opacity-0', 'translate-x-10');
+                    activeEl.classList.add('block', 'opacity-100', 'translate-x-0');
+                }
+
+                currentCheckoutStep = stepNumber;
+                updateProgressBar(stepNumber);
+            };
+
+            const renderCheckoutStep = () => {
+                let subtotal = 0;
+
+                if (checkoutItemsList) {
+                    let html = '';
+                    cart.forEach(item => {
+                        const p = item.product;
+                        const priceNum = parseFloat(p.price.replace('€', '').trim());
+                        const itemTotal = priceNum * item.quantity;
+                        subtotal += itemTotal;
+
+                        html += `
+                        <div class="flex items-center gap-4 py-4">
+                            <div class="w-12 h-12 aspect-square relative overflow-hidden rounded-lg border border-white/20 bg-[#EAE5D8] flex-shrink-0">
+                                <img src="${p.image}" alt="${p.brand} ${p.name || ''}" class="absolute inset-0 w-full h-full object-cover">
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <span class="block font-sans-luxury text-[9px] font-semibold tracking-[0.1em] text-[#C5A880] uppercase truncate">${p.brand}</span>
+                                <span class="block font-serif-luxury text-xs font-light text-[#F5EDD8] mt-0.5 truncate">${p.name || ''}</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="block font-sans-luxury text-xs text-white/50">Qté: ${item.quantity}</span>
+                                <span class="block font-sans-luxury text-xs font-medium text-[#C5A880] mt-0.5">${itemTotal.toFixed(2)} €</span>
+                            </div>
+                        </div>
+                        `;
+                    });
+                    checkoutItemsList.innerHTML = html;
+                }
+
+                if (checkoutSubtotal) checkoutSubtotal.textContent = `${subtotal.toFixed(2)} €`;
+                if (checkoutTotal) checkoutTotal.textContent = `${subtotal.toFixed(2)} €`;
+
+                if (currentCheckoutStep === 3) {
+                    renderCheckoutSummary(subtotal);
+                }
+            };
+
+            const renderCheckoutSummary = (subtotal) => {
+                const summaryItems = document.getElementById('checkout-summary-items');
+                const summaryAddress = document.getElementById('checkout-summary-address');
+                const summarySubtotal = document.getElementById('checkout-summary-subtotal');
+                const summaryTotal = document.getElementById('checkout-summary-total');
+
+                if (summaryItems) {
+                    let html = '';
+                    cart.forEach(item => {
+                        const p = item.product;
+                        const priceNum = parseFloat(p.price.replace('€', '').trim());
+                        const itemTotal = priceNum * item.quantity;
+                        html += `
+                        <div class="flex items-center justify-between text-xs font-sans-luxury py-1 select-none">
+                            <span class="text-white/80">${p.brand} ${p.name || ''} <span class="text-white/40">x ${item.quantity}</span></span>
+                            <span class="text-[#C5A880]">${itemTotal.toFixed(2)} €</span>
+                        </div>
+                        `;
+                    });
+                    summaryItems.innerHTML = html;
+                }
+
+                if (summaryAddress) {
+                    const firstName = document.getElementById('shipping-firstname').value.trim();
+                    const lastName = document.getElementById('shipping-lastname').value.trim();
+                    const address = document.getElementById('shipping-address').value.trim();
+                    const zip = document.getElementById('shipping-zip').value.trim();
+                    const city = document.getElementById('shipping-city').value.trim();
+                    const country = document.getElementById('shipping-country').value.trim();
+                    const phone = document.getElementById('shipping-phone').value.trim();
+                    const email = document.getElementById('shipping-email').value.trim();
+
+                    summaryAddress.innerHTML = `
+                        <p class="font-medium text-white">${firstName} ${lastName}</p>
+                        <p class="text-white/80">${address}</p>
+                        <p class="text-white/80">${zip} ${city}, ${country}</p>
+                        <p class="text-white/50 text-xs mt-2">Tél: ${phone}</p>
+                        <p class="text-white/50 text-xs">Email: ${email}</p>
+                    `;
+                }
+
+                if (summarySubtotal) summarySubtotal.textContent = `${subtotal.toFixed(2)} €`;
+                if (summaryTotal) summaryTotal.textContent = `${subtotal.toFixed(2)} €`;
+            };
+
+            const validateCheckoutForm = () => {
+                const form = document.getElementById('checkout-shipping-form');
+                if (!form) return false;
+
+                const requiredInputs = form.querySelectorAll('input[required]');
+                let isValid = true;
+
+                requiredInputs.forEach(input => {
+                    const value = input.value.trim();
+                    const errorMsg = input.nextElementSibling;
+                    
+                    if (value === '') {
+                        isValid = false;
+                        input.classList.add('border-red-400');
+                        input.classList.remove('border-white/20', 'focus:border-[#C5A880]');
+                        if (errorMsg && errorMsg.classList.contains('error-msg')) {
+                            errorMsg.classList.remove('hidden');
+                        }
+                    } else {
+                        input.classList.remove('border-red-400');
+                        input.classList.add('border-white/20');
+                        if (errorMsg && errorMsg.classList.contains('error-msg')) {
+                            errorMsg.classList.add('hidden');
+                        }
+                    }
+
+                    if (input.id === 'shipping-email' && value !== '') {
+                        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailPattern.test(value)) {
+                            isValid = false;
+                            input.classList.add('border-red-400');
+                            if (errorMsg && errorMsg.classList.contains('error-msg')) {
+                                errorMsg.classList.remove('hidden');
+                                errorMsg.textContent = "Veuillez saisir une adresse email valide.";
+                            }
+                        }
+                    }
+                });
+
+                return isValid;
+            };
+
+            // Bind Cart Qty and Remove clicks via delegation
+            if (cartItemsList) {
+                cartItemsList.addEventListener('click', (e) => {
+                    const minusBtn = e.target.closest('.cart-qty-minus-btn');
+                    const plusBtn = e.target.closest('.cart-qty-plus-btn');
+                    const removeBtn = e.target.closest('.cart-remove-item-btn');
+                    
+                    if (minusBtn) {
+                        const idx = parseInt(minusBtn.getAttribute('data-index'), 10);
+                        changeQuantity(idx, -1);
+                    } else if (plusBtn) {
+                        const idx = parseInt(plusBtn.getAttribute('data-index'), 10);
+                        changeQuantity(idx, 1);
+                    } else if (removeBtn) {
+                        const idx = parseInt(removeBtn.getAttribute('data-index'), 10);
+                        removeFromCart(idx);
+                    }
+                });
+            }
+
+            // Bind Form Input live clearing of error states
+            if (shippingForm) {
+                shippingForm.querySelectorAll('input').forEach(input => {
+                    input.addEventListener('input', () => {
+                        input.classList.remove('border-red-400');
+                        input.classList.add('focus:border-[#C5A880]');
+                        const errorMsg = input.nextElementSibling;
+                        if (errorMsg && errorMsg.classList.contains('error-msg')) {
+                            errorMsg.classList.add('hidden');
+                        }
+                    });
+                });
+            }
+
+            // Bind Cart Drawer Open / Close
+            if (cartBtn) cartBtn.addEventListener('click', openCartDrawer);
+            if (cartCloseBtn) cartCloseBtn.addEventListener('click', closeCartDrawer);
+            if (cartOverlay) {
+                cartOverlay.addEventListener('click', (e) => {
+                    if (e.target === cartOverlay) closeCartDrawer();
+                });
+            }
+
+            // Bind Checkout Open / Close
+            if (cartCheckoutBtn) cartCheckoutBtn.addEventListener('click', openCheckout);
+            if (checkoutCloseBtn) checkoutCloseBtn.addEventListener('click', closeCheckout);
+            if (checkoutOverlay) {
+                checkoutOverlay.addEventListener('click', (e) => {
+                    if (e.target === checkoutOverlay) closeCheckout();
+                });
+            }
+
+            // Bind Checkout Steps transitions
+            if (btnToStep2) {
+                btnToStep2.addEventListener('click', () => {
+                    setCheckoutStep(2);
+                });
+            }
+            if (btnBackToStep1) {
+                btnBackToStep1.addEventListener('click', () => {
+                    setCheckoutStep(1);
+                });
+            }
+            if (btnToStep3) {
+                btnToStep3.addEventListener('click', () => {
+                    if (validateCheckoutForm()) {
+                        const subtotal = cart.reduce((sum, item) => sum + parseFloat(item.product.price.replace('€', '').trim()) * item.quantity, 0);
+                        renderCheckoutSummary(subtotal);
+                        setCheckoutStep(3);
+                    }
+                });
+            }
+            if (btnBackToStep2) {
+                btnBackToStep2.addEventListener('click', () => {
+                    setCheckoutStep(2);
+                });
+            }
+            if (btnOrder) {
+                btnOrder.addEventListener('click', () => {
+                    const refNum = Math.floor(10000 + Math.random() * 90000);
+                    const refEl = document.getElementById('checkout-order-ref');
+                    if (refEl) refEl.textContent = `#OD-${refNum}`;
+
+                    cart = [];
+                    saveCart();
+                    updateCartUI();
+
+                    setCheckoutStep(4);
+                });
+            }
+            if (btnSuccessClose) {
+                btnSuccessClose.addEventListener('click', () => {
+                    closeCheckout();
+                    setTimeout(() => {
+                        setCheckoutStep(1);
+                        if (shippingForm) shippingForm.reset();
+                    }, 500);
+                });
+            }
+
+            // Initial cart load
+            updateCartUI();
+
+            // Bind Add to Cart buttons in catalog grid using event delegation
+            if (catalogProductsGrid) {
+                catalogProductsGrid.addEventListener('click', (e) => {
+                    const btn = e.target.closest('.add-to-cart-btn');
+                    if (btn) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const idx = parseInt(btn.getAttribute('data-index'), 10);
+                        if (!isNaN(idx) && products[idx]) {
+                            addToCart(products[idx]);
+                        }
+                    }
+                });
+            }
+
             // --- EVENT LISTENERS ---
 
             // Catalog triggers
@@ -3171,6 +4370,12 @@
                     if (notesOverlay && !notesOverlay.classList.contains('pointer-events-none')) {
                         closeNotes();
                     }
+                    if (cartOverlay && !cartOverlay.classList.contains('pointer-events-none')) {
+                        closeCartDrawer();
+                    }
+                    if (checkoutOverlay && !checkoutOverlay.classList.contains('pointer-events-none')) {
+                        closeCheckout();
+                    }
                 }
             });
 
@@ -3227,6 +4432,22 @@
                         // Drag prevention: if dragged more than 6px, treat as carousel swipe/scroll
                         if (diffX > 6 || diffY > 6 || duration > 300) {
                             console.log('Odeur de Dubai: Gesture ignored as swipe/drag. Moved X:', diffX, 'Y:', diffY);
+                            return;
+                        }
+
+                        // Check if click was on the Cart Button inside the card
+                        const cartBtnClick = e.target.closest('.sig-card-cart-btn');
+                        if (cartBtnClick) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            const imgEl = card.querySelector('img');
+                            if (imgEl) {
+                                const imgSrc = imgEl.getAttribute('src');
+                                const product = products.find(p => p.image === imgSrc);
+                                if (product) {
+                                    addToCart(product);
+                                }
+                            }
                             return;
                         }
 
