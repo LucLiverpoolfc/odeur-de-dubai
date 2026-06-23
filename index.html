@@ -2438,6 +2438,97 @@
         </div>
     </div>
 
+    <!-- ═══════════════════════════════════════════════════════
+         OVERLAY CATALOGUE — Grille de Produits & Collection Complète
+         ═══════════════════════════════════════════════════════ -->
+    <div
+        id="catalog-overlay"
+        class="fixed inset-0 z-50 bg-[#F4F0E6] opacity-0 pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden flex items-center justify-center"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Catalogue de produits Odeur de Dubaï"
+    >
+        <!-- Full Page Container -->
+        <div
+            id="catalog-card"
+            class="w-full h-full relative flex flex-col transform translate-y-20 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden"
+        >
+            <!-- Close Button (Fine Gold X in the top-right corner) -->
+            <button
+                id="catalog-close"
+                type="button"
+                class="absolute top-6 right-6 md:top-8 md:right-8 z-30 group flex items-center justify-center w-10 h-10 rounded-full border border-[#C5A880]/30 hover:border-[#C5A880]/90 bg-[#F4F0E6]/60 hover:bg-[#F4F0E6]/90 transition-all duration-300 focus:outline-none"
+                aria-label="Fermer le catalogue"
+            >
+                <svg class="w-5 h-5 stroke-[#C5A880] fill-none group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+
+            <!-- Scrollable Content Area -->
+            <div class="w-full h-full overflow-y-auto px-4 py-12 md:px-16 md:py-16 scrollbar-thin">
+                
+                <!-- Top Section: Logo & Emblème -->
+                <div class="flex flex-col items-center gap-4 text-center select-none">
+                    <!-- Emblème SVG (Proportions strictes 3:2 respectées) -->
+                    <svg
+                        class="w-36 h-24 md:w-48 md:h-32 transition-transform duration-500 hover:scale-105"
+                        viewBox="0 0 120 80"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                    >
+                        <defs>
+                            <linearGradient id="emblemGoldCatalog" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#d4a44a" />
+                                <stop offset="50%" stop-color="#c5a055" />
+                                <stop offset="100%" stop-color="#a88a3a" />
+                            </linearGradient>
+                            <linearGradient id="emblemGoldLightCatalog" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#e5c77a" />
+                                <stop offset="100%" stop-color="#c5a055" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M60 4 C60 4, 42 20, 42 42 C42 54, 50 62, 60 62 C70 62, 78 54, 78 42 C78 20, 60 4, 60 4Z" stroke="url(#emblemGoldCatalog)" stroke-width="1.4" stroke-linejoin="round" fill="none" />
+                        <path d="M38 18 C38 18, 20 32, 20 48 C20 58, 28 66, 38 66 C48 66, 54 60, 54 52 C54 44, 48 36, 42 30" stroke="url(#emblemGoldCatalog)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                        <path d="M38 66 C30 66, 22 60, 22 50" stroke="url(#emblemGoldCatalog)" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.7" />
+                        <path d="M82 18 C82 18, 100 32, 100 48 C100 58, 92 66, 82 66 C72 66, 66 60, 66 52 C66 44, 72 36, 78 30" stroke="url(#emblemGoldCatalog)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                        <path d="M82 66 C90 66, 98 60, 98 50" stroke="url(#emblemGoldCatalog)" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.7" />
+                        <path d="M60 16 C60 16, 50 30, 50 42 C50 48, 54 52, 60 52 C66 52, 70 48, 70 42 C70 30, 60 16, 60 16Z" stroke="url(#emblemGoldLightCatalog)" stroke-width="0.8" fill="none" opacity="0.5" />
+                        <circle cx="60" cy="44" r="1.2" fill="url(#emblemGoldLightCatalog)" />
+                        <line x1="30" y1="68" x2="90" y2="68" stroke="url(#emblemGoldCatalog)" stroke-width="0.6" opacity="0.3" />
+                    </svg>
+                    <span class="logo-gold-gradient font-serif-luxury text-2xl md:text-3xl font-semibold tracking-[0.26em] uppercase leading-none select-none mt-2">
+                        Odeur de Dubaï
+                    </span>
+                </div>
+
+                <!-- Ligne Blanche sur toute la largeur (avec marges négatives pour annuler le padding) -->
+                <hr class="border-t-4 border-white my-8 md:my-12 -mx-4 md:-mx-16 w-[calc(100%+2rem)] md:w-[calc(100%+8rem)]">
+
+                <!-- Title Section -->
+                <div class="w-full max-w-6xl mx-auto select-none">
+                    <h2 class="font-serif-luxury font-light text-3xl md:text-4xl text-[#9E6B4A] tracking-[0.05em] leading-snug text-left px-2">
+                        Explorez notre Sélection
+                    </h2>
+                </div>
+
+                <!-- Grille de Produits (Layout Responsive) -->
+                <div
+                    id="catalog-products-grid"
+                    class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto mt-12 pb-12"
+                >
+                    <!-- Inséré dynamiquement par JS -->
+                </div>
+
+                <!-- Ligne Blanche sur toute la largeur en bas de page -->
+                <hr class="border-t-4 border-white my-8 md:my-12 -mx-4 md:-mx-16 w-[calc(100%+2rem)] md:w-[calc(100%+8rem)]">
+                
+            </div>
+        </div>
+    </div>
+
     <!-- Native JavaScript for menu & contact interactions -->
     <script>
         // Global error catcher for remote debugging
@@ -2452,6 +2543,12 @@
         document.addEventListener('DOMContentLoaded', () => {
             console.log('Odeur de Dubai: DOMContentLoaded fired.');
             console.log('Odeur de Dubai: EmblaCarousel global type is:', typeof EmblaCarousel);
+            // --- CATALOG OVERLAY ELEMENTS ---
+            const catalogOverlay = document.getElementById('catalog-overlay');
+            const catalogCard = document.getElementById('catalog-card');
+            const catalogCloseBtn = document.getElementById('catalog-close');
+            const catalogProductsGrid = document.getElementById('catalog-products-grid');
+
             // --- CONTACT OVERLAY ELEMENTS ---
             const contactBtn = document.getElementById('contact-phone');
             const contactOverlay = document.getElementById('contact-overlay');
@@ -2532,6 +2629,216 @@
                 setTimeout(() => {
                     contactOverlay.classList.add('pointer-events-none');
                 }, 500);
+            };
+
+            // --- CATALOG PRODUCTS DATASET & FUNCTIONS ---
+            const products = [
+                {
+                    brand: "KENZI",
+                    name: "Silk Serenity",
+                    image: "assets/images/parfums/15-silk-serenity.jpg",
+                    price: "30 €"
+                },
+                {
+                    brand: "BAKARA",
+                    name: "Rouge",
+                    image: "assets/images/parfums/13-b-rouge.jpg",
+                    price: "30 €"
+                },
+                {
+                    brand: "CONFIDENTIAL",
+                    name: "Private Gold",
+                    image: "assets/images/parfums/06-confidential-private-gold.jpg",
+                    price: "30 €"
+                },
+                {
+                    brand: "BAKARA",
+                    name: "Satin Oud",
+                    image: "assets/images/parfums/07-barakkat-satin-oud.jpg",
+                    price: "30 €"
+                },
+                {
+                    brand: "KENZI",
+                    name: "Oud Blend",
+                    image: "assets/images/parfums/09-ombre-naomi.jpg",
+                    price: "30 €"
+                },
+                {
+                    brand: "KENZI",
+                    name: "Watermelon Orange",
+                    image: "assets/images/parfums/01-watermelon-on-ice.jpg",
+                    price: "30 €"
+                },
+                {
+                    brand: "LOUI MARTIN",
+                    name: "Ombre Naomi",
+                    image: "assets/images/parfums/09-ombre-naomi.jpg",
+                    price: "30 €"
+                },
+                {
+                    brand: "VANILLE LATTE",
+                    name: "By Gulf Orchid",
+                    image: "assets/images/parfums/05-vanilla-latte.jpg",
+                    price: "30 €"
+                },
+                {
+                    brand: "ESTA FUERA",
+                    name: "",
+                    image: "assets/images/parfums/04-esta-fuera.jpg",
+                    price: "30 €"
+                },
+                {
+                    brand: "BARAKKAT",
+                    name: "Satin Oud",
+                    image: "assets/images/parfums/07-barakkat-satin-oud.jpg",
+                    price: "30 €"
+                },
+                {
+                    brand: "LOS IL MARTIN",
+                    name: "Vanilla Powdery",
+                    image: "assets/images/parfums/08-vanilla-powdery.jpg",
+                    price: "30 €"
+                },
+                {
+                    brand: "HIBISCUS",
+                    name: "Majeste",
+                    image: "assets/images/parfums/12-hibiscus-majeste.jpg",
+                    price: "30 €"
+                },
+                {
+                    brand: "LÉONIE",
+                    name: "",
+                    image: "assets/images/parfums/10-leonie.jpg",
+                    price: "30 €"
+                },
+                {
+                    brand: "IMPERIAL",
+                    name: "54",
+                    image: "assets/images/parfums/11-dak-imperia.jpg",
+                    price: "30 €"
+                },
+                {
+                    brand: "KENZI",
+                    name: "Lemon Spark",
+                    image: "assets/images/parfums/03-lemon-spark.jpg",
+                    price: "30 €"
+                },
+                {
+                    brand: "KENZI",
+                    name: "Classic Pistachio",
+                    image: "assets/images/parfums/20-classic-pistachio.jpg",
+                    price: "30 €"
+                },
+                {
+                    brand: "KENZI",
+                    name: "Vanilla 70",
+                    image: "assets/images/parfums/21-vanilla-70.jpg",
+                    price: "30 €"
+                },
+                {
+                    brand: "KENZI",
+                    name: "Summer Bottled",
+                    image: "assets/images/parfums/14-summer-bottled.jpg",
+                    price: "30 €"
+                },
+                {
+                    brand: "KENZI",
+                    name: "Irish Vanilla",
+                    image: "assets/images/parfums/02-irish-vanilla.jpg",
+                    price: "30 €"
+                },
+                {
+                    brand: "KENZI",
+                    name: "Exotic Apple Crush",
+                    image: "assets/images/parfums/19-exotic-apple-crush.jpg",
+                    price: "30 €"
+                },
+                {
+                    brand: "KENZI",
+                    name: "Candid Vanilla",
+                    image: "assets/images/parfums/17-candid-vanilla.jpg",
+                    price: "30 €"
+                },
+                {
+                    brand: "KENZI",
+                    name: "Mystique Fieber",
+                    image: "assets/images/parfums/18-mystique-fieber.jpg",
+                    price: "30 €"
+                },
+                {
+                    brand: "KENZI",
+                    name: "Amber Lychee",
+                    image: "assets/images/parfums/16-amber-lychee.jpg",
+                    price: "30 €"
+                }
+            ];
+
+            // Render catalog products
+            if (catalogProductsGrid) {
+                let gridHtml = '';
+                products.forEach((p, idx) => {
+                    // Place a hidden placeholder on desktop and block on mobile to push Amber Lychee to Column 2 on mobile
+                    if (idx === 22) {
+                        gridHtml += `<div class="block md:hidden" aria-hidden="true"></div>`;
+                    }
+                    
+                    const brandHtml = p.brand ? `<span class="block font-sans-luxury text-[10px] md:text-xs font-semibold tracking-[0.2em] text-[#C5A880] uppercase">${p.brand}</span>` : '';
+                    const nameHtml = p.name ? `<span class="block font-serif-luxury text-sm md:text-base font-light text-[#3C352E] mt-0.5">${p.name}</span>` : '';
+                    
+                    gridHtml += `
+                    <div class="flex flex-col items-center group">
+                        <!-- TOP: Brand & Creation -->
+                        <div class="text-center mb-3 h-10 flex flex-col justify-center select-none">
+                            ${brandHtml}
+                            ${nameHtml}
+                        </div>
+                        <!-- MIDDLE: Image -->
+                        <div class="w-full aspect-[3/4] relative overflow-hidden rounded-2xl shadow-md border border-white/40 mb-3 bg-[#EAE5D8]">
+                            <img src="${p.image}" alt="${p.brand} ${p.name || ''}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                        </div>
+                        <!-- BOTTOM: Price & Add to Cart -->
+                        <div class="w-full flex items-center justify-between border-t border-[#C5A880]/30 pt-2 px-1">
+                            <span class="font-sans-luxury text-sm md:text-base font-light text-[#3C352E] select-none">${p.price}</span>
+                            <button type="button" class="group/btn flex items-center justify-center p-1 focus:outline-none" aria-label="Ajouter au panier ${p.brand} ${p.name || ''}">
+                                <svg class="w-5 h-5 text-[#C5A880] stroke-current fill-none transition-all duration-300 hover:scale-115 transform hover:text-[#d4bf9a]" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    `;
+                });
+                catalogProductsGrid.innerHTML = gridHtml;
+            }
+
+            const openCatalog = () => {
+                if (catalogOverlay && catalogCard) {
+                    catalogOverlay.classList.remove('pointer-events-none', 'opacity-0');
+                    catalogOverlay.classList.add('opacity-100');
+                    
+                    catalogCard.classList.remove('translate-y-20', 'opacity-0');
+                    catalogCard.classList.add('translate-y-0', 'opacity-100');
+                    
+                    document.body.classList.add('overflow-hidden');
+                }
+            };
+
+            const closeCatalog = () => {
+                if (catalogOverlay && catalogCard) {
+                    catalogCard.classList.remove('translate-y-0', 'opacity-100');
+                    catalogCard.classList.add('translate-y-20', 'opacity-0');
+                    
+                    catalogOverlay.classList.remove('opacity-100');
+                    catalogOverlay.classList.add('opacity-0');
+                    
+                    document.body.classList.remove('overflow-hidden');
+
+                    setTimeout(() => {
+                        catalogOverlay.classList.add('pointer-events-none');
+                    }, 500);
+                }
             };
 
             // --- NOTES OVERLAY MAP & FUNCTIONS ---
@@ -2721,6 +3028,36 @@
 
             // --- EVENT LISTENERS ---
 
+            // Catalog triggers
+            if (catalogOverlay && catalogCloseBtn) {
+                catalogCloseBtn.addEventListener('click', closeCatalog);
+                catalogOverlay.addEventListener('click', (e) => {
+                    if (e.target === catalogOverlay) closeCatalog();
+                });
+            }
+
+            // Bind all Explorer CTAs
+            const explorerButtons = Array.from(document.querySelectorAll('.cta-explorer-sig'));
+            document.querySelectorAll('button, a').forEach(el => {
+                if (el.textContent && el.textContent.trim() === 'Explorer') {
+                    if (!explorerButtons.includes(el)) {
+                        explorerButtons.push(el);
+                    }
+                }
+            });
+            explorerButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    closeMenu();
+                    closeAbout();
+                    closeAuthenticity();
+                    closeQuality();
+                    closeNotes();
+                    openCatalog();
+                });
+            });
+
             // Contact triggers
             if (contactBtn && contactOverlay && contactCard && contactCloseBtn) {
                 contactBtn.addEventListener('click', openContact);
@@ -2792,18 +3129,30 @@
                 });
             }
 
-            // Tab 2 & Tab 3 clicks: closes the menu overlay
-            [menuTabCollections, menuTabHistoire].forEach(tab => {
-                if (tab) {
-                    tab.addEventListener('click', () => {
-                        closeMenu();
-                    });
-                }
-            });
+            // Tab 2 (Nos collections) clicks: transitions directly to Catalog Panel
+            if (menuTabCollections) {
+                menuTabCollections.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    closeMenu();
+                    setTimeout(() => {
+                        openCatalog();
+                    }, 350);
+                });
+            }
+
+            // Tab 3 (Notre histoire) clicks: closes the menu overlay
+            if (menuTabHistoire) {
+                menuTabHistoire.addEventListener('click', () => {
+                    closeMenu();
+                });
+            }
 
             // Global Escape key support to close open overlays
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
+                    if (catalogOverlay && !catalogOverlay.classList.contains('pointer-events-none')) {
+                        closeCatalog();
+                    }
                     if (menuOverlay && !menuOverlay.classList.contains('pointer-events-none')) {
                         closeMenu();
                     }
