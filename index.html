@@ -553,6 +553,12 @@
             box-shadow: 0 0 25px rgba(245, 237, 216, 0.15),
                         inset 0 0 15px rgba(245, 237, 216, 0.05);
         }
+        #btn-explorer-breathing:hover {
+            border-color: #9E6B4A;
+            background-color: #9E6B4A;
+            box-shadow: 0 0 25px rgba(158, 107, 74, 0.25),
+                        inset 0 0 15px rgba(158, 107, 74, 0.1);
+        }
 
         /* Fade-in reveal animation */
         .sig-reveal {
@@ -1656,23 +1662,93 @@
          ESPACE DE RESPIRATION — Bloc minimaliste vide de luxe
          Format carré pour équilibrer la masse visuelle
          ═══════════════════════════════════════════════════════ -->
+    <!-- ═══════════════════════════════════════════════════════
+         NOS ÉCRINS D'EXCEPTION — Galerie Bento Asymétrique
+         ═══════════════════════════════════════════════════════ -->
     <section
         id="breathing-space"
-        class="w-full bg-black border-t border-b-2 border-[#FFFFFF] relative z-10 h-[70vw] md:h-[40vw] min-h-[260px] md:min-h-0 flex flex-col justify-between items-center pt-12 pb-12 md:pt-24 md:pb-24"
-        aria-label="Espace de respiration visuelle"
+        class="w-full bg-[#F4F0E6] border-t border-b border-[#FFFFFF] relative z-10 py-16 md:py-24 flex flex-col items-center"
+        aria-label="Nos écrins d'exception"
     >
         <!-- ── TOP : Titre centré ── -->
-        <div class="sig-reveal text-center px-6">
-            <h2 class="font-serif-luxury text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-wide text-[#F5EDD8]">
+        <div class="sig-reveal text-center px-6 mb-12 md:mb-16">
+            <h2 class="font-serif-luxury text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-wide text-[#9E6B4A]">
                 Nos écrins <em class="italic">d'exception</em>
             </h2>
         </div>
 
+        <!-- ── MIDDLE : Grille Horizontale Superposée Symétrique (3x3) ── -->
+        <div class="w-full max-w-7xl mx-auto px-4 md:px-8 mb-12">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+                
+                <!-- Pack 1 : Marshmallow Dream -->
+                <div class="ecrin-card opacity-0 translate-y-8 group flex flex-col items-center bg-transparent rounded-2xl border border-[#9E6B4A]/15 p-2 cursor-pointer transition-all duration-500 ease-out hover:-translate-y-2 hover:brightness-105">
+                    <div class="w-full aspect-[4/5] rounded-xl overflow-hidden bg-[#EAE5D8] flex items-center justify-center">
+                        <img src="assets/images/parfums/IMG_0550.JPG" alt="Marshmallow Dream" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-sans-luxury text-[#3C352E] tracking-widest text-xs mt-4 uppercase font-light text-center">
+                        Marshmallow Dream
+                    </h3>
+                </div>
+
+                <!-- Pack 2 : Exotic Apple Crush -->
+                <div class="ecrin-card opacity-0 translate-y-8 group flex flex-col items-center bg-transparent rounded-2xl border border-[#9E6B4A]/15 p-2 cursor-pointer transition-all duration-500 ease-out hover:-translate-y-2 hover:brightness-105">
+                    <div class="w-full aspect-[4/5] rounded-xl overflow-hidden bg-[#EAE5D8] flex items-center justify-center">
+                        <img src="assets/images/parfums/IMG_0552.jpg" alt="Exotic Apple Crush" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-sans-luxury text-[#3C352E] tracking-widest text-xs mt-4 uppercase font-light text-center">
+                        Exotic Apple Crush
+                    </h3>
+                </div>
+
+                <!-- Pack 3 : Vanilla 70 -->
+                <div class="ecrin-card opacity-0 translate-y-8 group flex flex-col items-center bg-transparent rounded-2xl border border-[#9E6B4A]/15 p-2 cursor-pointer transition-all duration-500 ease-out hover:-translate-y-2 hover:brightness-105">
+                    <div class="w-full aspect-[4/5] rounded-xl overflow-hidden bg-[#EAE5D8] flex items-center justify-center">
+                        <img src="assets/images/parfums/IMG_0554.JPG" alt="Vanilla 70" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-sans-luxury text-[#3C352E] tracking-widest text-xs mt-4 uppercase font-light text-center">
+                        Vanilla 70
+                    </h3>
+                </div>
+
+                <!-- Pack 4 : Classic Pistachio -->
+                <div class="ecrin-card opacity-0 translate-y-8 group flex flex-col items-center bg-transparent rounded-2xl border border-[#9E6B4A]/15 p-2 cursor-pointer transition-all duration-500 ease-out hover:-translate-y-2 hover:brightness-105">
+                    <div class="w-full aspect-[4/5] rounded-xl overflow-hidden bg-[#EAE5D8] flex items-center justify-center">
+                        <img src="assets/images/parfums/IMG_0556.jpg" alt="Classic Pistachio" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-sans-luxury text-[#3C352E] tracking-widest text-xs mt-4 uppercase font-light text-center">
+                        Classic Pistachio
+                    </h3>
+                </div>
+
+                <!-- Pack 5 : Candid Vanilla -->
+                <div class="ecrin-card opacity-0 translate-y-8 group flex flex-col items-center bg-transparent rounded-2xl border border-[#9E6B4A]/15 p-2 cursor-pointer transition-all duration-500 ease-out hover:-translate-y-2 hover:brightness-105">
+                    <div class="w-full aspect-[4/5] rounded-xl overflow-hidden bg-[#EAE5D8] flex items-center justify-center">
+                        <img src="assets/images/parfums/IMG_0558.jpg" alt="Candid Vanilla" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-sans-luxury text-[#3C352E] tracking-widest text-xs mt-4 uppercase font-light text-center">
+                        Candid Vanilla
+                    </h3>
+                </div>
+
+                <!-- Pack 6 : Amber Lychee -->
+                <div class="ecrin-card opacity-0 translate-y-8 group flex flex-col items-center bg-transparent rounded-2xl border border-[#9E6B4A]/15 p-2 cursor-pointer transition-all duration-500 ease-out hover:-translate-y-2 hover:brightness-105">
+                    <div class="w-full aspect-[4/5] rounded-xl overflow-hidden bg-[#EAE5D8] flex items-center justify-center">
+                        <img src="assets/images/parfums/IMG_0560.jpg" alt="Amber Lychee" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-sans-luxury text-[#3C352E] tracking-widest text-xs mt-4 uppercase font-light text-center">
+                        Amber Lychee
+                    </h3>
+                </div>
+
+            </div>
+        </div>
+
         <!-- ── BOTTOM : Call To Action "Explorer" ── -->
-        <div class="text-center px-6">
+        <div class="text-center px-6 mt-6 md:mt-8">
             <a href="#"
                id="btn-explorer-breathing"
-               class="cta-explorer-sig inline-flex items-center justify-center gap-4 px-12 py-4 md:px-14 md:py-5 rounded-full border border-[#F5EDD8] text-[#FFFFFF] font-sans-luxury text-sm md:text-base font-light uppercase tracking-[0.24em] cursor-pointer hover:text-white transition-colors duration-300">
+               class="cta-explorer-sig inline-flex items-center justify-center gap-4 px-12 py-4 md:px-14 md:py-5 rounded-full border border-[#9E6B4A] text-[#9E6B4A] font-sans-luxury text-sm md:text-base font-light uppercase tracking-[0.24em] cursor-pointer hover:text-white transition-all duration-300">
                 <span>Explorer</span>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:translate-x-1">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -4492,6 +4568,33 @@
                     rootMargin: '0px 0px -60px 0px'
                 });
                 sigRevealEls.forEach(el => sigObserver.observe(el));
+            }
+
+            // ═══ NOS ÉCRINS D'EXCEPTION — Cascade Scroll Reveal Observer ═══
+            const ecrinCards = document.querySelectorAll('.ecrin-card');
+            if (ecrinCards.length > 0) {
+                const ecrinObserverOptions = {
+                    threshold: 0.05,
+                    rootMargin: '0px 0px -80px 0px'
+                };
+
+                const ecrinObserver = new IntersectionObserver((entries, obs) => {
+                    // Filter and sort currently intersecting cards to apply staggering
+                    const intersecting = entries.filter(entry => entry.isIntersecting);
+                    
+                    intersecting.forEach((entry, idx) => {
+                        const card = entry.target;
+                        // Apply staggered transition delay (100ms cascade)
+                        card.style.transitionDelay = `${idx * 100}ms`;
+                        card.classList.remove('opacity-0', 'translate-y-8');
+                        card.classList.add('opacity-100', 'translate-y-0');
+                        obs.unobserve(card);
+                    });
+                }, ecrinObserverOptions);
+
+                ecrinCards.forEach(card => {
+                    ecrinObserver.observe(card);
+                });
             }
 
             // Contact Form handler
