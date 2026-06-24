@@ -3176,7 +3176,7 @@
                             <button
                                 id="checkout-success-close-btn"
                                 type="button"
-                                class="px-10 py-3.5 rounded-full border border-[#C5A880]/40 hover:border-[#C5A880] bg-transparent text-[#F5EDD8] font-sans-luxury text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 hover:bg-[#C5A880] hover:text-black"
+                                class="px-10 py-3.5 rounded-full border border-[#C5A880]/40 hover:border-[#C5A880] bg-transparent text-[#F5EDD8] font-sans-luxury text-xs font-semibold uppercase tracking-[0.24em] transition-all duration-300 hover:bg-[#C5A880] hover:text-black"
                             >
                                 Fermer et Retourner à l'accueil
                             </button>
@@ -3187,6 +3187,253 @@
 
                 <!-- Ligne de séparation fine en bas -->
                 <hr class="border-t border-[#C5A880]/30 w-full max-w-3xl my-6 mt-10">
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         OVERLAY NOTRE HISTOIRE — Frise Chronologique de Luxe
+         ═══════════════════════════════════════════════════════ -->
+    <div
+        id="history-overlay"
+        class="fixed inset-0 z-50 bg-[#F4F0E6] opacity-0 pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden flex items-center justify-center"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Notre histoire - Odeur de Dubaï"
+    >
+        <!-- Full Page Container -->
+        <div
+            id="history-card"
+            class="w-full h-full relative flex flex-col transform translate-y-20 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden"
+        >
+            <!-- Close Button (Fine Gold X in the top-right corner) -->
+            <button
+                id="history-close"
+                type="button"
+                class="absolute top-6 right-6 md:top-8 md:right-8 z-30 group flex items-center justify-center w-10 h-10 rounded-full border border-[#C5A880]/30 hover:border-[#C5A880]/90 bg-[#F4F0E6]/60 hover:bg-[#F4F0E6]/90 transition-all duration-300 focus:outline-none"
+                aria-label="Fermer notre histoire"
+            >
+                <svg class="w-5 h-5 stroke-[#C5A880] fill-none group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+
+            <!-- Scrollable Content Area -->
+            <div id="history-scroll-container" class="w-full h-full overflow-y-auto px-4 pt-6 pb-16 md:px-16 md:pt-10 md:pb-24 scrollbar-thin">
+                
+                <!-- Top Section: Logo & Emblème -->
+                <div class="flex flex-col items-center gap-4 text-center select-none mb-12">
+                    <!-- Emblème SVG (Proportions strictes 3:2 respectées) -->
+                    <svg
+                        class="w-36 h-24 md:w-48 md:h-32 transition-transform duration-500 hover:scale-105"
+                        viewBox="0 0 120 80"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                    >
+                        <defs>
+                            <linearGradient id="emblemGoldHistory" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#d4a44a" />
+                                <stop offset="50%" stop-color="#c5a055" />
+                                <stop offset="100%" stop-color="#a88a3a" />
+                            </linearGradient>
+                            <linearGradient id="emblemGoldLightHistory" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#e5c77a" />
+                                <stop offset="100%" stop-color="#c5a055" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M60 4 C60 4, 42 20, 42 42 C42 54, 50 62, 60 62 C70 62, 78 54, 78 42 C78 20, 60 4, 60 4Z" stroke="url(#emblemGoldHistory)" stroke-width="1.4" stroke-linejoin="round" fill="none" />
+                        <path d="M38 18 C38 18, 20 32, 20 48 C20 58, 28 66, 38 66 C48 66, 54 60, 54 52 C54 44, 48 36, 42 30" stroke="url(#emblemGoldHistory)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                        <path d="M38 66 C30 66, 22 60, 22 50" stroke="url(#emblemGoldHistory)" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.7" />
+                        <path d="M82 18 C82 18, 100 32, 100 48 C100 58, 92 66, 82 66 C72 66, 66 60, 66 52 C66 44, 72 36, 78 30" stroke="url(#emblemGoldHistory)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                        <path d="M82 66 C90 66, 98 60, 98 50" stroke="url(#emblemGoldHistory)" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.7" />
+                        <path d="M60 16 C60 16, 50 30, 50 42 C50 48, 54 52, 60 52 C66 52, 70 48, 70 42 C70 30, 60 16, 60 16Z" stroke="url(#emblemGoldLightHistory)" stroke-width="0.8" fill="none" opacity="0.5" />
+                        <circle cx="60" cy="44" r="1.2" fill="url(#emblemGoldLightHistory)" />
+                        <line x1="30" y1="68" x2="90" y2="68" stroke="url(#emblemGoldHistory)" stroke-width="0.6" opacity="0.3" />
+                    </svg>
+                    <span class="logo-gold-gradient font-serif-luxury text-xs sm:text-sm font-semibold tracking-[0.24em] uppercase leading-none mt-1">
+                        Odeur de Dubaï
+                    </span>
+                    
+                    <h1 class="font-serif-luxury text-3xl sm:text-4xl md:text-5xl text-[#3C352E] tracking-[0.03em] leading-tight max-w-3xl mx-auto mt-4 px-2">
+                        L'Histoire d'Odeur de Dubaï <span class="italic font-light block mt-6 md:mt-8 text-[#C5A880]">Du Rêve à la Réalité</span>
+                    </h1>
+                </div>
+
+                <!-- Timeline Container -->
+                <div id="timeline-container" class="relative max-w-screen-2xl mx-auto px-6 sm:px-12 md:px-24 lg:px-32 py-8 md:py-12">
+                    <!-- The Sinuous Animated SVG connector line -->
+                    <svg id="timeline-svg" class="absolute inset-0 w-full h-full pointer-events-none z-0" xmlns="http://www.w3.org/2000/svg">
+                        <path id="timeline-guide-path" fill="none" stroke="#C5A880" stroke-width="1.5" stroke-opacity="0.15" stroke-linecap="round" stroke-linejoin="round" />
+                        <path id="timeline-scroll-path" fill="none" stroke="#C5A880" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+
+                    <!-- Timeline Steps -->
+                    <div class="space-y-12 md:space-y-16">
+                        
+                        <!-- Bulle 1: Introduction (Left) -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-x-32 lg:gap-x-48 items-center w-full relative">
+                            <div class="timeline-dot absolute left-6 md:left-1/2 w-4 h-4 rounded-full bg-[#C5A880] border-4 border-[#F4F0E6] -translate-x-1/2 z-10 transition-transform duration-300 hover:scale-125"></div>
+                            
+                            <div class="pl-12 md:pl-0">
+                                <h3 class="font-serif-luxury text-2xl sm:text-3xl lg:text-4xl text-[#C5A880] tracking-[0.02em] mb-4 text-left md:text-right">
+                                    Bienvenue chez Odeur de Dubaï
+                                </h3>
+                                <div class="bg-white/70 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-[#C5A880]/15 shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-4 sm:gap-6">
+                                    <!-- Icon: Perfume bottle -->
+                                    <div class="flex-shrink-0">
+                                        <svg class="w-10 h-10 md:w-16 md:h-16 stroke-[#C5A880] fill-none" viewBox="0 0 24 24" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <path d="M6 10h12v10a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V10z" />
+                                            <path d="M10 6h4v4h-4z" />
+                                            <path d="M12 3v3" />
+                                            <path d="M9 3h6" />
+                                        </svg>
+                                    </div>
+                                    <!-- Vertical Separator Line -->
+                                    <div class="w-[1px] self-stretch bg-[#C5A880]/20 my-1"></div>
+                                    <div class="flex-1">
+                                        <p class="font-sans-luxury text-lg sm:text-xl md:text-2xl font-light text-[#5C554E] leading-relaxed italic">
+                                            Notre histoire est celle d'une passion : celle de vous faire voyager à travers les parfums les plus magiques d'Orient, sans vous ruiner.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hidden md:block"></div>
+                        </div>
+
+                        <!-- Bulle 2: Le Constat (Right) -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-x-32 lg:gap-x-48 items-center w-full relative">
+                            <div class="timeline-dot absolute left-6 md:left-1/2 w-4 h-4 rounded-full bg-[#C5A880] border-4 border-[#F4F0E6] -translate-x-1/2 z-10 transition-transform duration-300 hover:scale-125"></div>
+                            
+                            <div class="hidden md:block"></div>
+                            <div class="pl-12 md:pl-0">
+                                <h3 class="font-serif-luxury text-2xl sm:text-3xl lg:text-4xl text-[#C5A880] tracking-[0.02em] mb-4 text-left">
+                                    Le Constat : Le luxe doit être honnête
+                                </h3>
+                                <div class="bg-white/70 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-[#C5A880]/15 shadow-sm hover:shadow-md transition-all duration-300 flex flex-row-reverse items-center gap-4 sm:gap-6">
+                                    <!-- Icon: Honesty Scales -->
+                                    <div class="flex-shrink-0">
+                                        <svg class="w-10 h-10 md:w-16 md:h-16 stroke-[#C5A880] fill-none" viewBox="0 0 24 24" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <path d="M12 3v17M12 20h4M8 20h4M5 7h14" />
+                                            <path d="M5 7v4a3 3 0 0 0 6 0V7M13 7v4a3 3 0 0 0 6 0V7" />
+                                        </svg>
+                                    </div>
+                                    <!-- Vertical Separator Line -->
+                                    <div class="w-[1px] self-stretch bg-[#C5A880]/20 my-1"></div>
+                                    <div class="flex-1 text-left">
+                                        <p class="font-sans-luxury text-base sm:text-lg md:text-xl font-light text-[#5C554E] leading-relaxed">
+                                            Nous sommes amoureux des odeurs uniques de Dubaï, mais trouver des parfums authentiques à un prix juste est souvent un parcours du combattant. Entre les prix gonflés à l'importation et les doutes sur la qualité, le constat était décevant. Pour nous, c'était clair : notre éthique passe avant tout. Le vrai luxe ne doit jamais mentir, ni être inaccessible.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bulle 3: La Quête (Left) -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-x-32 lg:gap-x-48 items-center w-full relative">
+                            <div class="timeline-dot absolute left-6 md:left-1/2 w-4 h-4 rounded-full bg-[#C5A880] border-4 border-[#F4F0E6] -translate-x-1/2 z-10 transition-transform duration-300 hover:scale-125"></div>
+                            
+                            <div class="pl-12 md:pl-0">
+                                <h3 class="font-serif-luxury text-2xl sm:text-3xl lg:text-4xl text-[#C5A880] tracking-[0.02em] mb-4 text-left md:text-right">
+                                    La Quête : En contact direct avec la source
+                                </h3>
+                                <div class="bg-white/70 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-[#C5A880]/15 shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-4 sm:gap-6">
+                                    <!-- Icon: Map pin connection -->
+                                    <div class="flex-shrink-0">
+                                        <svg class="w-10 h-10 md:w-16 md:h-16 stroke-[#C5A880] fill-none" viewBox="0 0 24 24" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z" />
+                                            <circle cx="12" cy="10" r="3" />
+                                        </svg>
+                                    </div>
+                                    <!-- Vertical Separator Line -->
+                                    <div class="w-[1px] self-stretch bg-[#C5A880]/20 my-1"></div>
+                                    <div class="flex-1">
+                                        <p class="font-sans-luxury text-base sm:text-lg md:text-xl font-light text-[#5C554E] leading-relaxed">
+                                            Nous avons donc décidé de changer les règles et de travailler autrement. Aujourd'hui, nous sommes en contact direct avec la source, main dans la main avec des fournisseurs de confiance et des producteurs locaux à Dubaï. En supprimant tous les intermédiaires, nous pouvons vous garantir des parfums 100% authentiques, d'une qualité exceptionnelle, à des prix enfin raisonnables.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hidden md:block"></div>
+                        </div>
+
+                        <!-- Bulle 4: Une Histoire de Partage (Right) -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-x-32 lg:gap-x-48 items-center w-full relative">
+                            <div class="timeline-dot absolute left-6 md:left-1/2 w-4 h-4 rounded-full bg-[#C5A880] border-4 border-[#F4F0E6] -translate-x-1/2 z-10 transition-transform duration-300 hover:scale-125"></div>
+                            
+                            <div class="hidden md:block"></div>
+                            <div class="pl-12 md:pl-0">
+                                <h3 class="font-serif-luxury text-2xl sm:text-3xl lg:text-4xl text-[#C5A880] tracking-[0.02em] mb-4 text-left">
+                                    Une Histoire de Partage et de Confiance
+                                </h3>
+                                <div class="bg-white/70 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-[#C5A880]/15 shadow-sm hover:shadow-md transition-all duration-300 flex flex-row-reverse items-center gap-4 sm:gap-6">
+                                    <!-- Icon: Speech sharing -->
+                                    <div class="flex-shrink-0">
+                                        <svg class="w-10 h-10 md:w-16 md:h-16 stroke-[#C5A880] fill-none" viewBox="0 0 24 24" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                                        </svg>
+                                    </div>
+                                    <!-- Vertical Separator Line -->
+                                    <div class="w-[1px] self-stretch bg-[#C5A880]/20 my-1"></div>
+                                    <div class="flex-1">
+                                        <p class="font-sans-luxury text-base sm:text-lg md:text-xl font-light text-[#5C554E] leading-relaxed">
+                                            Au tout début, nous partagions nos trouvailles uniquement avec nos amis. Le succès a été si immédiat que le bouche-à-oreille a fait son travail. Nous avons commencé à faire découvrir nos flacons sur les réseaux sociaux (Snapchat, Instagram, TikTok), et votre engouement a tout transformé. Portés par votre fidélité et notre solide réputation, nous sommes aujourd'hui fiers de vous ouvrir les portes de notre boutique physique et de notre site internet.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bulle 5: Focus Engagements (Left) -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-x-32 lg:gap-x-48 items-center w-full relative">
+                            <div class="timeline-dot absolute left-6 md:left-1/2 w-4 h-4 rounded-full bg-[#C5A880] border-4 border-[#F4F0E6] -translate-x-1/2 z-10 transition-transform duration-300 hover:scale-125"></div>
+                            
+                            <div class="pl-12 md:pl-0">
+                                <h3 class="font-serif-luxury text-2xl sm:text-3xl lg:text-4xl text-[#C5A880] tracking-[0.02em] mb-4 text-left md:text-right">
+                                    Nos 3 Engagements
+                                </h3>
+                                <div class="bg-white/70 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-[#C5A880]/15 shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-4 sm:gap-6">
+                                    <!-- Icon: Trust shield -->
+                                    <div class="flex-shrink-0">
+                                        <svg class="w-10 h-10 md:w-16 md:h-16 stroke-[#C5A880] fill-none" viewBox="0 0 24 24" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                        </svg>
+                                    </div>
+                                    <!-- Vertical Separator Line -->
+                                    <div class="w-[1px] self-stretch bg-[#C5A880]/20 my-1"></div>
+                                    <div class="flex-1">
+                                        <ul class="space-y-4 font-sans-luxury text-base sm:text-lg md:text-xl font-light text-[#5C554E] leading-relaxed">
+                                            <li class="flex items-start gap-2.5">
+                                                <span class="text-[#C5A880] mt-1 shrink-0 select-none">✦</span>
+                                                <div><strong class="text-[#3C352E] font-medium">Authenticité :</strong> Vos parfums proviennent directement des producteurs locaux à Dubaï.</div>
+                                            </li>
+                                            <li class="flex items-start gap-2.5">
+                                                <span class="text-[#C5A880] mt-1 shrink-0 select-none">✦</span>
+                                                <div><strong class="text-[#3C352E] font-medium">Qualité :</strong> Des essences riches et nobles pour un parfum qui tient toute la journée.</div>
+                                            </li>
+                                            <li class="flex items-start gap-2.5">
+                                                <span class="text-[#C5A880] mt-1 shrink-0 select-none">✦</span>
+                                                <div><strong class="text-[#3C352E] font-medium">Confiance :</strong> Une transparence totale sur nos origines et nos prix.</div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hidden md:block"></div>
+                        </div>
+
+                    </div>
+                    
+                    <!-- Conclusion Centrée -->
+                    <div class="text-center mt-16 md:mt-20">
+                        <p class="font-serif-luxury italic text-xl sm:text-2xl md:text-3xl text-[#C5A880] tracking-[0.02em] leading-relaxed px-4">
+                            Trouvez enfin le sillage unique qui vous ressemble.
+                        </p>
+                    </div>
+
+                </div>
+
             </div>
         </div>
     </div>
@@ -3283,6 +3530,12 @@
             const qualityOverlay = document.getElementById('quality-overlay');
             const qualityCard = document.getElementById('quality-card');
             const qualityCloseBtn = document.getElementById('quality-close');
+
+            // --- HISTORY OVERLAY ELEMENTS ---
+            const historyOverlay = document.getElementById('history-overlay');
+            const historyCard = document.getElementById('history-card');
+            const historyCloseBtn = document.getElementById('history-close');
+            const historyScrollContainer = document.getElementById('history-scroll-container');
 
             // --- NOTES OLFACTIVES DATA ---
             const perfumeNotesData = {
@@ -3692,6 +3945,124 @@
                 setTimeout(() => {
                     menuOverlay.classList.add('pointer-events-none');
                 }, 500);
+            };
+
+            // --- HISTORY OVERLAY FUNCTIONS ---
+            const updateTimelinePath = () => {
+                const container = document.getElementById('timeline-container');
+                const path = document.getElementById('timeline-scroll-path');
+                const guidePath = document.getElementById('timeline-guide-path');
+                const dots = document.querySelectorAll('.timeline-dot');
+                
+                if (!container || !path || dots.length === 0) return;
+                
+                const containerRect = container.getBoundingClientRect();
+                const points = [];
+                
+                // Add start point at the top center/axis
+                const firstDotRect = dots[0].getBoundingClientRect();
+                const axisX = firstDotRect.left - containerRect.left + firstDotRect.width / 2;
+                points.push({ x: axisX, y: 0 });
+                
+                dots.forEach(dot => {
+                    const rect = dot.getBoundingClientRect();
+                    points.push({
+                        x: rect.left - containerRect.left + rect.width / 2,
+                        y: rect.top - containerRect.top + rect.height / 2
+                    });
+                });
+                
+                // Add end point at the bottom axis
+                const lastDotRect = dots[dots.length - 1].getBoundingClientRect();
+                const endX = lastDotRect.left - containerRect.left + lastDotRect.width / 2;
+                points.push({ x: endX, y: containerRect.height });
+                
+                // Construct SVG path string with curves
+                let d = `M ${points[0].x} ${points[0].y}`;
+                
+                const isMobile = window.innerWidth < 768;
+                const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+                const offset = isMobile ? 12 : (isTablet ? 120 : 200); // Amplitude of the wave
+                
+                for (let i = 0; i < points.length - 1; i++) {
+                    const p0 = points[i];
+                    const p1 = points[i + 1];
+                    
+                    // Alternating direction for waves
+                    const direction = i % 2 === 0 ? -1 : 1;
+                    const cpX = p0.x + direction * offset;
+                    const cpY1 = p0.y + (p1.y - p0.y) * 0.25;
+                    const cpY2 = p0.y + (p1.y - p0.y) * 0.75;
+                    
+                    d += ` C ${cpX} ${cpY1}, ${cpX} ${cpY2}, ${p1.x} ${p1.y}`;
+                }
+                
+                if (guidePath) {
+                    guidePath.setAttribute('d', d);
+                }
+                path.setAttribute('d', d);
+                
+                // Re-initialize stroke-dasharray and dashoffset
+                const pathLength = path.getTotalLength();
+                path.style.strokeDasharray = pathLength;
+                path.style.strokeDashoffset = pathLength;
+                
+                // Re-trigger scroll draw calculations
+                drawTimeline();
+            };
+
+            const drawTimeline = () => {
+                const path = document.getElementById('timeline-scroll-path');
+                const container = document.getElementById('history-scroll-container');
+                if (!path || !container) return;
+
+                const scrollTop = container.scrollTop;
+                const scrollHeight = container.scrollHeight - container.clientHeight;
+                if (scrollHeight <= 0) {
+                    const pathLength = path.getTotalLength();
+                    path.style.strokeDashoffset = pathLength;
+                    return;
+                }
+
+                const scrollFraction = scrollTop / scrollHeight;
+                const pathLength = path.getTotalLength();
+                
+                // Draw the line as the user scrolls
+                const drawLength = pathLength * Math.min(Math.max(scrollFraction, 0), 1);
+                path.style.strokeDashoffset = pathLength - drawLength;
+            };
+
+            const openHistory = () => {
+                if (historyOverlay && historyCard) {
+                    historyOverlay.classList.remove('pointer-events-none', 'opacity-0');
+                    historyOverlay.classList.add('opacity-100');
+                    
+                    historyCard.classList.remove('translate-y-20', 'opacity-0');
+                    historyCard.classList.add('translate-y-0', 'opacity-100');
+                    
+                    document.body.classList.add('overflow-hidden');
+
+                    // Recalculate path coordinates after transition starts
+                    requestAnimationFrame(() => {
+                        updateTimelinePath();
+                    });
+                }
+            };
+
+            const closeHistory = () => {
+                if (historyOverlay && historyCard) {
+                    historyCard.classList.remove('translate-y-0', 'opacity-100');
+                    historyCard.classList.add('translate-y-20', 'opacity-0');
+                    
+                    historyOverlay.classList.remove('opacity-100');
+                    historyOverlay.classList.add('opacity-0');
+                    
+                    document.body.classList.remove('overflow-hidden');
+
+                    setTimeout(() => {
+                        historyOverlay.classList.add('pointer-events-none');
+                    }, 500);
+                }
             };
 
             // --- ABOUT OVERLAY FUNCTIONS ---
@@ -4411,19 +4782,35 @@
             }
 
             // About Presentation triggers
-            const notreHistoireBtn = document.getElementById('btn-notre-histoire');
             if (reassuranceShippingBtn && aboutOverlay && aboutCard && aboutCloseBtn) {
                 reassuranceShippingBtn.addEventListener('click', openAbout);
                 aboutCloseBtn.addEventListener('click', closeAbout);
                 aboutOverlay.addEventListener('click', (e) => {
                     if (e.target === aboutOverlay) closeAbout();
                 });
+            }
+
+            // History Presentation triggers
+            const notreHistoireBtn = document.getElementById('btn-notre-histoire');
+            if (historyOverlay && historyCard && historyCloseBtn) {
+                historyCloseBtn.addEventListener('click', closeHistory);
+                historyOverlay.addEventListener('click', (e) => {
+                    if (e.target === historyOverlay) closeHistory();
+                });
                 if (notreHistoireBtn) {
                     notreHistoireBtn.addEventListener('click', (e) => {
                         e.preventDefault();
-                        openAbout();
+                        openHistory();
                     });
                 }
+                if (historyScrollContainer) {
+                    historyScrollContainer.addEventListener('scroll', drawTimeline);
+                }
+                window.addEventListener('resize', () => {
+                    if (!historyOverlay.classList.contains('pointer-events-none')) {
+                        updateTimelinePath();
+                    }
+                });
             }
 
             // Authenticity Presentation triggers
@@ -4465,16 +4852,23 @@
                 });
             }
 
-            // Tab 3 (Notre histoire) clicks: closes the menu overlay
+            // Tab 3 (Notre histoire) clicks: transitions directly to Histoire Panel
             if (menuTabHistoire) {
-                menuTabHistoire.addEventListener('click', () => {
+                menuTabHistoire.addEventListener('click', (e) => {
+                    e.preventDefault();
                     closeMenu();
+                    setTimeout(() => {
+                        openHistory();
+                    }, 350);
                 });
             }
 
             // Global Escape key support to close open overlays
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
+                    if (historyOverlay && !historyOverlay.classList.contains('pointer-events-none')) {
+                        closeHistory();
+                    }
                     if (catalogOverlay && !catalogOverlay.classList.contains('pointer-events-none')) {
                         closeCatalog();
                     }
