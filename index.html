@@ -109,8 +109,13 @@
     <!-- Custom Styles (au-delà de Tailwind) -->
     <style>
         /* ── Smooth scroll & base ──────────────────────────── */
-        html {
+        html, body {
             scroll-behavior: smooth;
+            overflow-x: hidden !important;
+            width: 100%;
+            max-w-100%;
+            margin: 0;
+            padding: 0;
         }
 
         /* ── Initial hidden state for animated elements ───── */
@@ -487,7 +492,8 @@
         /* ── NOS SIGNATURES — Carousel Styles ──────────────── */
         .embla-signatures {
             position: relative;
-            overflow-x: clip;
+            overflow: hidden;
+            width: 100%;
         }
         .embla-signatures__container {
             display: flex;
@@ -553,7 +559,7 @@
             box-shadow: 0 0 25px rgba(245, 237, 216, 0.15),
                         inset 0 0 15px rgba(245, 237, 216, 0.05);
         }
-        #btn-explorer-breathing:hover {
+        #btn-explorer-breathing:hover, #btn-explorer-signatures:hover {
             border-color: #9E6B4A;
             background-color: #9E6B4A;
             box-shadow: 0 0 25px rgba(158, 107, 74, 0.25),
@@ -574,6 +580,87 @@
         .sig-reveal-delay-1 { transition-delay: 0.1s; }
         .sig-reveal-delay-2 { transition-delay: 0.25s; }
         .sig-reveal-delay-3 { transition-delay: 0.4s; }
+        .sig-reveal-delay-4 { transition-delay: 0.55s; }
+        .sig-reveal-delay-5 { transition-delay: 0.7s; }
+
+        /* Timeline card premium hover */
+        .timeline-card {
+            position: relative;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                        box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.4s ease;
+        }
+        .timeline-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(197, 168, 128, 0.12),
+                        0 4px 12px rgba(0, 0, 0, 0.06);
+            border-color: rgba(197, 168, 128, 0.6);
+        }
+
+        /* Chronological direction arrows between cards */
+        @media (min-width: 768px) {
+            .timeline-card-arrow::after {
+                content: '';
+                position: absolute;
+                right: -17px;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 14px;
+                height: 14px;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23C5A880' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-size: contain;
+                opacity: 0.8;
+                z-index: 10;
+                pointer-events: none;
+            }
+        }
+        @media (max-width: 639px) {
+            .timeline-card-arrow::after {
+                content: '';
+                position: absolute;
+                bottom: -15px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 14px;
+                height: 14px;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23C5A880' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Cpath d='M12 5v14M5 12l7 7-7 7'/%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-size: contain;
+                opacity: 0.8;
+                z-index: 10;
+                pointer-events: none;
+            }
+        }
+
+        /* CTA histoire pill on black background */
+        .cta-histoire-cream {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .cta-histoire-cream::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: #C5A880;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 0;
+        }
+        .cta-histoire-cream:hover::before {
+            transform: scaleX(1);
+        }
+        .cta-histoire-cream:hover {
+            border-color: #C5A880;
+            color: #FFFFFF;
+        }
+        .cta-histoire-cream span,
+        .cta-histoire-cream svg {
+            position: relative;
+            z-index: 1;
+        }
 
         /* Gold rating stars glow effect for contrast */
         .gold-stars-glow svg {
@@ -588,7 +675,7 @@
             right: 0;
             bottom: 0;
             width: 80px;
-            background: linear-gradient(to left, #000000, transparent);
+            background: linear-gradient(to left, #F5EDD8, transparent);
             pointer-events: none;
             z-index: 10;
         }
@@ -677,6 +764,7 @@
 </head>
 
 <body class="bg-desert-dark font-sans-luxury antialiased">
+    <div class="w-full overflow-x-hidden relative flex flex-col min-h-screen">
 
     <!-- ═══════════════════════════════════════════════════════
          HEADER — Navigation supérieure ultra-premium
@@ -1220,18 +1308,18 @@
     <!-- ═══════════════════════════════════════════════════════
          NOS SIGNATURES — Carrousel Embla de parfums d'exception
          ═══════════════════════════════════════════════════════ -->
-    <section id="nos-signatures" class="relative w-full bg-black py-16 md:py-24 overflow-hidden border-b-2 border-[#FFFFFF]">
+    <section id="nos-signatures" class="relative w-full bg-[#F5EDD8] py-16 md:py-24 overflow-hidden border-b-2 border-[#FFFFFF]">
 
         <!-- ── TOP : Titre centré ── -->
         <div class="sig-reveal text-center mb-12 md:mb-16 px-6">
-            <h2 class="font-serif-luxury text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-wide text-[#F5EDD8]">
+            <h2 class="font-serif-luxury text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-wide text-[#9E6B4A]">
                 Nos <em class="italic">Signatures</em>
             </h2>
         </div>
 
         <!-- ── MIDDLE : Embla Carousel ── -->
         <div class="sig-reveal sig-reveal-delay-2">
-            <div class="embla-signatures overflow-x-clip" id="embla-signatures">
+            <div class="embla-signatures overflow-hidden" id="embla-signatures">
                 <div class="embla-signatures__container px-6 md:px-12">
 
                     <!-- Slide 1 : Confidential Private Gold -->
@@ -1557,7 +1645,7 @@
         <div class="sig-reveal sig-reveal-delay-3 text-center mt-12 md:mt-16">
             <a href="#nos-signatures"
                id="btn-explorer-signatures"
-               class="cta-explorer-sig inline-flex items-center justify-center gap-4 px-12 py-4 md:px-14 md:py-5 rounded-full border border-[#F5EDD8] text-[#FFFFFF] font-sans-luxury text-sm md:text-base font-light uppercase tracking-[0.24em] cursor-pointer hover:text-white transition-colors duration-300">
+               class="cta-explorer-sig inline-flex items-center justify-center gap-4 px-12 py-4 md:px-14 md:py-5 rounded-full border border-[#9E6B4A] text-[#9E6B4A] font-sans-luxury text-sm md:text-base font-light uppercase tracking-[0.24em] cursor-pointer hover:text-white transition-colors duration-300">
                 <span>Explorer</span>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:translate-x-1">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -1571,84 +1659,146 @@
 
 
     <!-- ═══════════════════════════════════════════════════════
-         SKYLINE SECTION — Vitrine immersive Ligne d'horizon
-         Même hauteur et impact visuel que la Hero Section (Bloc 1)
+         L'HISTOIRE D'ODEUR DE DUBAÏ — Bloc narratif horizontal
          ═══════════════════════════════════════════════════════ -->
     <section
-        id="skyline-showcase"
-        class="relative w-full h-[calc(100vh-5rem)] sm:h-[calc(100vh-6rem)] min-h-[500px] overflow-hidden border-b-2 border-[#FFFFFF]"
-        aria-label="Ligne d'horizon de Dubaï"
+        id="histoire-timeline"
+        class="relative w-full bg-black overflow-hidden border-b-2 border-[#FFFFFF] py-10 md:py-14 lg:py-16"
+        aria-label="L'histoire d'Odeur de Dubaï"
     >
 
-        <!-- ── Background Image (Full width, matching Hero dimensions, crop from the top) ── -->
-        <img
-            id="skyline-bg-image"
-            src="assets/images/ryan-miglinczy-02n9_v-d1yY-unsplash.jpg"
-            alt="Ligne d'horizon de Dubaï illuminée de nuit, symbole de modernité et de grandeur"
-            class="absolute inset-0 w-full h-full object-cover object-[75%_center] sm:object-[center_bottom]"
-            loading="lazy"
-        >
+        <!-- ── Cadre intérieur décoratif (trait fin or) ── -->
+        <div class="absolute inset-3 md:inset-5 lg:inset-6 border border-[#C5A880]/20 rounded-2xl pointer-events-none" aria-hidden="true"></div>
 
-        <!-- ── Double Overlay Dégradé Premium (Haut et Bas) ──
-             from-black via-transparent to-black pour lier
-             le bloc aux sections noires adjacentes au défilement.
-             ────────────────────────────────────────────────── -->
-        <div
-            class="absolute inset-0 z-10
-                   bg-gradient-to-b from-black/50 via-transparent to-black/80"
-            aria-hidden="true"
-        ></div>
+        <!-- ── En-tête du bloc (Aligné à gauche) ── -->
+        <div class="relative z-10 px-8 md:px-14 lg:px-20 mb-8 md:mb-10">
+            <h2
+                class="sig-reveal
+                       font-serif-luxury
+                       font-light italic
+                       text-3xl sm:text-5xl md:text-6xl lg:text-7xl
+                       leading-[1.1]
+                       tracking-tight
+                       text-[#C5A880]
+                       mb-4 md:mb-5"
+            >
+                L'histoire d'Odeur de Dubaï
+            </h2>
+            <p
+                class="sig-reveal sig-reveal-delay-1
+                       font-serif-luxury
+                       font-light
+                       text-sm sm:text-base md:text-lg
+                       leading-relaxed md:leading-[1.7]
+                       text-[#FAF5EB]/80
+                       max-w-3xl"
+            >
+                Notre histoire est celle d'un voyage sensoriel au cœur de l'Orient, là où les parfums les plus précieux de Dubaï s'offrent à vous, sans compromis sur le rêve.
+            </p>
+        </div>
 
-        <!-- ── Texte éditorial — Aligné sur la gauche ──────────── -->
-        <div class="relative z-20 w-full h-full
-                    flex flex-col justify-start md:justify-center items-start
-                    px-6 sm:px-12 md:px-20 lg:px-24 xl:px-32
-                    py-10 sm:py-14 md:py-16 lg:py-20">
+        <!-- ── 4 Cartes en ligne horizontale ── -->
+        <div class="relative z-10 px-8 md:px-14 lg:px-20">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
 
-            <div class="w-full max-w-4xl text-left">
-
-                <!-- Titre de la Ligne d'horizon
-                     Mêmes classes de typographie haut de gamme Cormorant Garamond -->
-                <h2
-                    id="skyline-title"
-                    class="sig-reveal
-                           font-serif-luxury
-                           font-light italic
-                           text-4xl md:text-6xl lg:text-[4.5rem] xl:text-[5.5rem]
-                           leading-[1.1] sm:leading-[1.08]
-                           tracking-tight
-                           text-[#faf5eb]
-                           mb-6 sm:mb-8 md:mb-10"
-                >
-                    Le sillage d’exception de Dubaï, enfin vôtre.
-                </h2>
-
-                <!-- Paragraphe descriptif
-                     Mêmes styles de texte que la Hero Section -->
+                <!-- Carte 1 : Constat -->
                 <div
-                    id="skyline-description"
-                    class="sig-reveal sig-reveal-delay-2
-                           font-serif-luxury
-                           font-normal md:font-medium
-                           text-xl md:text-[1.625rem] lg:text-[1.75rem] xl:text-[1.875rem]
-                           leading-relaxed sm:leading-[1.6]
-                           text-[#faf5eb]/90
-                           flex flex-col gap-4 sm:gap-6"
+                    class="sig-reveal sig-reveal-delay-1
+                           timeline-card timeline-card-arrow
+                           bg-white/[0.03] backdrop-blur-sm
+                           rounded-xl
+                           border border-[#C5A880]/30
+                           p-5 md:p-6
+                           shadow-[0_4px_20px_rgba(0,0,0,0.4)]
+                           text-center"
                 >
-                    <p>Incarner l’audace de la découverte en brisant les codes de l'exclusivité.</p>
-                    <p>Nos effluves, authentiques et rares, sont cueillis à la source par nos artisans locaux.</p>
-                    <p>Un nectar de luxe absolu, ciselé par Dubaï, pour que l’élégance suprême devienne une vérité partagée.</p>
+                    <h3 class="font-serif-luxury italic text-2xl md:text-3xl text-[#C5A880] mb-3 tracking-wide">
+                        Constat
+                    </h3>
+                    <p class="font-sans-luxury font-light italic text-sm md:text-base lg:text-lg text-[#FAF5EB]/85">
+                        Parfums de qualité inaccessible
+                    </p>
+                </div>
+
+                <!-- Carte 2 : Quête -->
+                <div
+                    class="sig-reveal sig-reveal-delay-2
+                           timeline-card timeline-card-arrow
+                           bg-white/[0.03] backdrop-blur-sm
+                           rounded-xl
+                           border border-[#C5A880]/30
+                           p-5 md:p-6
+                           shadow-[0_4px_20px_rgba(0,0,0,0.4)]
+                           text-center"
+                >
+                    <h3 class="font-serif-luxury italic text-2xl md:text-3xl text-[#C5A880] mb-3 tracking-wide">
+                        Quête
+                    </h3>
+                    <p class="font-sans-luxury font-light italic text-sm md:text-base lg:text-lg text-[#FAF5EB]/85">
+                        Rendre abordable des sillages d'exception
+                    </p>
+                </div>
+
+                <!-- Carte 3 : Partage -->
+                <div
+                    class="sig-reveal sig-reveal-delay-3
+                           timeline-card timeline-card-arrow
+                           bg-white/[0.03] backdrop-blur-sm
+                           rounded-xl
+                           border border-[#C5A880]/30
+                           p-5 md:p-6
+                           shadow-[0_4px_20px_rgba(0,0,0,0.4)]
+                           text-center"
+                >
+                    <h3 class="font-serif-luxury italic text-2xl md:text-3xl text-[#C5A880] mb-3 tracking-wide">
+                        Partage
+                    </h3>
+                    <p class="font-sans-luxury font-light italic text-sm md:text-base lg:text-lg text-[#FAF5EB]/85">
+                        Un succès immédiat grâce à votre plaisir
+                    </p>
+                </div>
+
+                <!-- Carte 4 : Engagement -->
+                <div
+                    class="sig-reveal sig-reveal-delay-4
+                           timeline-card
+                           bg-white/[0.03] backdrop-blur-sm
+                           rounded-xl
+                           border border-[#C5A880]/30
+                           p-5 md:p-6
+                           shadow-[0_4px_20px_rgba(0,0,0,0.4)]
+                           text-center"
+                >
+                    <h3 class="font-serif-luxury italic text-2xl md:text-3xl text-[#C5A880] mb-3 tracking-wide">
+                        Engagement
+                    </h3>
+                    <p class="font-sans-luxury font-light italic text-sm md:text-base lg:text-lg text-[#FAF5EB]/85">
+                        Authenticité, Qualité, Plaisir
+                    </p>
                 </div>
 
             </div>
-
         </div>
 
-        <!-- ── BOTTOM RIGHT: Call To Action "Notre Histoire" ── -->
-        <div class="absolute bottom-10 right-6 sm:right-10 md:right-14 lg:right-20 z-30">
+        <!-- ── CTA "Notre Histoire" (Bas droite desktop / centré mobile) ── -->
+        <div class="relative z-10 mt-16 md:mt-24 lg:mt-32 px-8 md:px-14 lg:px-20 flex justify-center md:justify-end">
             <a href="#"
                id="btn-notre-histoire"
-               class="cta-notre-histoire inline-flex items-center justify-center gap-4 px-12 py-4 md:px-14 md:py-5 rounded-full border border-[#F5EDD8] text-[#FFFFFF] font-sans-luxury text-sm md:text-base font-light uppercase tracking-[0.24em] cursor-pointer hover:text-white transition-colors duration-300">
+               class="cta-histoire-cream
+                      sig-reveal sig-reveal-delay-5
+                      group
+                      inline-flex items-center justify-center gap-4
+                      px-12 py-4 md:px-14 md:py-5
+                      rounded-full
+                      border border-[#C5A880]
+                      text-[#C5A880]
+                      font-sans-luxury
+                      text-sm md:text-base
+                      font-light
+                      uppercase
+                      tracking-[0.24em]
+                      cursor-pointer
+                      transition-colors duration-300">
                 <span>Notre Histoire</span>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:translate-x-1">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -2004,6 +2154,7 @@
             </div>
         </div>
     </footer>
+    </div> <!-- Close main page wrapper -->
 
 
     <!-- ═══════════════════════════════════════════════════════
@@ -2011,7 +2162,7 @@
          ═══════════════════════════════════════════════════════ -->
     <div
         id="menu-overlay"
-        class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8 bg-black/60 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-500 ease-out"
+        class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8 bg-black/60 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-500 ease-out overflow-hidden"
         role="dialog"
         aria-modal="true"
         aria-label="Menu de navigation"
@@ -2849,7 +3000,7 @@
          ═══════════════════════════════════════════════════════ -->
     <div
         id="cart-overlay"
-        class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-500 ease-out flex justify-end"
+        class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-500 ease-out flex justify-end overflow-hidden"
         role="dialog"
         aria-modal="true"
         aria-label="Mon Panier"
