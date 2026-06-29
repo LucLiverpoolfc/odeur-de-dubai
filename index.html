@@ -1117,25 +1117,31 @@
          ═══════════════════════════════════════════════════════ -->
     <section
         id="hero"
-        class="relative w-full h-[calc(100vh-5rem)] sm:h-[calc(100vh-6rem)] min-h-[500px] overflow-hidden"
+        class="relative w-full h-[calc(100vh-5rem)] sm:h-[calc(100vh-6rem)] min-h-[500px] overflow-hidden bg-black"
         aria-label="Section héro principale"
     >
 
-        <!-- ── Background Image ───────────────────────────────
-             object-[75%_center] sur mobile pour garder le flacon
-             et le coucher de soleil visibles.
-             object-center sur desktop pour la composition complète.
+        <!-- ── Background Video ───────────────────────────────
+             Vidéo immersive en arrière-plan (désert / coucher de soleil).
+             autoplay + loop + muted + playsinline : lecture auto silencieuse
+             sans passage en plein écran natif sur iOS/Android.
+             object-cover + object-center : comportement "cover" identique
+             à l'ancienne image, centrage automatique sur tous les écrans.
+             poster : image de fallback affichée pendant le chargement.
              ────────────────────────────────────────────────── -->
-        <img
-            id="hero-bg-image"
-            src="assets/images/hero-bg.png"
-            alt="Flacon Éclat du Désert posé sur un plateau doré dans le désert de Dubaï au coucher du soleil, avec un brûleur d'encens traditionnel, des dattes et une caravane de chameaux à l'horizon"
+        <video
+            id="hero-bg-video"
+            src="assets/est_ce_que_tu_peux_faire_une_a.mp4"
+            poster="assets/images/hero-bg.png"
+            autoplay
+            loop
+            muted
+            playsinline
+            disablepictureinpicture
+            aria-hidden="true"
             class="absolute inset-0 w-full h-full
-                   object-cover
-                   object-[75%_center] sm:object-center"
-            loading="eager"
-            fetchpriority="high"
-        >
+                   object-cover object-center"
+        ></video>
 
         <!-- ── Overlay subtil ─────────────────────────────────
              Dégradé très léger : ombre douce en haut-gauche pour
@@ -1151,11 +1157,11 @@
 
         <!-- ── Texte éditorial — Quadrant supérieur gauche ──── -->
         <div class="relative z-20 w-full h-full
-                    flex flex-col justify-start md:justify-center items-start md:items-center
+                    flex flex-col justify-start items-start
                     px-6 sm:px-10 md:px-14 lg:px-20
                     py-10 sm:py-14 md:py-16 lg:py-20">
 
-            <div class="w-full text-left md:text-center">
+            <div class="w-full text-left">
 
                 <!-- Titre Principal H1
                      Police Serif Cormorant Garamond, italic, fine
@@ -1187,7 +1193,7 @@
                            text-xl sm:text-xl md:text-[1.75rem] lg:text-[2rem] xl:text-[2.25rem]
                            leading-relaxed sm:leading-[1.65]
                            text-[#faf5eb]/90
-                           max-w-3xl mr-auto md:mx-auto"
+                           max-w-3xl mr-auto"
                 >
                     L'or, l'oud et l'excellence réunis dans des
                     créations d'exception. Plus qu'un parfum&nbsp;:
