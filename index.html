@@ -276,6 +276,44 @@
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
+        /* ── Desktop Navigation — Premium link styles ─────── */
+        .desktop-nav-underline {
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #C5A880, transparent);
+            transform: translateX(-50%);
+            transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .desktop-nav-link:hover .desktop-nav-underline {
+            width: 100%;
+        }
+
+        /* ── Desktop Nav CTA — Shimmer sweep effect ────────── */
+        .desktop-nav-cta-shimmer {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(212, 164, 74, 0.08),
+                rgba(212, 164, 74, 0.15),
+                rgba(212, 164, 74, 0.08),
+                transparent
+            );
+            transition: left 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .desktop-nav-cta:hover .desktop-nav-cta-shimmer {
+            left: 100%;
+        }
+
         /* ── Premium Motion Logo reveal effects ────────────── */
         
         /* Chained breathing animation with a 2.8s delay (post-reveal) */
@@ -286,10 +324,21 @@
 
         @keyframes logoBreathe {
             0% {
-                transform: translate(-50%, 0) scale(1);
+                transform: translate(-50%, -50%) scale(1);
             }
             100% {
-                transform: translate(-50%, 0) scale(1.03);
+                transform: translate(-50%, -50%) scale(1.03);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            @keyframes logoBreathe {
+                0% {
+                    transform: scale(1);
+                }
+                100% {
+                    transform: scale(1.03);
+                }
             }
         }
 
@@ -776,27 +825,25 @@
         id="main-header"
         class="header-init animate-header-fade
                sticky top-0 z-50
-               w-full h-20 sm:h-24
+               w-full h-28 sm:h-32 lg:h-44
                bg-black"
         role="banner"
     >
         <nav
-            class="flex items-center justify-between
+            class="relative flex items-center justify-between
                    h-full w-full max-w-7xl mx-auto
                    px-5 sm:px-8 lg:px-12"
             aria-label="Navigation principale"
         >
 
-            <!-- ── BLOC GAUCHE : Bouton Menu Burger ─────────────
-                 Conteneur carré, angles généreusement arrondis,
-                 fine bordure or champagne 1px,
-                 3 lignes identiques parfaitement centrées.
-                 ─────────────────────────────────────────────── -->
-            <div class="flex items-center">
+            <!-- ── BLOC GAUCHE : Burger (mobile) + Logo ─────────── -->
+            <div class="flex items-center gap-3 lg:gap-5">
+                <!-- Bouton Menu Burger — visible mobile/tablette uniquement -->
                 <button
                     id="menu-burger"
                     type="button"
-                    class="group
+                    class="lg:hidden
+                           group
                            flex items-center justify-center
                            w-11 h-11 sm:w-[50px] sm:h-[50px]
                            rounded-2xl
@@ -817,202 +864,252 @@
                         <span class="burger-line block w-full h-[1px] bg-[#C5A880] group-hover:bg-[#d4bf9a]"></span>
                     </div>
                 </button>
+
+                <!-- ── Emblème Royal + Logo ──────────────────────── -->
+                <a
+                    id="logo-link"
+                    href="/"
+                    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
+                           lg:static lg:translate-x-0 lg:translate-y-0 lg:transform-none
+                           flex flex-col items-center gap-1.5 sm:gap-2
+                           group
+                           logo-breathe-delayed
+                           will-change-transform
+                           hover:opacity-90"
+                    aria-label="Odeur de Dubaï — Accueil"
+                >
+                    <!-- Emblème SVG — Motif oriental symétrique complexe -->
+                    <svg
+                        class="w-20 h-20 sm:w-[104px] sm:h-[104px] lg:w-[124px] lg:h-[124px]
+                               transition-transform duration-500
+                               group-hover:scale-[1.05]
+                               emblem-glow"
+                        viewBox="0 0 120 80"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                    >
+                        <defs>
+                            <!-- Gradient doré vertical — référence chromatique exacte -->
+                            <linearGradient id="emblemGold" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#d4a44a" />
+                                <stop offset="50%" stop-color="#c5a055" />
+                                <stop offset="100%" stop-color="#a88a3a" />
+                            </linearGradient>
+                            <linearGradient id="emblemGoldLight" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#e5c77a" />
+                                <stop offset="100%" stop-color="#c5a055" />
+                            </linearGradient>
+                        </defs>
+
+                        <!-- === ARCHE CENTRALE (ogive / dôme principal) === -->
+                        <path
+                            class="emblem-stroke-path"
+                            style="--path-length: 190px;"
+                            d="M60 4 C60 4, 42 20, 42 42 C42 54, 50 62, 60 62 C70 62, 78 54, 78 42 C78 20, 60 4, 60 4Z"
+                            stroke="url(#emblemGold)"
+                            stroke-width="1.4"
+                            stroke-linejoin="round"
+                            fill="none"
+                        />
+
+                        <!-- === ARCHE GAUCHE (entrelacée — forme O) === -->
+                        <path
+                            class="emblem-stroke-path"
+                            style="--path-length: 170px;"
+                            d="M38 18 C38 18, 20 32, 20 48 C20 58, 28 66, 38 66 C48 66, 54 60, 54 52 C54 44, 48 36, 42 30"
+                            stroke="url(#emblemGold)"
+                            stroke-width="1.4"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            fill="none"
+                        />
+                        <!-- Boucle basse gauche fermant le "O" -->
+                        <path
+                            class="emblem-stroke-path"
+                            style="--path-length: 30px; --target-opacity: 0.7;"
+                            d="M38 66 C30 66, 22 60, 22 50"
+                            stroke="url(#emblemGold)"
+                            stroke-width="1.2"
+                            stroke-linecap="round"
+                            fill="none"
+                            opacity="0"
+                        />
+
+                        <!-- === ARCHE DROITE (entrelacée — forme D) === -->
+                        <path
+                            class="emblem-stroke-path"
+                            style="--path-length: 170px;"
+                            d="M82 18 C82 18, 100 32, 100 48 C100 58, 92 66, 82 66 C72 66, 66 60, 66 52 C66 44, 72 36, 78 30"
+                            stroke="url(#emblemGold)"
+                            stroke-width="1.4"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            fill="none"
+                        />
+                        <!-- Boucle basse droite fermant le "D" -->
+                        <path
+                            class="emblem-stroke-path"
+                            style="--path-length: 30px; --target-opacity: 0.7;"
+                            d="M82 66 C90 66, 98 60, 98 50"
+                            stroke="url(#emblemGold)"
+                            stroke-width="1.2"
+                            stroke-linecap="round"
+                            fill="none"
+                            opacity="0"
+                        />
+
+                        <!-- === GOUTTE CENTRALE intérieure === -->
+                        <path
+                            class="emblem-stroke-path emblem-drop-fill"
+                            style="--path-length: 100px; --target-opacity: 0.5;"
+                            d="M60 16 C60 16, 50 30, 50 42 C50 48, 54 52, 60 52 C66 52, 70 48, 70 42 C70 30, 60 16, 60 16Z"
+                            stroke="url(#emblemGoldLight)"
+                            stroke-width="0.8"
+                            fill="url(#emblemGoldLight)"
+                            fill-opacity="0"
+                            opacity="0"
+                        />
+
+                        <!-- === FLEUR CISELÉE à 5 pétales (bas-centre) === -->
+                        <!-- Pétale haut -->
+                        <path
+                            class="emblem-fill-element"
+                            style="--target-opacity: 0.9;"
+                            d="M60 44 C58 40, 62 40, 60 44"
+                            fill="url(#emblemGold)"
+                            opacity="0"
+                        />
+                        <!-- Pétale droite-haut -->
+                        <path
+                            class="emblem-fill-element"
+                            style="--target-opacity: 0.9;"
+                            d="M60 44 C64 42, 65 46, 60 44"
+                            fill="url(#emblemGold)"
+                            opacity="0"
+                        />
+                        <!-- Pétale droite-bas -->
+                        <path
+                            class="emblem-fill-element"
+                            style="--target-opacity: 0.9;"
+                            d="M60 44 C64 46, 62 49, 60 44"
+                            fill="url(#emblemGold)"
+                            opacity="0"
+                        />
+                        <!-- Pétale gauche-bas -->
+                        <path
+                            class="emblem-fill-element"
+                            style="--target-opacity: 0.9;"
+                            d="M60 44 C56 46, 58 49, 60 44"
+                            fill="url(#emblemGold)"
+                            opacity="0"
+                        />
+                        <!-- Pétale gauche-haut -->
+                        <path
+                            class="emblem-fill-element"
+                            style="--target-opacity: 0.9;"
+                            d="M60 44 C56 42, 55 46, 60 44"
+                            fill="url(#emblemGold)"
+                            opacity="0"
+                        />
+                        <!-- Centre de la fleur -->
+                        <circle
+                            class="emblem-fill-element"
+                            style="--target-opacity: 1;"
+                            cx="60" cy="44" r="1.2"
+                            fill="url(#emblemGoldLight)"
+                            opacity="0"
+                        />
+
+                        <!-- === FILETS DÉCORATIFS (base de l'emblème) === -->
+                        <line
+                            class="emblem-stroke-path"
+                            style="--path-length: 60px; --target-opacity: 0.3;"
+                            x1="30" y1="68" x2="90" y2="68"
+                            stroke="url(#emblemGold)"
+                            stroke-width="0.6"
+                            opacity="0"
+                        />
+                    </svg>
+
+                    <!-- Texte du logo — Serif majuscules, espacement prononcé, révélation cinématique -->
+                    <span
+                        class="logo-gold-gradient
+                               font-serif-luxury
+                               text-base sm:text-lg lg:text-[26px]
+                               font-bold
+                               uppercase
+                               leading-none
+                               select-none
+                               whitespace-nowrap
+                               tracking-[0.06em]
+                               animate-reveal-text"
+                    >
+                        Odeur de Dubaï
+                    </span>
+                </a>
             </div>
 
 
-            <!-- ── BLOC CENTRAL : Emblème Royal + Logo ──────────
-                 Emblème SVG complexe : triple arche ogive orientale
-                 entrelacée avec initiales O & D, goutte centrale,
-                 fleur ciselée à 5 pétales.
-                 Texte "ODEUR DE DUBAÏ" en Serif majuscules espacées.
+            <!-- ── BLOC CENTRAL : Navigation Desktop ─────────────
+                 Visible uniquement sur desktop (lg+).
+                 Liens textuels premium + CTA contact doré.
                  ─────────────────────────────────────────────── -->
-            <a
-                id="logo-link"
-                href="/"
-                class="absolute left-1/2 -translate-x-1/2
-                       flex flex-col items-center gap-1.5 sm:gap-2
-                       group
-                       logo-breathe-delayed
-                       will-change-transform
-                       hover:opacity-90"
-                aria-label="Odeur de Dubaï — Accueil"
-            >
-                <!-- Emblème SVG — Motif oriental symétrique complexe -->
-                <svg
-                    class="w-12 h-12 sm:w-[62px] sm:h-[62px]
-                           transition-transform duration-500
-                           group-hover:scale-[1.05]
-                           emblem-glow"
-                    viewBox="0 0 120 80"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
+            <div class="hidden lg:flex items-center gap-8 xl:gap-10">
+                <button
+                    id="header-nav-collections"
+                    type="button"
+                    class="desktop-nav-link group relative
+                           font-sans-luxury text-[13px] font-medium
+                           tracking-[0.18em] uppercase
+                           text-[#F5EDD8]/70
+                           hover:text-[#C5A880]
+                           transition-colors duration-300
+                           focus:outline-none"
+                    aria-label="Voir nos collections"
                 >
-                    <defs>
-                        <!-- Gradient doré vertical — référence chromatique exacte -->
-                        <linearGradient id="emblemGold" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stop-color="#d4a44a" />
-                            <stop offset="50%" stop-color="#c5a055" />
-                            <stop offset="100%" stop-color="#a88a3a" />
-                        </linearGradient>
-                        <linearGradient id="emblemGoldLight" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stop-color="#e5c77a" />
-                            <stop offset="100%" stop-color="#c5a055" />
-                        </linearGradient>
-                    </defs>
+                    Nos collections
+                    <span class="desktop-nav-underline"></span>
+                </button>
 
-                    <!-- === ARCHE CENTRALE (ogive / dôme principal) === -->
-                    <path
-                        class="emblem-stroke-path"
-                        style="--path-length: 190px;"
-                        d="M60 4 C60 4, 42 20, 42 42 C42 54, 50 62, 60 62 C70 62, 78 54, 78 42 C78 20, 60 4, 60 4Z"
-                        stroke="url(#emblemGold)"
-                        stroke-width="1.4"
-                        stroke-linejoin="round"
-                        fill="none"
-                    />
-
-                    <!-- === ARCHE GAUCHE (entrelacée — forme O) === -->
-                    <path
-                        class="emblem-stroke-path"
-                        style="--path-length: 170px;"
-                        d="M38 18 C38 18, 20 32, 20 48 C20 58, 28 66, 38 66 C48 66, 54 60, 54 52 C54 44, 48 36, 42 30"
-                        stroke="url(#emblemGold)"
-                        stroke-width="1.4"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        fill="none"
-                    />
-                    <!-- Boucle basse gauche fermant le "O" -->
-                    <path
-                        class="emblem-stroke-path"
-                        style="--path-length: 30px; --target-opacity: 0.7;"
-                        d="M38 66 C30 66, 22 60, 22 50"
-                        stroke="url(#emblemGold)"
-                        stroke-width="1.2"
-                        stroke-linecap="round"
-                        fill="none"
-                        opacity="0"
-                    />
-
-                    <!-- === ARCHE DROITE (entrelacée — forme D) === -->
-                    <path
-                        class="emblem-stroke-path"
-                        style="--path-length: 170px;"
-                        d="M82 18 C82 18, 100 32, 100 48 C100 58, 92 66, 82 66 C72 66, 66 60, 66 52 C66 44, 72 36, 78 30"
-                        stroke="url(#emblemGold)"
-                        stroke-width="1.4"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        fill="none"
-                    />
-                    <!-- Boucle basse droite fermant le "D" -->
-                    <path
-                        class="emblem-stroke-path"
-                        style="--path-length: 30px; --target-opacity: 0.7;"
-                        d="M82 66 C90 66, 98 60, 98 50"
-                        stroke="url(#emblemGold)"
-                        stroke-width="1.2"
-                        stroke-linecap="round"
-                        fill="none"
-                        opacity="0"
-                    />
-
-                    <!-- === GOUTTE CENTRALE intérieure === -->
-                    <path
-                        class="emblem-stroke-path emblem-drop-fill"
-                        style="--path-length: 100px; --target-opacity: 0.5;"
-                        d="M60 16 C60 16, 50 30, 50 42 C50 48, 54 52, 60 52 C66 52, 70 48, 70 42 C70 30, 60 16, 60 16Z"
-                        stroke="url(#emblemGoldLight)"
-                        stroke-width="0.8"
-                        fill="url(#emblemGoldLight)"
-                        fill-opacity="0"
-                        opacity="0"
-                    />
-
-                    <!-- === FLEUR CISELÉE à 5 pétales (bas-centre) === -->
-                    <!-- Pétale haut -->
-                    <path
-                        class="emblem-fill-element"
-                        style="--target-opacity: 0.9;"
-                        d="M60 44 C58 40, 62 40, 60 44"
-                        fill="url(#emblemGold)"
-                        opacity="0"
-                    />
-                    <!-- Pétale droite-haut -->
-                    <path
-                        class="emblem-fill-element"
-                        style="--target-opacity: 0.9;"
-                        d="M60 44 C64 42, 65 46, 60 44"
-                        fill="url(#emblemGold)"
-                        opacity="0"
-                    />
-                    <!-- Pétale droite-bas -->
-                    <path
-                        class="emblem-fill-element"
-                        style="--target-opacity: 0.9;"
-                        d="M60 44 C64 46, 62 49, 60 44"
-                        fill="url(#emblemGold)"
-                        opacity="0"
-                    />
-                    <!-- Pétale gauche-bas -->
-                    <path
-                        class="emblem-fill-element"
-                        style="--target-opacity: 0.9;"
-                        d="M60 44 C56 46, 58 49, 60 44"
-                        fill="url(#emblemGold)"
-                        opacity="0"
-                    />
-                    <!-- Pétale gauche-haut -->
-                    <path
-                        class="emblem-fill-element"
-                        style="--target-opacity: 0.9;"
-                        d="M60 44 C56 42, 55 46, 60 44"
-                        fill="url(#emblemGold)"
-                        opacity="0"
-                    />
-                    <!-- Centre de la fleur -->
-                    <circle
-                        class="emblem-fill-element"
-                        style="--target-opacity: 1;"
-                        cx="60" cy="44" r="1.2"
-                        fill="url(#emblemGoldLight)"
-                        opacity="0"
-                    />
-
-                    <!-- === FILETS DÉCORATIFS (base de l'emblème) === -->
-                    <line
-                        class="emblem-stroke-path"
-                        style="--path-length: 60px; --target-opacity: 0.3;"
-                        x1="30" y1="68" x2="90" y2="68"
-                        stroke="url(#emblemGold)"
-                        stroke-width="0.6"
-                        opacity="0"
-                    />
-                </svg>
-
-                <!-- Texte du logo — Serif majuscules, espacement prononcé, révélation cinématique -->
-                <span
-                    class="logo-gold-gradient
-                           font-serif-luxury
-                           text-[11px] sm:text-xs md:text-sm
-                           font-semibold
-                           uppercase
-                           leading-none
-                           select-none
-                           whitespace-nowrap
-                           animate-reveal-text"
+                <button
+                    id="header-nav-histoire"
+                    type="button"
+                    class="desktop-nav-link group relative
+                           font-sans-luxury text-[13px] font-medium
+                           tracking-[0.18em] uppercase
+                           text-[#F5EDD8]/70
+                           hover:text-[#C5A880]
+                           transition-colors duration-300
+                           focus:outline-none"
+                    aria-label="Découvrir notre histoire"
                 >
-                    Odeur de Dubaï
-                </span>
-            </a>
+                    Notre histoire
+                    <span class="desktop-nav-underline"></span>
+                </button>
+
+                <button
+                    id="header-nav-contact"
+                    type="button"
+                    class="desktop-nav-link group relative
+                           font-sans-luxury text-[13px] font-medium
+                           tracking-[0.18em] uppercase
+                           text-[#F5EDD8]/70
+                           hover:text-[#C5A880]
+                           transition-colors duration-300
+                           focus:outline-none"
+                    aria-label="Nous contacter"
+                >
+                    Nous contacter
+                    <span class="desktop-nav-underline"></span>
+                </button>
+            </div>
 
 
-            <!-- ── BLOC DROIT : Panier & Contact Téléphonique ──────
-                 Déclenche le panier ou le panneau de contact premium.
-                 Même couleur champagne #C5A880, traits fins 1.2-1.5px.
+            <!-- ── BLOC DROIT : Panier ──────────────────────────
+                 Icône panier champagne #C5A880, traits fins 1.2px.
                  ─────────────────────────────────────────────── -->
-            <div class="flex items-center gap-1.5 sm:gap-2.5">
+            <div class="flex items-center">
                 <!-- Bouton Panier -->
                 <button
                     id="cart-btn"
@@ -1050,59 +1147,6 @@
                     >
                         0
                     </span>
-                </button>
-
-                <!-- Bouton Contact -->
-                <button
-                    id="contact-phone"
-                    type="button"
-                    class="phone-hover
-                           group
-                           flex items-center justify-center
-                           w-11 h-11 sm:w-[50px] sm:h-[50px]
-                           rounded-2xl
-                           transition-all duration-300 ease-in-out
-                           hover:bg-white/[0.03]
-                           focus:outline-none focus:ring-1 focus:ring-[#C5A880]/40"
-                    aria-label="Nous contacter"
-                >
-                    <svg
-                        class="phone-icon w-[28px] h-[28px] sm:w-[34px] sm:h-[34px]
-                               transition-all duration-300 ease-in-out
-                               group-hover:scale-110"
-                        viewBox="0 0 32 32"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-                        <!-- Combiné téléphonique incliné à droite -->
-                        <path
-                            d="M19.5 18.5L17.5 20.5C17.5 20.5 14.5 18.8 11.8 16.2C9.2 13.5 7.5 10.5 7.5 10.5L9.5 8.5C10.2 7.8 10.3 6.7 9.7 5.9L7.3 2.8C6.6 1.9 5.4 1.7 4.5 2.3L2.7 3.7C1.7 4.5 1.2 5.7 1.3 6.9C1.6 10.7 3.5 15.5 7.8 19.8C12.1 24.1 17 26 20.7 26.3C21.9 26.4 23.1 25.9 23.9 24.9L25.3 23.2C25.9 22.3 25.7 21.1 24.8 20.5L21.8 18.2C21 17.6 19.9 17.8 19.5 18.5Z"
-                            stroke="#C5A880"
-                            stroke-width="1.2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            fill="none"
-                        />
-                        <!-- Onde sonore 1 (arc intérieur — petite) -->
-                        <path
-                            d="M20.5 3C22.2 4.7 23.3 7 23.3 9.8"
-                            stroke="#C5A880"
-                            stroke-width="1.2"
-                            stroke-linecap="round"
-                            fill="none"
-                            opacity="0.8"
-                        />
-                        <!-- Onde sonore 2 (arc extérieur — grande) -->
-                        <path
-                            d="M24.5 1C26.8 3.3 28.5 6.5 28.5 10.5"
-                            stroke="#C5A880"
-                            stroke-width="1.2"
-                            stroke-linecap="round"
-                            fill="none"
-                            opacity="0.5"
-                        />
-                    </svg>
                 </button>
             </div>
 
@@ -2139,7 +2183,7 @@
                 <ul class="space-y-4 md:space-y-3">
                     <li>
                         <a href="#" id="btn-footer-contact" class="font-sans-luxury text-xs font-light tracking-[0.12em] text-[#F5EDD8]/70 hover:text-[#C5A880] transition-colors duration-300">
-                            Nous Contacter (À votre écoute)
+                            Nous contacter
                         </a>
                     </li>
                     <li>
@@ -2320,7 +2364,7 @@
 
             <!-- Tabs / Navigation Links List -->
             <div class="w-full flex flex-col gap-4 mb-6">
-                <!-- Tab 1: À votre écoute -->
+                <!-- Tab 1: Nous contacter -->
                 <button
                     id="menu-tab-contact"
                     class="menu-item opacity-0 transform translate-y-4 transition-all duration-500 ease-out flex items-center justify-between w-full p-4 rounded-2xl bg-white/50 border border-[#C5A880]/10 hover:border-[#C5A880]/40 hover:bg-white/80 transition-all duration-300 group"
@@ -2333,7 +2377,7 @@
                             </svg>
                         </div>
                         <span class="font-serif-luxury text-base sm:text-lg font-medium text-[#3C352E] group-hover:text-[#C5A880] transition-colors duration-300">
-                            À votre écoute
+                            Nous contacter
                         </span>
                     </div>
                     <!-- Flèche portail |-> -->
@@ -3713,7 +3757,7 @@
             }
 
             // --- CONTACT OVERLAY ELEMENTS ---
-            const contactBtn = document.getElementById('contact-phone');
+            const contactBtn = document.getElementById('header-nav-contact');
             const contactOverlay = document.getElementById('contact-overlay');
             const contactCard = document.getElementById('contact-card');
             const contactCloseBtn = document.getElementById('contact-close');
@@ -3728,6 +3772,10 @@
             const menuTabCollections = document.getElementById('menu-tab-collections');
             const menuTabHistoire = document.getElementById('menu-tab-histoire');
             const menuItems = [menuTabContact, menuTabCollections, menuTabHistoire];
+
+            // --- DESKTOP NAVIGATION ELEMENTS ---
+            const headerNavCollections = document.getElementById('header-nav-collections');
+            const headerNavHistoire = document.getElementById('header-nav-histoire');
 
             // --- ABOUT OVERLAY ELEMENTS ---
             const reassuranceShippingBtn = document.getElementById('reassurance-shipping');
@@ -4977,8 +5025,10 @@
             });
 
             // Contact triggers
-            if (contactBtn && contactOverlay && contactCard && contactCloseBtn) {
-                contactBtn.addEventListener('click', openContact);
+            if (contactOverlay && contactCard && contactCloseBtn) {
+                if (contactBtn) {
+                    contactBtn.addEventListener('click', openContact);
+                }
                 contactCloseBtn.addEventListener('click', closeContact);
                 contactOverlay.addEventListener('click', (e) => {
                     if (e.target === contactOverlay) closeContact();
@@ -5000,6 +5050,18 @@
                 menuCloseBtn.addEventListener('click', closeMenu);
                 menuOverlay.addEventListener('click', (e) => {
                     if (e.target === menuOverlay) closeMenu();
+                });
+            }
+
+            // Desktop Navigation triggers (lg+ only, direct overlay access)
+            if (headerNavCollections) {
+                headerNavCollections.addEventListener('click', () => {
+                    openCatalog();
+                });
+            }
+            if (headerNavHistoire) {
+                headerNavHistoire.addEventListener('click', () => {
+                    openHistory();
                 });
             }
 
@@ -5053,7 +5115,7 @@
                 });
             }
 
-            // Tab 1 (À votre écoute) clicks: transitions directly to Contact Panel
+            // Tab 1 (Nous contacter) clicks: transitions directly to Contact Panel
             if (menuTabContact) {
                 menuTabContact.addEventListener('click', () => {
                     closeMenu();
