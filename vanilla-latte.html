@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mentions Légales — Odeur de Dubaï. Retrouvez les informations légales de l'éditeur de notre site.">
+    <meta name="description" content="Vanilla Latte par Gulf Orchid — Parfum de Dubaï d'exception aux notes de caramel, réglisse, miel et vanille. Inspiré de Bianco Latte.">
     <meta name="theme-color" content="#1a0e04">
-    <title>Mentions Légales | Odeur de Dubaï</title>
+    <title>Vanilla Latte — Gulf Orchid | Parfum de Dubaï Inspiré de Bianco Latte</title>
+    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -50,6 +52,7 @@
             }
         }
     </script>
+    
     <style>
         /* ── Désactivation globale des styles en italique ── */
         em, .italic, i {
@@ -63,6 +66,32 @@
             -webkit-text-fill-color: transparent;
         }
     </style>
+
+    <!-- Structured Data Product (schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "Vanilla Latte",
+      "image": [
+        "assets/images/parfums/05-vanilla-latte.jpg"
+      ],
+      "description": "Envie d'un parfum de Dubaï gourmand et enveloppant ? Vanilla Latte de Gulf Orchid est une eau de parfum délicieusement addictive, inspirée du célèbre Bianco Latte, qui évoque la chaleur d'un café sucré au cœur de l'hiver. Dès les premières notes, un accord fondant de caramel, de réglisse et de beurre enveloppe les sens. Le cœur dévoile une touche florale et sucrée où le jasmin rencontre la fève tonka et un doux miel doré. En fond, la vanille crémeuse s'allie au musc et à l'ambre pour laisser un sillage chaud, réconfortant et irrésistible.",
+      "sku": "OD-05-VL",
+      "offers": {
+        "@type": "Offer",
+        "url": "vanilla-latte.html",
+        "priceCurrency": "EUR",
+        "price": "30.00",
+        "itemCondition": "https://schema.org/NewCondition",
+        "availability": "https://schema.org/InStock"
+      },
+      "brand": {
+        "@type": "Brand",
+        "name": "Gulf Orchid"
+      }
+    }
+    </script>
 </head>
 <body class="bg-white text-[#1a0e04] font-sans-luxury min-h-screen flex flex-col">
 
@@ -107,12 +136,24 @@
             <!-- BLOC DROIT : Actions (Panier, Contact, Burger) -->
             <div class="flex items-center gap-3 sm:gap-4 lg:gap-5">
                 <!-- Bouton Panier -->
-                <a href="index.html?cart=true" class="flex items-center justify-center w-11 h-11 sm:w-[50px] sm:h-[50px] rounded-2xl hover:bg-black/[0.03]" aria-label="Ouvrir le panier">
+                <a href="index.html?cart=true" class="relative flex items-center justify-center w-11 h-11 sm:w-[50px] sm:h-[50px] rounded-2xl hover:bg-black/[0.03]" aria-label="Ouvrir le panier">
                     <svg class="w-[24px] h-[24px] sm:w-[28px] sm:h-[28px] text-[#C5A880] stroke-current fill-none transition-all duration-300 hover:scale-110" viewBox="0 0 24 24" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
                         <line x1="3" y1="6" x2="21" y2="6"></line>
                         <path d="M16 10a4 4 0 0 1-8 0"></path>
                     </svg>
+                    <!-- Badge Panier -->
+                    <span
+                        id="cart-badge"
+                        class="absolute top-1.5 right-1.5
+                               hidden items-center justify-center
+                               w-4 h-4 sm:w-5 sm:h-5
+                               rounded-full
+                               bg-[#C5A880] text-black
+                               font-sans-luxury text-[9px] sm:text-[10px] font-bold"
+                    >
+                        0
+                    </span>
                 </a>
                 <!-- Bouton Contact -->
                 <a href="index.html?contact=true" class="flex items-center justify-center w-11 h-11 sm:w-[50px] sm:h-[50px] rounded-2xl border border-[#C5A880]/30 hover:border-[#C5A880] hover:bg-black/[0.03] transition-colors" aria-label="Contacter le service client">
@@ -133,104 +174,146 @@
     </header>
 
     <!-- CONTENT -->
-    <main class="flex-grow max-w-4xl mx-auto px-6 py-12 sm:py-20" role="main">
-        <!-- Breadcrumb -->
-        <div class="mb-8">
-            <a href="index.html" class="text-[#C5A880]/60 hover:text-[#C5A880] text-xs uppercase tracking-widest transition-colors duration-300">
-                &larr; Retour à la Galerie
-            </a>
+    <main class="flex-grow max-w-7xl w-full mx-auto px-5 sm:px-8 lg:px-12 py-8 md:py-16 bg-white">
+        
+        <!-- Breadcrumb / Retour -->
+        <div class="text-[10px] sm:text-xs font-sans-luxury tracking-[0.2em] text-[#C5A880] uppercase select-none mb-6">
+            <a href="index.html" class="hover:text-[#946e30] transition-colors">Accueil</a>
+            <span class="mx-2 text-black/20">/</span>
+            <span class="text-black/60">Vanilla Latte</span>
         </div>
 
-        <h1 class="font-serif-luxury text-3xl sm:text-5xl font-light text-[#C5A880] uppercase tracking-wider mb-12 border-b border-[#C5A880]/20 pb-6">
-            Mentions Légales
-        </h1>
-
-        <div class="space-y-12 text-sm sm:text-base text-[#1a0e04]/80 leading-relaxed font-light">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-start">
             
-            <!-- Section 1 -->
-            <section class="space-y-4">
-                <h2 class="font-serif-luxury text-xl sm:text-2xl text-[#C5A880] font-normal tracking-wide">
-                    1. Édition du site
-                </h2>
-                <p>
-                    En vertu de l'article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique, il est précisé aux utilisateurs du site internet <span class="text-[#C5A880] font-normal">Odeur de Dubaï</span> l'identité des différents intervenants dans le cadre de sa réalisation et de son suivi :
-                </p>
-                <ul class="list-disc pl-5 space-y-2 mt-2">
-                    <li><strong>Propriétaire &amp; Éditeur :</strong> Farid BENAHSSAINE</li>
-                    <li><strong>Adresse de l'éditeur :</strong> [Votre adresse postale, ex: 75001 Paris, France]</li>
-                    <li><strong>Contact :</strong> <a href="mailto:farid.benahssaine@gmail.com" class="text-[#C5A880] hover:underline">farid.benahssaine@gmail.com</a> | <a href="tel:+33658230585" class="text-[#C5A880] hover:underline">+33 6 58 23 05 85</a></li>
-                    <li><strong>SIRET :</strong> [Votre Numéro SIRET, ex: 123 456 789 00010]</li>
-                    <li><strong>Directeur de la publication :</strong> Farid BENAHSSAINE</li>
-                </ul>
-            </section>
+            <!-- Left Column: Photo in evidence -->
+            <div class="w-full aspect-[3/4] md:aspect-[4/5] rounded-3xl overflow-hidden shadow-lg border border-[#C5A880]/15 bg-[#FBF9F6] group relative">
+                <img src="assets/images/parfums/05-vanilla-latte.jpg" alt="Parfum de Dubaï Vanilla Latte de Gulf Orchid, gourmand vanille et caramel" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy">
+            </div>
+            
+            <!-- Right Column: Product details -->
+            <div class="flex flex-col gap-6">
+                <!-- Brand & H1 & Inspiration -->
+                <div class="space-y-2">
+                    <span class="block font-sans-luxury text-xs sm:text-sm font-semibold tracking-[0.2em] text-[#C5A880] uppercase">Gulf Orchid</span>
+                    <h1 class="font-serif-luxury text-2xl sm:text-3xl lg:text-4xl font-light text-[#1a0e04] tracking-[0.1em] leading-tight">
+                        Vanilla Latte 🍦🥥🍯
+                    </h1>
+                    <div class="font-sans-luxury text-sm font-light text-[#1a0e04]/70 tracking-[0.05em]">
+                        Inspiration : <span class="font-semibold text-[#1a0e04]">Bianco Latte</span>
+                    </div>
+                    <p class="font-sans-luxury text-sm font-light text-[#1a0e04]/80 leading-relaxed mt-2">
+                        Découvrez Vanilla Latte de Gulf Orchid, un parfum de Dubaï gourmand aux notes de vanille, caramel et miel. Inspiration Bianco Latte, à petit prix.
+                    </p>
+                </div>
 
-            <!-- Section 2 -->
-            <section class="space-y-4">
-                <h2 class="font-serif-luxury text-xl sm:text-2xl text-[#C5A880] font-normal tracking-wide">
-                    2. Hébergement
-                </h2>
-                <p>
-                    Le site est hébergé par :
-                </p>
-                <ul class="list-disc pl-5 space-y-2">
-                    <li><strong>Hébergeur :</strong> [Votre Hébergeur, ex: Hostinger International Ltd.]</li>
-                    <li><strong>Adresse de l'hébergeur :</strong> [Adresse de l'hébergeur, ex: 61 Lordou Vironos Street, 6023 Larnaca, Chypre]</li>
-                    <li><strong>Contact hébergeur :</strong> [Lien de support, ex: https://www.hostinger.fr/contact]</li>
-                </ul>
-            </section>
+                <!-- Price, Volume & Quantity Section -->
+                <div class="flex flex-col gap-4 border-y border-[#C5A880]/15 py-5">
+                    <!-- Rating -->
+                    <div class="flex items-center gap-2 select-none">
+                        <div class="flex text-[#C5A880] text-sm tracking-[0.1em]">
+                            ★★★★★
+                        </div>
+                        <span class="font-sans-luxury text-xs font-light text-[#1a0e04]/60 tracking-[0.05em]">4,5 / 5 - 30 avis vérifiés</span>
+                    </div>
 
-            <!-- Section 3 -->
-            <section class="space-y-4">
-                <h2 class="font-serif-luxury text-xl sm:text-2xl text-[#C5A880] font-normal tracking-wide">
-                    3. Propriété intellectuelle et contrefaçons
-                </h2>
-                <p>
-                    Farid BENAHSSAINE est propriétaire des droits de propriété intellectuelle ou détient les droits d'usage sur tous les éléments accessibles sur le site internet, notamment les textes, images, graphismes, logos, vidéos, architecture, icônes et sons.
-                </p>
-                <p>
-                    Toute reproduction, représentation, modification, publication, adaptation de tout or partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable de Farid BENAHSSAINE.
-                </p>
-                <p>
-                    Toute exploitation non autorisée du site ou de l'un quelconque des éléments qu'il contient sera considérée comme constitutive d'une contrefaçon et poursuivie conformément aux dispositions des articles L.335-2 et suivants du Code de Propriété Intellectuelle.
-                </p>
-            </section>
+                    <!-- Price & Size -->
+                    <div class="flex items-baseline gap-4">
+                        <span class="font-sans-luxury text-2xl sm:text-3xl font-light text-[#1a0e04]">30 €</span>
+                        <span class="text-black/30">/</span>
+                        <span class="font-sans-luxury text-sm font-light text-[#1a0e04]/60">100 ml</span>
+                    </div>
 
-            <!-- Section 4 -->
-            <section class="space-y-4">
-                <h2 class="font-serif-luxury text-xl sm:text-2xl text-[#C5A880] font-normal tracking-wide">
-                    4. Limitations de responsabilité
-                </h2>
-                <p>
-                    Farid BENAHSSAINE ne pourra être tenu pour responsable des dommages directs et indirects causés au matériel de l'utilisateur, lors de l'accès au site internet.
-                </p>
-                <p>
-                    L'éditeur s'efforce de fournir sur le site des informations aussi précises que possible. Toutefois, il ne pourra être tenu responsable des omissions, des inexactitudes et des carences dans la mise à jour, qu'elles soient de son fait ou du fait des tiers partenaires qui lui fournissent ces informations.
-                </p>
-            </section>
+                    <!-- Quantity -->
+                    <div class="flex items-center gap-4 mt-2">
+                        <span class="font-sans-luxury text-xs font-semibold tracking-[0.1em] text-[#1a0e04]/80 uppercase">Quantité</span>
+                        <div class="flex items-center border border-[#C5A880]/30 rounded-xl bg-white overflow-hidden shadow-sm h-11">
+                            <button type="button" id="qty-minus" class="w-11 h-full flex items-center justify-center text-[#C5A880] hover:bg-black/[0.02] active:scale-95 transition-all text-lg font-light focus:outline-none" aria-label="Diminuer la quantité">-</button>
+                            <span id="qty-value" class="w-12 h-full flex items-center justify-center font-sans-luxury text-sm font-medium text-[#1a0e04] select-none" aria-live="polite">1</span>
+                            <button type="button" id="qty-plus" class="w-11 h-full flex items-center justify-center text-[#C5A880] hover:bg-black/[0.02] active:scale-95 transition-all text-lg font-light focus:outline-none" aria-label="Augmenter la quantité">+</button>
+                        </div>
+                    </div>
+                </div>
 
-            <!-- Section 5 -->
-            <section class="space-y-4">
-                <h2 class="font-serif-luxury text-xl sm:text-2xl text-[#C5A880] font-normal tracking-wide">
-                    5. CNIL et gestion des données personnelles
-                </h2>
-                <p>
-                    Conformément aux dispositions de la loi 78-17 du 6 janvier 1978 modifiée et du Règlement Général sur la Protection des Données (RGPD), l'utilisateur du site dispose d'un droit d'accès, de modification et de suppression des informations collectées. Pour exercer ce droit, veuillez envoyer un message à notre délégué à la protection des données via <a href="mailto:farid.benahssaine@gmail.com" class="text-[#C5A880] hover:underline">farid.benahssaine@gmail.com</a>.
-                </p>
-                <p>
-                    Pour plus d'informations sur la façon dont nous traitons vos données (type de données, finalité, destinataire...), veuillez lire notre <a href="politique-confidentialite.html" class="text-[#C5A880] hover:underline">Politique de Confidentialité</a>.
-                </p>
-            </section>
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button
+                        type="button"
+                        id="add-to-cart-btn"
+                        class="flex-grow px-8 py-4 rounded-full border border-[#C5A880] bg-[#C5A880] text-black font-sans-luxury text-xs font-semibold uppercase tracking-[0.25em] transition-all duration-300 hover:bg-[#d4bf9a] hover:border-[#d4bf9a] hover:shadow-[0_10px_25px_rgba(197,168,128,0.35)] transform hover:-translate-y-0.5 min-h-[48px]"
+                    >
+                        Ajouter au panier
+                    </button>
+                    <button
+                        type="button"
+                        id="buy-now-btn"
+                        class="flex-grow px-8 py-4 rounded-full border border-black bg-black text-white font-sans-luxury text-xs font-semibold uppercase tracking-[0.25em] transition-all duration-300 hover:bg-black/80 hover:shadow-[0_10px_25px_rgba(0,0,0,0.15)] transform hover:-translate-y-0.5 min-h-[48px]"
+                    >
+                        Commander
+                    </button>
+                </div>
 
-            <!-- Section 6 -->
-            <section class="space-y-4">
-                <h2 class="font-serif-luxury text-xl sm:text-2xl text-[#C5A880] font-normal tracking-wide">
-                    6. Droit applicable et attribution de juridiction
-                </h2>
-                <p>
-                    Tout litige en relation avec l'utilisation du site internet <span class="text-[#C5A880]">Odeur de Dubaï</span> est soumis au droit français. En dehors des cas où la loi ne le permet pas, il fait attribution exclusive de juridiction aux tribunaux compétents du domicile de l'éditeur.
-                </p>
-            </section>
+                <!-- Details & Accordion -->
+                <div class="mt-4 border-t border-[#C5A880]/15 pt-4 space-y-6">
+                    
+                    <!-- Accordion: Descriptif -->
+                    <div class="border-b border-[#C5A880]/15 pb-4">
+                        <button
+                            type="button"
+                            id="accordion-title"
+                            aria-expanded="false"
+                            aria-controls="accordion-content"
+                            class="w-full flex items-center justify-between text-left py-2 font-serif-luxury text-base sm:text-lg tracking-[0.1em] text-[#1a0e04] uppercase hover:text-[#C5A880] transition-colors focus:outline-none min-h-[44px]"
+                        >
+                            <span>Descriptif</span>
+                            <svg id="accordion-chevron" class="w-5 h-5 text-[#C5A880] transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div
+                            id="accordion-content"
+                            role="region"
+                            aria-labelledby="accordion-title"
+                            class="transition-all duration-300 ease-in-out max-h-0 overflow-hidden"
+                        >
+                            <div class="pt-4 font-sans-luxury text-sm font-light text-[#1a0e04]/80 leading-relaxed space-y-4">
+                                <p>Envie d'un parfum de Dubaï gourmand et enveloppant ? Vanilla Latte de Gulf Orchid est une eau de parfum délicieusement addictive, inspirée du célèbre Bianco Latte, qui évoque la chaleur d'un café sucré au cœur de l'hiver.</p>
+                                <p>Dès les premières notes, un accord fondant de caramel, de réglisse et de beurre enveloppe les sens. Le cœur dévoile une touche florale et sucrée où le jasmin rencontre la fève tonka et un doux miel doré. En fond, la vanille crémeuse s'allie au musc et à l'ambre pour laisser un sillage chaud, réconfortant et irrésistible — la signature des grands parfums de Dubaï.</p>
+                                <p>Importée directement des Émirats, cette eau de parfum concentrée offre une tenue longue durée et un sillage puissant, à une fraction du prix des parfums de niche. Le luxe olfactif de Dubaï, enfin accessible.</p>
+                            </div>
+                        </div>
+                    </div>
 
+                    <!-- Olfactory Pyramid -->
+                    <div class="border-b border-[#C5A880]/15 pb-4">
+                        <h3 class="font-serif-luxury text-base sm:text-lg tracking-[0.1em] text-[#1a0e04] uppercase mb-4">Pyramide olfactive</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4 text-center">
+                            <div class="bg-[#FBF9F6] p-3 sm:p-4 rounded-2xl border border-[#C5A880]/10 flex flex-col items-center justify-center min-h-[110px]">
+                                <span class="font-sans-luxury text-[10px] font-semibold tracking-[0.15em] text-[#C5A880] uppercase mb-2">Tête</span>
+                                <span class="font-sans-luxury text-xs font-light text-[#1a0e04]/90 leading-tight">Caramel, Réglisse, Beurre</span>
+                            </div>
+                            <div class="bg-[#FBF9F6] p-3 sm:p-4 rounded-2xl border border-[#C5A880]/10 flex flex-col items-center justify-center min-h-[110px]">
+                                <span class="font-sans-luxury text-[10px] font-semibold tracking-[0.15em] text-[#C5A880] uppercase mb-2">Cœur</span>
+                                <span class="font-sans-luxury text-xs font-light text-[#1a0e04]/90 leading-tight">Jasmin, Tonka, Miel</span>
+                            </div>
+                            <div class="bg-[#FBF9F6] p-3 sm:p-4 rounded-2xl border border-[#C5A880]/10 flex flex-col items-center justify-center min-h-[110px]">
+                                <span class="font-sans-luxury text-[10px] font-semibold tracking-[0.15em] text-[#C5A880] uppercase mb-2">Fond</span>
+                                <span class="font-sans-luxury text-xs font-light text-[#1a0e04]/90 leading-tight">Vanille, Musc, Ambré</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Spec Table -->
+                    <div>
+                        <h3 class="font-serif-luxury text-sm tracking-[0.15em] text-[#C5A880] uppercase mb-3">Caractéristiques</h3>
+                        <ul class="font-sans-luxury text-xs font-light text-[#1a0e04]/70 space-y-2.5">
+                            <li><strong class="font-medium text-[#1a0e04]">Volume :</strong> 100 ml (3.6 fl.oz.)</li>
+                            <li><strong class="font-medium text-[#1a0e04]">Origine :</strong> Dubaï, Émirats Arabes Unis</li>
+                            <li><strong class="font-medium text-[#1a0e04]">Famille olfactive :</strong> Gourmande vanillée / Mixte</li>
+                            <li><strong class="font-medium text-[#1a0e04]">Marque :</strong> Gulf Orchid</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
@@ -249,7 +332,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="mentions-legales.html" class="font-sans-luxury text-xs font-light tracking-[0.12em] text-[#C5A880] hover:text-[#C5A880] transition-colors duration-300">
+                        <a href="mentions-legales.html" class="font-sans-luxury text-xs font-light tracking-[0.12em] text-[#F5EDD8]/70 hover:text-[#C5A880] transition-colors duration-300">
                             Mentions Légales
                         </a>
                     </li>
@@ -306,7 +389,7 @@
         </div>
     </footer>
 
-    <!-- OVERLAY MENU -->
+    <!-- OVERLAY MENU (BURGER) -->
     <div id="menu-overlay" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-500 ease-out overflow-hidden" role="dialog" aria-modal="true" aria-label="Menu de navigation">
         <div id="menu-card" class="bg-[#F4F0E6] w-full max-w-[480px] rounded-[48px] shadow-2xl p-8 sm:p-12 relative flex flex-col items-center justify-between border border-white/30 transform scale-95 translate-y-8 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
             <button id="menu-close" type="button" class="absolute top-8 right-8 group flex items-center justify-center w-10 h-10 rounded-full border border-[#C5A880]/30 hover:border-[#C5A880]/90 transition-colors focus:outline-none" aria-label="Fermer le menu">
@@ -366,9 +449,10 @@
         </div>
     </div>
 
-    <!-- Burger Menu Script -->
+    <!-- SCRIPTS -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // --- BURGER MENU LOGIC ---
             const burgerBtn = document.getElementById('menu-burger');
             const menuOverlay = document.getElementById('menu-overlay');
             const menuCard = document.getElementById('menu-card');
@@ -398,6 +482,150 @@
                 menuCloseBtn.addEventListener('click', closeMenu);
                 menuOverlay.addEventListener('click', (e) => {
                     if (e.target === menuOverlay) closeMenu();
+                });
+            }
+
+            // --- QUANTITY SELECTOR LOGIC ---
+            const qtyMinus = document.getElementById('qty-minus');
+            const qtyPlus = document.getElementById('qty-plus');
+            const qtyValue = document.getElementById('qty-value');
+            let quantity = 1;
+
+            if (qtyMinus && qtyPlus && qtyValue) {
+                qtyMinus.addEventListener('click', () => {
+                    if (quantity > 1) {
+                        quantity--;
+                        qtyValue.textContent = quantity;
+                    }
+                });
+
+                qtyPlus.addEventListener('click', () => {
+                    quantity++;
+                    qtyValue.textContent = quantity;
+                });
+            }
+
+            // --- ACCORDION LOGIC ---
+            const accordionTitle = document.getElementById('accordion-title');
+            const accordionContent = document.getElementById('accordion-content');
+            const accordionChevron = document.getElementById('accordion-chevron');
+
+            const toggleAccordion = () => {
+                const isExpanded = accordionTitle.getAttribute('aria-expanded') === 'true';
+                if (isExpanded) {
+                    accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+                    // Force reflow
+                    accordionContent.offsetHeight;
+                    
+                    accordionTitle.setAttribute('aria-expanded', 'false');
+                    accordionContent.style.maxHeight = '0px';
+                    accordionChevron.classList.remove('rotate-180');
+                } else {
+                    accordionTitle.setAttribute('aria-expanded', 'true');
+                    accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+                    accordionChevron.classList.add('rotate-180');
+                }
+            };
+
+            if (accordionTitle && accordionContent && accordionChevron) {
+                accordionTitle.addEventListener('click', toggleAccordion);
+                
+                accordionContent.addEventListener('transitionend', () => {
+                    if (accordionTitle.getAttribute('aria-expanded') === 'true') {
+                        accordionContent.style.maxHeight = 'none';
+                    }
+                });
+                
+                // Keyboard support (Space & Enter)
+                accordionTitle.addEventListener('keydown', (e) => {
+                    if (e.key === ' ' || e.key === 'Enter') {
+                        e.preventDefault();
+                        toggleAccordion();
+                    }
+                });
+            }
+
+            // --- LOCAL STORAGE CART LOGIC ---
+            const addToCartBtn = document.getElementById('add-to-cart-btn');
+            const buyNowBtn = document.getElementById('buy-now-btn');
+
+            const productData = {
+                brand: "VANILLE LATTE",
+                name: "By Gulf Orchid",
+                image: "assets/images/parfums/05-vanilla-latte.jpg",
+                price: "30 €"
+            };
+
+            const addProductToCart = (qty) => {
+                let cart = [];
+                try {
+                    const storedCart = localStorage.getItem('odeur_dubai_cart');
+                    if (storedCart) {
+                        cart = JSON.parse(storedCart);
+                    }
+                } catch (e) {
+                    console.error('Failed to load cart from localStorage:', e);
+                }
+
+                const existingItem = cart.find(item => item.product.brand === productData.brand && item.product.name === productData.name);
+                if (existingItem) {
+                    existingItem.quantity += qty;
+                } else {
+                    cart.push({
+                        product: productData,
+                        quantity: qty
+                    });
+                }
+
+                try {
+                    localStorage.setItem('odeur_dubai_cart', JSON.stringify(cart));
+                } catch (e) {
+                    console.error('Failed to save cart to localStorage:', e);
+                }
+            };
+
+            // Update badge function
+            const updateCartBadge = () => {
+                let cart = [];
+                try {
+                    const storedCart = localStorage.getItem('odeur_dubai_cart');
+                    if (storedCart) {
+                        cart = JSON.parse(storedCart);
+                    }
+                } catch (e) {
+                    console.error('Failed to load cart:', e);
+                }
+                
+                const badge = document.getElementById('cart-badge');
+                if (badge) {
+                    const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+                    if (totalCount > 0) {
+                        badge.textContent = totalCount;
+                        badge.classList.remove('hidden');
+                        badge.classList.add('flex');
+                    } else {
+                        badge.classList.add('hidden');
+                        badge.classList.remove('flex');
+                    }
+                }
+            };
+
+            // Initial badge load
+            updateCartBadge();
+
+            if (addToCartBtn) {
+                addToCartBtn.addEventListener('click', () => {
+                    addProductToCart(quantity);
+                    // Redirect to homepage with cart open
+                    window.location.href = 'index.html?cart=true';
+                });
+            }
+
+            if (buyNowBtn) {
+                buyNowBtn.addEventListener('click', () => {
+                    addProductToCart(quantity);
+                    // Redirect to homepage with cart open
+                    window.location.href = 'index.html?cart=true';
                 });
             }
         });
