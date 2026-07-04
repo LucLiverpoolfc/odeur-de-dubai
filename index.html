@@ -1194,9 +1194,29 @@
                             0
                         </span>
                     </div>
-                    <span class="font-sans-luxury text-[11px] sm:text-[13px] font-medium tracking-[0.18em] uppercase text-[#C5A880] ml-2.5 select-none whitespace-nowrap">
+                    <span class="hidden lg:inline font-sans-luxury text-[11px] sm:text-[13px] font-medium tracking-[0.18em] uppercase text-[#C5A880] ml-2.5 select-none whitespace-nowrap">
                         Votre panier
                     </span>
+                </button>
+
+                <!-- Bouton Menu Burger -->
+                <button
+                    id="menu-burger"
+                    type="button"
+                    class="lg:hidden group
+                           flex items-center justify-center
+                           w-11 h-11 sm:w-[50px] sm:h-[50px]
+                           rounded-2xl border border-[#C5A880]/50 bg-transparent
+                           transition-all duration-300
+                           hover:border-[#C5A880]/90 hover:bg-black/[0.03]
+                           focus:outline-none focus:ring-1 focus:ring-[#C5A880]/40"
+                    aria-label="Ouvrir le menu de navigation"
+                >
+                    <div class="flex flex-col items-center justify-center gap-[5px] sm:gap-[6px] w-[18px] sm:w-[20px]">
+                        <span class="burger-line block w-full h-[1px] bg-[#C5A880]"></span>
+                        <span class="burger-line block w-full h-[1px] bg-[#C5A880]"></span>
+                        <span class="burger-line block w-full h-[1px] bg-[#C5A880]"></span>
+                    </div>
                 </button>
             </div>
 
