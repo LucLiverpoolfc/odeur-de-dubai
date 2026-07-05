@@ -2,7 +2,7 @@
    ODEUR DE DUBAÏ — Search Bar Component (JavaScript)
    Fichier autonome (IIFE) — aucune dépendance
    Injecte dynamiquement le composant dans le header existant
-   Reorganise la structure selon le modèle Parfumdo
+   Reorganise la structure selon la maquette mobile symétrique
    ═══════════════════════════════════════════════════════════ */
 (function () {
     'use strict';
@@ -152,6 +152,7 @@
         return result;
     }
 
+    // ── Échappe le HTML ─────────────────────────────────────
     function escapeHTML(str) {
         var div = document.createElement('div');
         div.appendChild(document.createTextNode(str));
@@ -464,29 +465,39 @@
                 }
             }
 
-            // ── Créer le wrapper principal de recherche ──
-            var wrapper = document.createElement('div');
-            wrapper.className = 'ods-search-wrapper';
-
-            // ── Desktop : champ de recherche visible ──
+            // ── 1. Desktop : champ de recherche visible ──
             var desktopField = createSearchField('ods-desktop');
             var desktopContainer = document.createElement('div');
             desktopContainer.className = 'ods-search-field-desktop';
             desktopContainer.appendChild(desktopField.container);
-            wrapper.appendChild(desktopContainer);
+            
+            // On l'insère au début du nav (order: 1 sur desktop le mettra à gauche)
+            nav.insertBefore(desktopContainer, nav.firstChild);
 
-            // ── Mobile : bouton loupe ──
+            // ── 2. Mobile : actions de gauche (Menu Burger + Loupe) ──
+            var leftActions = document.createElement('div');
+            leftActions.className = 'ods-mobile-left-actions';
+
+            // Bouton loupe mobile
             var trigger = document.createElement('button');
             trigger.type = 'button';
             trigger.className = 'ods-search-trigger';
             trigger.setAttribute('aria-label', 'Rechercher un parfum');
             trigger.innerHTML = SVG_SEARCH;
-            wrapper.appendChild(trigger);
 
-            // Insérer le wrapper comme PREMIER enfant du nav (se mettra à gauche grâce à order: 1)
-            nav.insertBefore(wrapper, nav.firstChild);
+            // Déplacer le Burger button (s'il existe) de l'actionsBlock vers la gauche
+            var burger = document.getElementById('menu-burger');
+            if (burger) {
+                leftActions.appendChild(burger);
+            }
+            
+            // Ajouter la loupe après le burger
+            leftActions.appendChild(trigger);
 
-            // ── Mobile : panneau pleine largeur ──
+            // Insérer leftActions au début du nav (avant le desktopContainer)
+            nav.insertBefore(leftActions, nav.firstChild);
+
+            // ── 3. Mobile : panneau pleine largeur ──
             var mobilePanel = document.createElement('div');
             mobilePanel.className = 'ods-search-mobile-panel';
             mobilePanel.id = 'ods-mobile-panel';
@@ -561,7 +572,7 @@
             // Clic extérieur (desktop) - Fermer les suggestions
             document.addEventListener('click', function (e) {
                 var isDesktop = window.matchMedia('(min-width: 1024px)').matches;
-                if (isDesktop && !wrapper.contains(e.target)) {
+                if (isDesktop && !desktopContainer.contains(e.target)) {
                     hideSuggestions(desktopField.listbox);
                 }
             });
