@@ -92,7 +92,8 @@
 /* ── Mobile & Tablettes (< 1024px) ── */
 @media (max-width: 1023px) {
     #main-header {
-        height: 70px !important;
+        height: auto !important;
+        min-height: 96px !important;
     }
 
     #main-header nav {
@@ -101,9 +102,10 @@
         align-items: center !important;
         justify-content: flex-end !important;
         position: relative !important;
-        height: 100% !important;
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
+        height: auto !important;
+        min-height: 96px !important;
+        padding-top: 8px !important;
+        padding-bottom: 8px !important;
     }
 
     /* Logo centré */
@@ -191,10 +193,17 @@
 
 /* Champ de recherche Desktop */
 .ods-search-field-desktop {
-    position: relative;
-    width: 100%;
-    max-width: 280px;
-    transition: max-width 0.35s var(--ods-transition);
+    display: none; /* Masqué sur mobile par défaut */
+}
+
+@media (min-width: 1024px) {
+    .ods-search-field-desktop {
+        display: block;
+        position: relative;
+        width: 100%;
+        max-width: 280px;
+        transition: max-width 0.35s var(--ods-transition);
+    }
 }
 
 .ods-search-field-desktop:focus-within {
