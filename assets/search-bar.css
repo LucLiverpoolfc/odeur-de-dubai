@@ -100,7 +100,7 @@
         display: flex !important;
         flex-direction: row !important;
         align-items: center !important;
-        justify-content: flex-end !important;
+        justify-content: space-between !important;
         position: relative !important;
         height: auto !important;
         min-height: 96px !important;
@@ -108,13 +108,12 @@
         padding-bottom: 8px !important;
     }
 
-    /* Logo centré */
+    /* Logo à gauche */
     .ods-header-logo {
-        position: absolute !important;
-        left: 50% !important;
-        top: 50% !important;
-        transform: translate(-50%, -50%) !important;
+        position: static !important;
+        transform: none !important;
         margin: 0 !important;
+        margin-right: auto !important; /* Pousse le reste vers la droite */
         z-index: 10 !important;
         display: flex !important;
         flex-direction: column !important;
