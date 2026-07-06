@@ -43,7 +43,8 @@
     /* Logo au centre */
     .ods-header-logo {
         order: 2 !important;
-        width: 30% !important;
+        flex: 0 0 auto !important;
+        width: auto !important;
         display: flex !important;
         flex-direction: column !important;
         justify-content: center !important;
@@ -61,7 +62,8 @@
     /* Recherche à gauche */
     .ods-search-wrapper {
         order: 1 !important;
-        width: 35% !important;
+        flex: 0 0 340px !important;
+        width: 340px !important;
         display: flex !important;
         justify-content: flex-start !important;
         align-items: center !important;
@@ -70,10 +72,17 @@
     /* Actions à droite */
     .ods-header-actions {
         order: 3 !important;
-        width: 35% !important;
+        flex: 0 0 260px !important;
+        width: 260px !important;
         display: flex !important;
         justify-content: flex-end !important;
         align-items: center !important;
+    }
+
+    /* Ajustements pour les fiches produits et sous-pages pour centrer le logo optiquement */
+    .ods-subpage-header .ods-search-wrapper {
+        flex: 0 0 370px !important;
+        width: 370px !important;
     }
 
     /* Onglets en dessous, centrés */

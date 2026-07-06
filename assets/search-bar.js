@@ -463,12 +463,14 @@
                 if (navLinksBlock) {
                     navLinksBlock.classList.add('ods-header-links');
                 }
+            } else {
+                header.classList.add('ods-subpage-header');
             }
 
             // ── 1. Desktop : champ de recherche visible ──
             var desktopField = createSearchField('ods-desktop');
             var desktopContainer = document.createElement('div');
-            desktopContainer.className = 'ods-search-field-desktop';
+            desktopContainer.className = 'ods-search-field-desktop ods-search-wrapper';
             desktopContainer.appendChild(desktopField.container);
             
             // On l'insère au début du nav (order: 1 sur desktop le mettra à gauche)
