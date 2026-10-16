@@ -12,6 +12,13 @@
     // ── INDEX DES PARFUMS ─────────────────────────────────────
     const PARFUMS = [
         {
+            name: 'Confidential Private Gold',
+            inspiration: 'Kirke',
+            notes: ['Pêche', 'Poire', 'Cassis', 'Sable', 'Héliotrope', 'Fruit de la passion', 'Muguet', 'Framboises', 'Musc', 'Vanille', 'Bois de santal', 'Patchouli'],
+            url: 'confidential.html',
+            image: 'assets/images/parfums/06-confidential-private-gold.jpg'
+        },
+        {
             name: 'Vanilla Latte',
             inspiration: 'Bianco Latte',
             notes: ['Caramel', 'Réglisse', 'Beurre', 'Jasmin', 'Tonka', 'Miel', 'Vanille', 'Musc', 'Ambré'],

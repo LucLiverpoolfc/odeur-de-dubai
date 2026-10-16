@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Confidential Private Gold par Lattafa — Parfum de Dubaï d'exception aux notes de pêche, poire, cassis et fruits de la passion. Inspiré de Kirke.">
+    <meta name="theme-color" content="#1a0e04">
+    <title>Confidential Private Gold — Lattafa | Parfum de Dubaï Inspiré de Kirke</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'serif-luxury': ['"Inter"', 'system-ui', 'sans-serif'],
+                        'sans-luxury': ['"Inter"', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: {
+                            50:  '#fdf9f0',
+                            100: '#f8ecd4',
+                            200: '#f0d6a4',
+                            300: '#e5bc6e',
+                            400: '#d4a44a',
+                            500: '#c5a055',
+                            600: '#b08a3e',
+                            700: '#946e30',
+                            800: '#7a5a2c',
+                            900: '#654a27',
+                        },
+                        desert: {
+                            dark:    '#1a0e04',
+                            deep:    '#2c1a08',
+                            warm:    '#3d2810',
+                            sand:    '#c2a57b',
+                            light:   '#e8d5b7',
+                            sunrise: '#e67e22',
+                        },
+                    },
+                    letterSpacing: {
+                        'ultra-wide': '0.25em',
+                        'luxe':       '0.15em',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* ── Désactivation globale des styles en italique ── */
+        em, .italic, i {
+            font-style: normal !important;
+        }
+
+        .logo-gold-gradient {
+            font-family: "Cormorant Garamond", Georgia, serif !important;
+            background: linear-gradient(135deg, #d4a44a 0%, #f0d6a4 50%, #b08a3e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+
+    <!-- Structured Data Product (schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "Confidential Private Gold",
+      "image": [
+        "assets/images/parfums/06-confidential-private-gold.jpg"
+      ],
+      "description": "Confidential Private Gold de Lattafa est une fragrance somptueuse qui incarne le luxe et l'exclusivité à chaque vaporisation. Ce parfum raffiné est conçu pour ceux qui recherchent une signature olfactive opulente et inoubliable, parfaite pour les moments où vous souhaitez exprimer votre élégance avec une touche de mystère. Inspiré de Kirke.",
+      "sku": "OD-06-CPG",
+      "offers": {
+        "@type": "Offer",
+        "url": "confidential-private-gold.html",
+        "priceCurrency": "EUR",
+        "price": "30.00",
+        "itemCondition": "https://schema.org/NewCondition",
+        "availability": "https://schema.org/InStock"
+      },
+      "brand": {
+        "@type": "Brand",
+        "name": "Lattafa"
+      }
+    }
+    </script>
+    <link rel="stylesheet" href="assets/search-bar.css">
+
+    <!-- Favicon / Brand Icons -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+</head>
+<body class="bg-white text-[#1a0e04] font-sans-luxury min-h-screen flex flex-col">
+
+    <!-- HEADER -->
+    <header id="main-header" class="sticky top-0 z-50 w-full h-20 sm:h-24 bg-white border-b border-[#C5A880]/15" role="banner">
+        <nav class="flex items-center justify-between h-full w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 relative" aria-label="Navigation principale">
+            <!-- BLOC GAUCHE : Logo -->
+            <div class="flex items-center">
+                <a id="logo-link" href="index.html" class="flex flex-col items-center gap-1.5 sm:gap-2 group hover:opacity-90" aria-label="Odeurs de Dubaï — Accueil">
+                    <svg class="w-12 h-12 sm:w-[62px] sm:h-[62px] transition-transform duration-500 group-hover:scale-[1.05]" viewBox="505 348 168 258" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="emblemGold" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#d4a44a" />
+                                <stop offset="50%" stop-color="#c5a055" />
+                                <stop offset="100%" stop-color="#a88a3a" />
+                            </linearGradient>
+                            <linearGradient id="emblemGoldLight" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#e5c77a" />
+                                <stop offset="100%" stop-color="#c5a055" />
+                            </linearGradient>
+                        </defs>
+                        <path   d="M545.4 601.9 L544.8 600.8 L553.1 592.3 L561.5 583.9 L565.2 581.9 L568.9 580.0 L607.9 580.0 L646.8 580.0 L647.5 576.2 C647.8 574.1 648.0 567.8 647.8 562.2 L647.5 552.1 L648.8 550.8 L650.0 549.6 L660.0 559.5 L670.0 569.5 L670.0 586.2 L670.0 603.0 L608.1 603.0 L546.1 603.0 L545.4 601.9 Z M509.7 600.4 L509.0 599.7 L509.0 519.5 L509.0 439.4 L510.2 438.2 L511.4 437.0 L525.1 437.0 L538.7 437.0 L581.4 480.1 L624.0 523.2 L623.9 538.6 L623.9 554.0 L623.2 554.0 C622.8 554.0 615.2 546.7 606.3 537.8 L590.0 521.5 L550.2 561.3 L510.4 601.1 L509.7 600.4 Z M536.3 543.7 L537.0 544.3 L537.0 543.1 L537.0 541.9 L555.0 523.9 C564.9 513.9 573.0 505.5 573.0 505.2 C573.0 504.8 563.8 495.3 552.5 484.0 L532.0 463.5 L532.0 504.9 L532.0 546.3 L533.8 544.7 L535.7 543.0 L536.3 543.7 Z M621.1 487.3 L575.9 441.7 L576.2 439.6 L576.5 437.5 L586.5 437.2 C592.0 437.0 598.4 437.2 600.7 437.5 L604.9 438.1 L613.4 446.6 C618.0 451.2 622.2 455.0 622.7 455.0 C623.5 455.0 637.3 441.7 644.2 434.2 L648.0 430.2 L648.0 424.3 C648.0 421.1 647.7 417.5 647.4 416.3 L646.8 414.0 L578.1 413.8 L509.5 413.5 L509.2 403.6 L508.9 393.8 L510.1 392.4 L511.2 391.0 L589.0 391.0 L666.8 391.0 L668.4 391.6 L670.0 392.2 L670.0 416.5 L670.0 440.8 L655.0 456.1 C646.8 464.6 640.1 472.0 640.0 472.5 C640.0 473.1 646.8 480.3 655.0 488.5 L670.0 503.5 L670.0 518.2 L670.0 533.0 L668.1 533.0 L666.3 533.0 L621.1 487.3 Z M575.0 381.1 C575.0 379.5 574.7 377.5 574.4 376.6 L573.8 375.0 L572.4 375.0 L571.1 375.0 L570.0 373.0 L568.9 371.0 L569.2 361.8 L569.5 352.5 L573.5 351.8 C578.5 350.9 604.7 350.8 607.8 351.6 L610.1 352.3 L609.8 362.9 L609.5 373.5 L607.2 374.5 L605.0 375.5 L605.0 379.7 L605.0 384.0 L590.0 384.0 L575.0 384.0 L575.0 381.1 Z" fill="url(#emblemGold)" fill-rule="evenodd"/>
+                    </svg>
+                    <span class="logo-gold-gradient font-serif-luxury text-[11px] sm:text-xs md:text-sm font-semibold uppercase leading-none select-none whitespace-nowrap">
+                        Odeurs de Dubaï
+                    </span>
+                </a>
+            </div>
+
+            <!-- BLOC DROIT : Actions (Panier, Contact, Burger) -->
+            <div class="flex items-center gap-3 sm:gap-4 lg:gap-5">
+                <!-- Bouton Panier -->
+                <a href="index.html?cart=true" class="relative flex items-center justify-center w-11 h-11 sm:w-[50px] sm:h-[50px] rounded-2xl hover:bg-black/[0.03]" aria-label="Ouvrir le panier">
+                    <svg class="w-[24px] h-[24px] sm:w-[28px] sm:h-[28px] text-[#C5A880] stroke-current fill-none transition-all duration-300 hover:scale-110" viewBox="0 0 24 24" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <!-- Badge Panier -->
+                    <span
+                        id="cart-badge"
+                        class="absolute top-1.5 right-1.5
+                               hidden items-center justify-center
+                               w-4 h-4 sm:w-5 sm:h-5
+                               rounded-full
+                               bg-[#C5A880] text-black
+                               font-sans-luxury text-[9px] sm:text-[10px] font-bold"
+                    >
+                        0
+                    </span>
+                </a>
+                <!-- Bouton Contact -->
+                <a href="index.html?contact=true" class="flex items-center justify-center w-11 h-11 sm:w-[50px] sm:h-[50px] rounded-2xl border border-[#C5A880]/30 hover:border-[#C5A880] hover:bg-black/[0.03] transition-colors" aria-label="Contacter le service client">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5 text-[#C5A880] stroke-current fill-none transition-all duration-300 hover:scale-110" viewBox="0 0 24 24" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                </a>
+                <!-- Bouton Menu Burger -->
+                <button id="menu-burger" type="button" class="group flex items-center justify-center w-11 h-11 sm:w-[50px] sm:h-[50px] rounded-2xl border border-[#C5A880]/50 bg-transparent transition-all duration-300 hover:border-[#C5A880]/90 hover:bg-black/[0.03]">
+                    <div class="flex flex-col items-center justify-center gap-[5px] sm:gap-[6px] w-[18px] sm:w-[20px]">
+                        <span class="burger-line block w-full h-[1px] bg-[#C5A880]"></span>
+                        <span class="burger-line block w-full h-[1px] bg-[#C5A880]"></span>
+                        <span class="burger-line block w-full h-[1px] bg-[#C5A880]"></span>
+                    </div>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-5 sm:px-8 lg:px-12 py-8 md:py-16 bg-white">
+        
+        <!-- Breadcrumb / Retour -->
+        <div class="text-[10px] sm:text-xs font-sans-luxury tracking-[0.2em] text-[#C5A880] uppercase select-none mb-6">
+            <a href="index.html" class="hover:text-[#946e30] transition-colors">Accueil</a>
+            <span class="mx-2 text-black/20">/</span>
+            <span class="text-black/60">Confidential Private Gold</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-start">
+            
+            <!-- Left Column: Photo in evidence -->
+            <div class="w-full aspect-[3/4] md:aspect-[4/5] rounded-3xl overflow-hidden shadow-lg border border-[#C5A880]/15 bg-[#FBF9F6] group relative">
+                <img 
+                    src="assets/images/parfums/06-confidential-private-gold.jpg" 
+                    alt="Parfum de Dubaï Confidential Private Gold par Lattafa, fragrance somptueuse inspirée de Kirke" 
+                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" 
+                    loading="lazy"
+                >
+            </div>
+            
+            <!-- Right Column: Product details -->
+            <div class="flex flex-col gap-6">
+                <!-- Brand & H1 & Inspiration -->
+                <div class="space-y-2">
+                    <span class="block font-sans-luxury text-xs sm:text-sm font-semibold tracking-[0.2em] text-[#C5A880] uppercase">Lattafa</span>
+                    <h1 class="font-serif-luxury text-2xl sm:text-3xl lg:text-4xl font-light text-[#1a0e04] tracking-[0.1em] leading-tight">
+                        Confidential Private Gold ✨👑
+                    </h1>
+                    <div class="font-sans-luxury text-sm font-light text-[#1a0e04]/70 tracking-[0.05em]">
+                        Inspiration : <span class="font-semibold text-[#1a0e04]">Kirke</span>
+                    </div>
+                    <p class="font-sans-luxury text-sm font-light text-[#1a0e04]/80 leading-relaxed mt-2">
+                        Découvrez Confidential Private Gold de Lattafa, une fragrance somptueuse qui incarne le luxe et l'exclusivité. Inspiration Kirke, à prix irrésistible.
+                    </p>
+                </div>
+
+                <!-- Price, Volume & Quantity Section -->
+                <div class="flex flex-col gap-4 border-y border-[#C5A880]/15 py-5">
+                    <!-- Rating -->
+                    <div class="flex items-center gap-2 select-none">
+                        <div class="flex text-[#C5A880] text-sm tracking-[0.1em]">
+                            ★★★★★
+                        </div>
+                        <span class="font-sans-luxury text-xs font-light text-[#1a0e04]/60 tracking-[0.05em]">4,5 / 5 - 30 avis vérifiés</span>
+                    </div>
+
+                    <!-- Price & Size -->
+                    <div class="flex items-baseline gap-4">
+                        <span class="font-sans-luxury text-2xl sm:text-3xl font-light text-[#1a0e04]">30 €</span>
+                        <span class="text-black/30">/</span>
+                        <span class="font-sans-luxury text-sm font-light text-[#1a0e04]/60">100 ml</span>
+                    </div>
+
+                    <!-- Quantity -->
+                    <div class="flex items-center gap-4 mt-2">
+                        <span class="font-sans-luxury text-xs font-semibold tracking-[0.1em] text-[#1a0e04]/80 uppercase">Quantité</span>
+                        <div class="flex items-center border border-[#C5A880]/30 rounded-xl bg-white overflow-hidden shadow-sm h-11">
+                            <button type="button" id="qty-minus" class="w-11 h-full flex items-center justify-center text-[#C5A880] hover:bg-black/[0.02] active:scale-95 transition-all text-lg font-light focus:outline-none" aria-label="Diminuer la quantité">-</button>
+                            <span id="qty-value" class="w-12 h-full flex items-center justify-center font-sans-luxury text-sm font-medium text-[#1a0e04] select-none" aria-live="polite">1</span>
+                            <button type="button" id="qty-plus" class="w-11 h-full flex items-center justify-center text-[#C5A880] hover:bg-black/[0.02] active:scale-95 transition-all text-lg font-light focus:outline-none" aria-label="Augmenter la quantité">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button
+                        type="button"
+                        id="add-to-cart-btn"
+                        class="flex-grow px-8 py-4 rounded-full border border-[#C5A880] bg-[#C5A880] text-black font-sans-luxury text-xs font-semibold uppercase tracking-[0.25em] transition-all duration-300 hover:bg-[#d4bf9a] hover:border-[#d4bf9a] hover:shadow-[0_10px_25px_rgba(197,168,128,0.35)] transform hover:-translate-y-0.5 min-h-[48px]"
+                    >
+                        Ajouter au panier
+                    </button>
+                    <button
+                        type="button"
+                        id="buy-now-btn"
+                        class="flex-grow px-8 py-4 rounded-full border border-black bg-black text-white font-sans-luxury text-xs font-semibold uppercase tracking-[0.25em] transition-all duration-300 hover:bg-black/80 hover:shadow-[0_10px_25px_rgba(0,0,0,0.15)] transform hover:-translate-y-0.5 min-h-[48px]"
+                    >
+                        Commander
+                    </button>
+                </div>
+
+                <!-- Details & Accordion -->
+                <div class="mt-4 border-t border-[#C5A880]/15 pt-4 space-y-6">
+                    
+                    <!-- Accordion: Descriptif -->
+                    <div class="border-b border-[#C5A880]/15 pb-4">
+                        <button
+                            type="button"
+                            id="accordion-title"
+                            aria-expanded="false"
+                            aria-controls="accordion-content"
+                            class="w-full flex items-center justify-between text-left py-2 font-serif-luxury text-base sm:text-lg tracking-[0.1em] text-[#1a0e04] uppercase hover:text-[#C5A880] transition-colors focus:outline-none min-h-[44px]"
+                        >
+                            <span>Descriptif</span>
+                            <svg id="accordion-chevron" class="w-5 h-5 text-[#C5A880] transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div
+                            id="accordion-content"
+                            role="region"
+                            aria-labelledby="accordion-title"
+                            class="transition-all duration-300 ease-in-out max-h-0 overflow-hidden"
+                        >
+                            <div class="pt-4 font-sans-luxury text-sm font-light text-[#1a0e04]/80 leading-relaxed space-y-4">
+                                <p>Confidential Private Gold de Lattafa est une fragrance somptueuse qui incarne le luxe et l'exclusivité à chaque vaporisation. Ce parfum raffiné est conçu pour ceux qui recherchent une signature olfactive opulente et inoubliable, parfaite pour les moments où vous souhaitez exprimer votre élégance avec une touche de mystère. Confidential Private Gold est l'essence même du prestige, offrant une expérience olfactive riche et enveloppante.</p>
+                                <p>Le parfum s'ouvre sur des notes de tête éclatantes et précieuses, mêlant des accords frais et lumineux qui captivent instantanément les sens. Le cœur de Confidential Private Gold révèle une profondeur exquise avec un mélange harmonieux de fleurs rares et de bois précieux, créant une sophistication qui se développe magnifiquement sur la peau. Les notes de fond, composées d'ambre chaud, de musc sensuel, et de vanille, apportent une chaleur enveloppante et persistante, laissant un sillage de pure magnificence.</p>
+                                <p>Confidential Private Gold - Lattafa est le choix parfait pour ceux qui apprécient les parfums luxueux et intenses, qui évoquent l'élégance et la richesse à chaque instant. Que vous le portiez pour une soirée spéciale ou pour ajouter une touche de glamour à votre quotidien, ce parfum saura sublimer votre présence avec une aura de sophistication et de mystère.</p>
+                                <p>Laissez-vous envelopper par l'opulence de Confidential Private Gold - Lattafa et découvrez une fragrance qui incarne le luxe et le raffinement à chaque vaporisation.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Olfactory Pyramid -->
+                    <div class="border-b border-[#C5A880]/15 pb-4">
+                        <h3 class="font-serif-luxury text-base sm:text-lg tracking-[0.1em] text-[#1a0e04] uppercase mb-4">Pyramide olfactive</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4 text-center">
+                            <div class="bg-[#FBF9F6] p-3 sm:p-4 rounded-2xl border border-[#C5A880]/10 flex flex-col items-center justify-center min-h-[110px]">
+                                <span class="font-sans-luxury text-[10px] font-semibold tracking-[0.15em] text-[#C5A880] uppercase mb-2">Tête</span>
+                                <span class="font-sans-luxury text-xs font-light text-[#1a0e04]/90 leading-tight">Pêche, Poire, Cassis, Sable, Héliotrope</span>
+                            </div>
+                            <div class="bg-[#FBF9F6] p-3 sm:p-4 rounded-2xl border border-[#C5A880]/10 flex flex-col items-center justify-center min-h-[110px]">
+                                <span class="font-sans-luxury text-[10px] font-semibold tracking-[0.15em] text-[#C5A880] uppercase mb-2">Cœur</span>
+                                <span class="font-sans-luxury text-xs font-light text-[#1a0e04]/90 leading-tight">Fruit de la Passion, Muguet, Framboises</span>
+                            </div>
+                            <div class="bg-[#FBF9F6] p-3 sm:p-4 rounded-2xl border border-[#C5A880]/10 flex flex-col items-center justify-center min-h-[110px]">
+                                <span class="font-sans-luxury text-[10px] font-semibold tracking-[0.15em] text-[#C5A880] uppercase mb-2">Fond</span>
+                                <span class="font-sans-luxury text-xs font-light text-[#1a0e04]/90 leading-tight">Musc, Vanille, Bois de Santal, Patchouli</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Spec Table -->
+                    <div>
+                        <h3 class="font-serif-luxury text-sm tracking-[0.15em] text-[#C5A880] uppercase mb-3">Caractéristiques</h3>
+                        <ul class="font-sans-luxury text-xs font-light text-[#1a0e04]/70 space-y-2.5">
+                            <li><strong class="font-medium text-[#1a0e04]">Volume :</strong> 100 ml (3.4 fl.oz.)</li>
+                            <li><strong class="font-medium text-[#1a0e04]">Origine :</strong> Dubaï, Émirats Arabes Unis</li>
+                            <li><strong class="font-medium text-[#1a0e04]">Famille olfactive :</strong> Fruité chypré / Mixte</li>
+                            <li><strong class="font-medium text-[#1a0e04]">Marque :</strong> Lattafa</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="main-footer" class="w-full bg-black border-t border-[#C5A880]/20 py-16 px-6 sm:px-12 md:px-20 lg:px-24" role="contentinfo">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-start text-center md:text-left">
+            <!-- Colonne 1 : Navigation & Conformité Légale -->
+            <div class="flex flex-col gap-5">
+                <h3 class="font-serif-luxury text-sm font-medium tracking-[0.15em] text-[#C5A880] uppercase">
+                    Maison &amp; Légal
+                </h3>
+                <ul class="space-y-4 md:space-y-3">
+                    <li>
+                        <a href="index.html?contact=true" class="font-sans-luxury text-xs font-light tracking-[0.12em] text-[#F5EDD8]/70 hover:text-[#C5A880] transition-colors duration-300">
+                            Nous contacter
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mentions-legales.html" class="font-sans-luxury text-xs font-light tracking-[0.12em] text-[#F5EDD8]/70 hover:text-[#C5A880] transition-colors duration-300">
+                            Mentions Légales
+                        </a>
+                    </li>
+                    <li>
+                        <a href="cgv.html" class="font-sans-luxury text-xs font-light tracking-[0.12em] text-[#F5EDD8]/70 hover:text-[#C5A880] transition-colors duration-300">
+                            Conditions Générales de Vente (CGV)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="politique-confidentialite.html" class="font-sans-luxury text-xs font-light tracking-[0.12em] text-[#F5EDD8]/70 hover:text-[#C5A880] transition-colors duration-300">
+                            Politique de Confidentialité &amp; RGPD
+                        </a>
+                    </li>
+                    <li>
+                        <a href="livraison-retours.html" class="font-sans-luxury text-xs font-light tracking-[0.12em] text-[#F5EDD8]/70 hover:text-[#C5A880] transition-colors duration-300">
+                            Politique de Livraison &amp; Retours
+                        </a>
+                    </li>
+                    <li>
+                        <a href="retractation.html" class="font-sans-luxury text-xs font-light tracking-[0.12em] text-[#F5EDD8]/70 hover:text-[#C5A880] transition-colors duration-300">
+                            Formulaire de Rétractation
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Colonne 2 : Identité de Marque -->
+            <div class="flex flex-col items-center justify-center h-full md:pt-4">
+                <span class="logo-gold-gradient font-serif-luxury text-xl font-semibold tracking-[0.24em] uppercase leading-none select-none mb-4">
+                    Odeurs de Dubaï
+                </span>
+                <p class="font-sans-luxury text-[10px] font-extralight tracking-widest text-[#F5EDD8]/45 uppercase text-center max-w-[280px]">
+                    L'essence authentique de Dubaï. L'or, l'oud et l'excellence réunis dans des créations d'exception.
+                </p>
+                <a href="https://maps.google.com/?q=10+rue+de+la+Belle+Rose,+33130+Begles" target="_blank" rel="noopener noreferrer" class="font-sans-luxury text-[10px] font-light tracking-[0.12em] text-[#F5EDD8]/70 hover:text-[#C5A880] mt-4 text-center transition-colors duration-300">
+                    10 rue de la Belle Rose, 33130 Bègles
+                </a>
+                <p class="font-sans-luxury text-[9px] font-extralight tracking-widest text-[#F5EDD8]/30 uppercase text-center mt-6">
+                    &copy; 2026 Odeurs de Dubaï. Tous droits réservés.
+                </p>
+            </div>
+
+            <!-- Colonne 3 : Coordonnées Directes -->
+            <div class="flex flex-col gap-5 text-center md:text-right">
+                <h3 class="font-serif-luxury text-sm font-medium tracking-[0.15em] text-[#C5A880] uppercase">
+                    Service Clientèle
+                </h3>
+                <div class="flex flex-col gap-3 font-sans text-xs tracking-wider text-[#F5EDD8]/70 items-center md:items-end">
+                    <span class="font-serif-luxury text-[#C5A880] italic">Farid BENAHSSAINE</span>
+                    <a href="tel:+33658230585" class="hover:text-[#C5A880] transition-colors duration-300">+33 6 58 23 05 85</a>
+                    <a href="mailto:farid.benahssaine@gmail.com" class="hover:text-[#C5A880] transition-colors duration-300 break-all">farid.benahssaine@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- OVERLAY MENU (BURGER) -->
+    <div id="menu-overlay" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-500 ease-out overflow-hidden" role="dialog" aria-modal="true" aria-label="Menu de navigation">
+        <div id="menu-card" class="bg-[#F4F0E6] w-full max-w-[480px] rounded-[48px] shadow-2xl p-8 sm:p-12 relative flex flex-col items-center justify-between border border-white/30 transform scale-95 translate-y-8 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
+            <button id="menu-close" type="button" class="absolute top-8 right-8 group flex items-center justify-center w-10 h-10 rounded-full border border-[#C5A880]/30 hover:border-[#C5A880]/90 transition-colors focus:outline-none" aria-label="Fermer le menu">
+                <svg class="w-5 h-5 stroke-[#C5A880] fill-none group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="flex flex-col items-center gap-4 mb-8 mt-2 w-full text-center">
+                <svg class="w-24 h-[60px]" viewBox="505 348 168 258" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path   d="M545.4 601.9 L544.8 600.8 L553.1 592.3 L561.5 583.9 L565.2 581.9 L568.9 580.0 L607.9 580.0 L646.8 580.0 L647.5 576.2 C647.8 574.1 648.0 567.8 647.8 562.2 L647.5 552.1 L648.8 550.8 L650.0 549.6 L660.0 559.5 L670.0 569.5 L670.0 586.2 L670.0 603.0 L608.1 603.0 L546.1 603.0 L545.4 601.9 Z M509.7 600.4 L509.0 599.7 L509.0 519.5 L509.0 439.4 L510.2 438.2 L511.4 437.0 L525.1 437.0 L538.7 437.0 L581.4 480.1 L624.0 523.2 L623.9 538.6 L623.9 554.0 L623.2 554.0 C622.8 554.0 615.2 546.7 606.3 537.8 L590.0 521.5 L550.2 561.3 L510.4 601.1 L509.7 600.4 Z M536.3 543.7 L537.0 544.3 L537.0 543.1 L537.0 541.9 L555.0 523.9 C564.9 513.9 573.0 505.5 573.0 505.2 C573.0 504.8 563.8 495.3 552.5 484.0 L532.0 463.5 L532.0 504.9 L532.0 546.3 L533.8 544.7 L535.7 543.0 L536.3 543.7 Z M621.1 487.3 L575.9 441.7 L576.2 439.6 L576.5 437.5 L586.5 437.2 C592.0 437.0 598.4 437.2 600.7 437.5 L604.9 438.1 L613.4 446.6 C618.0 451.2 622.2 455.0 622.7 455.0 C623.5 455.0 637.3 441.7 644.2 434.2 L648.0 430.2 L648.0 424.3 C648.0 421.1 647.7 417.5 647.4 416.3 L646.8 414.0 L578.1 413.8 L509.5 413.5 L509.2 403.6 L508.9 393.8 L510.1 392.4 L511.2 391.0 L589.0 391.0 L666.8 391.0 L668.4 391.6 L670.0 392.2 L670.0 416.5 L670.0 440.8 L655.0 456.1 C646.8 464.6 640.1 472.0 640.0 472.5 C640.0 473.1 646.8 480.3 655.0 488.5 L670.0 503.5 L670.0 518.2 L670.0 533.0 L668.1 533.0 L666.3 533.0 L621.1 487.3 Z M575.0 381.1 C575.0 379.5 574.7 377.5 574.4 376.6 L573.8 375.0 L572.4 375.0 L571.1 375.0 L570.0 373.0 L568.9 371.0 L569.2 361.8 L569.5 352.5 L573.5 351.8 C578.5 350.9 604.7 350.8 607.8 351.6 L610.1 352.3 L609.8 362.9 L609.5 373.5 L607.2 374.5 L605.0 375.5 L605.0 379.7 L605.0 384.0 L590.0 384.0 L575.0 384.0 L575.0 381.1 Z" fill="url(#emblemGold)" fill-rule="evenodd"/></svg>
+                <span class="logo-gold-gradient font-serif-luxury text-base font-semibold tracking-[0.24em] uppercase leading-none mt-1">
+                    Odeurs de Dubaï
+                </span>
+            </div>
+            <div class="w-full flex flex-col gap-4 mb-6">
+                <a href="index.html?contact=true" class="flex items-center justify-between w-full p-4 rounded-2xl bg-white/50 border border-[#C5A880]/10 hover:border-[#C5A880]/40 hover:bg-white/80 group">
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-[#C5A880]/10 text-[#C5A880] group-hover:bg-[#C5A880] group-hover:text-white transition-all">
+                            <svg class="w-5 h-5 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg>
+                        </div>
+                        <span class="font-serif-luxury text-base font-medium text-[#3C352E] group-hover:text-[#C5A880]">Nous contacter</span>
+                    </div>
+                </a>
+                <a href="index.html#collections" class="flex items-center justify-between w-full p-4 rounded-2xl bg-white/50 border border-[#C5A880]/10 hover:border-[#C5A880]/40 hover:bg-white/80 group">
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-[#C5A880]/10 text-[#C5A880] group-hover:bg-[#C5A880] group-hover:text-white transition-all">
+                            <svg class="w-5 h-5 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M6 3h12l4 6-10 12L2 9z" />
+                                <path d="M11 3 8 9l4 12 4-12-3-6" />
+                                <path d="M2 9h20" />
+                            </svg>
+                        </div>
+                        <span class="font-serif-luxury text-base font-medium text-[#3C352E] group-hover:text-[#C5A880]">Nos collections</span>
+                    </div>
+                </a>
+                <a href="index.html#histoire" class="flex items-center justify-between w-full p-4 rounded-2xl bg-white/50 border border-[#C5A880]/10 hover:border-[#C5A880]/40 hover:bg-white/80 group">
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-[#C5A880]/10 text-[#C5A880] group-hover:bg-[#C5A880] group-hover:text-white transition-all">
+                            <svg class="w-5 h-5 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                                <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                                <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+                            </svg>
+                        </div>
+                        <span class="font-serif-luxury text-base font-medium text-[#3C352E] group-hover:text-[#C5A880]">Notre histoire</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- BURGER MENU LOGIC ---
+            const burgerBtn = document.getElementById('menu-burger');
+            const menuOverlay = document.getElementById('menu-overlay');
+            const menuCard = document.getElementById('menu-card');
+            const menuCloseBtn = document.getElementById('menu-close');
+
+            const openMenu = () => {
+                menuOverlay.classList.remove('pointer-events-none', 'opacity-0');
+                menuOverlay.classList.add('opacity-100');
+                menuCard.classList.remove('scale-95', 'translate-y-8', 'opacity-0');
+                menuCard.classList.add('scale-100', 'translate-y-0', 'opacity-100');
+                document.body.classList.add('overflow-hidden');
+            };
+
+            const closeMenu = () => {
+                menuCard.classList.remove('scale-100', 'translate-y-0', 'opacity-100');
+                menuCard.classList.add('scale-95', 'translate-y-8', 'opacity-0');
+                menuOverlay.classList.remove('opacity-100');
+                menuOverlay.classList.add('opacity-0');
+                document.body.classList.remove('overflow-hidden');
+                setTimeout(() => {
+                    menuOverlay.classList.add('pointer-events-none');
+                }, 500);
+            };
+
+            if (burgerBtn && menuOverlay && menuCard && menuCloseBtn) {
+                burgerBtn.addEventListener('click', openMenu);
+                menuCloseBtn.addEventListener('click', closeMenu);
+                menuOverlay.addEventListener('click', (e) => {
+                    if (e.target === menuOverlay) closeMenu();
+                });
+            }
+
+            // --- QUANTITY SELECTOR LOGIC ---
+            const qtyMinus = document.getElementById('qty-minus');
+            const qtyPlus = document.getElementById('qty-plus');
+            const qtyValue = document.getElementById('qty-value');
+            let quantity = 1;
+
+            if (qtyMinus && qtyPlus && qtyValue) {
+                qtyMinus.addEventListener('click', () => {
+                    if (quantity > 1) {
+                        quantity--;
+                        qtyValue.textContent = quantity;
+                    }
+                });
+
+                qtyPlus.addEventListener('click', () => {
+                    quantity++;
+                    qtyValue.textContent = quantity;
+                });
+            }
+
+            // --- ACCORDION LOGIC ---
+            const accordionTitle = document.getElementById('accordion-title');
+            const accordionContent = document.getElementById('accordion-content');
+            const accordionChevron = document.getElementById('accordion-chevron');
+
+            const toggleAccordion = () => {
+                const isExpanded = accordionTitle.getAttribute('aria-expanded') === 'true';
+                if (isExpanded) {
+                    accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+                    // Force reflow
+                    accordionContent.offsetHeight;
+                    
+                    accordionTitle.setAttribute('aria-expanded', 'false');
+                    accordionContent.style.maxHeight = '0px';
+                    accordionChevron.classList.remove('rotate-180');
+                } else {
+                    accordionTitle.setAttribute('aria-expanded', 'true');
+                    accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+                    accordionChevron.classList.add('rotate-180');
+                }
+            };
+
+            if (accordionTitle && accordionContent && accordionChevron) {
+                accordionTitle.addEventListener('click', toggleAccordion);
+                
+                accordionContent.addEventListener('transitionend', () => {
+                    if (accordionTitle.getAttribute('aria-expanded') === 'true') {
+                        accordionContent.style.maxHeight = 'none';
+                    }
+                });
+                
+                // Keyboard support (Space & Enter)
+                accordionTitle.addEventListener('keydown', (e) => {
+                    if (e.key === ' ' || e.key === 'Enter') {
+                        e.preventDefault();
+                        toggleAccordion();
+                    }
+                });
+            }
+
+            // --- LOCAL STORAGE CART LOGIC ---
+            const addToCartBtn = document.getElementById('add-to-cart-btn');
+            const buyNowBtn = document.getElementById('buy-now-btn');
+
+            const productData = {
+                brand: "CONFIDENTIAL",
+                name: "Private Gold",
+                image: "assets/images/parfums/06-confidential-private-gold.jpg",
+                price: "30 €"
+            };
+
+            const addProductToCart = (qty) => {
+                let cart = [];
+                try {
+                    const storedCart = localStorage.getItem('odeur_dubai_cart');
+                    if (storedCart) {
+                        cart = JSON.parse(storedCart);
+                    }
+                } catch (e) {
+                    console.error('Failed to load cart from localStorage:', e);
+                }
+
+                const existingItem = cart.find(item => item.product.brand === productData.brand && item.product.name === productData.name);
+                if (existingItem) {
+                    existingItem.quantity += qty;
+                } else {
+                    cart.push({
+                        product: productData,
+                        quantity: qty
+                    });
+                }
+
+                try {
+                    localStorage.setItem('odeur_dubai_cart', JSON.stringify(cart));
+                } catch (e) {
+                    console.error('Failed to save cart to localStorage:', e);
+                }
+            };
+
+            // Update badge function
+            const updateCartBadge = () => {
+                let cart = [];
+                try {
+                    const storedCart = localStorage.getItem('odeur_dubai_cart');
+                    if (storedCart) {
+                        cart = JSON.parse(storedCart);
+                    }
+                } catch (e) {
+                    console.error('Failed to load cart:', e);
+                }
+                
+                const badge = document.getElementById('cart-badge');
+                if (badge) {
+                    const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+                    if (totalCount > 0) {
+                        badge.textContent = totalCount;
+                        badge.classList.remove('hidden');
+                        badge.classList.add('flex');
+                    } else {
+                        badge.classList.add('hidden');
+                        badge.classList.remove('flex');
+                    }
+                }
+            };
+
+            // Initial badge load
+            updateCartBadge();
+
+            if (addToCartBtn) {
+                addToCartBtn.addEventListener('click', () => {
+                    addProductToCart(quantity);
+                    // Redirect to homepage with cart open
+                    window.location.href = 'index.html?cart=true';
+                });
+            }
+
+            if (buyNowBtn) {
+                buyNowBtn.addEventListener('click', () => {
+                    addProductToCart(quantity);
+                    // Redirect to homepage with cart open
+                    window.location.href = 'index.html?cart=true';
+                });
+            }
+        });
+    </script>
+    <script src="assets/search-bar.js"></script>
+</body>
+</html>
